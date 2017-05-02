@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AccHostTest < ActiveSupport::TestCase
+class CrafteeTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
