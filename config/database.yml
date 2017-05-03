@@ -6,23 +6,20 @@
 #
 default: &default
   pool: 5
+  adapter: postgresql
   timeout: 5000
 
 development:
   <<: *default
-  adapter: sqlite3
-  database: db/development.sqlite3
+  database: whichcraft-db-dev
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  adapter: sqlite3
-  database: db/test.sqlite3
+  database: whichcraft-db-test
 
 production:
   <<: *default
-  adapter: postgresql
-  database: whichcraft-db-production
   url: <%= ENV['DATABASE_URL'] %>
