@@ -6,10 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
-
 5.times do
-  DummyModel.create(
-    name: 'Shirong'
+  @user = User.create(
+    email: Faker::Internet.email,
+    password: Faker::Internet.password
   )
+
+  @user.crafter = Crafter.create
+
+  @user.crafter.events << Event.create
+
+  @user.craftee = Craftee.create
 end
