@@ -7,6 +7,11 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+# Fake data
+gem 'faker'
+
+gem 'gon'
+
 gem 'rails', '~> 5.0.2'
 # database
 gem 'pg'
