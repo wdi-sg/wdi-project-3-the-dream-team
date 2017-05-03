@@ -24,4 +24,5 @@ test:
 production:
   <<: *default
   adapter: postgresql
-  database: wdi-project-3
+  database: whichcraft-db-production
+  url: <%= ENV['DATABASE_URL'] %>
