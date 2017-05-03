@@ -1,5 +1,5 @@
 class CraftersController < ApplicationController
-  before_action :find_crafter, only: %i[show edit]
+  before_action :find_crafter, only: %i[show edit update]
   before_action :form_crafter, only: %i[create update]
 
   def index
@@ -37,6 +37,8 @@ class CraftersController < ApplicationController
   end
 
   def form_crafter
-    @form_data = params.require(:crafter).permit(:id, :crafter_id)
+    @form_data = params
+    .require(:crafter)
+    .permit(:name, :biography, :profession, :category_id, :contact_number, :contact_email, :facebook_link, :twitter_link, :website_link)
   end
 end

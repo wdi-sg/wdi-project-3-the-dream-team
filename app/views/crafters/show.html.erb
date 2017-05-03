@@ -1,5 +1,21 @@
-<h1>Crafters#show</h1>
-<p>Find me in app/views/crafters/show.html.erb</p>
+<section class="section">
+  <section class="hero is-primary">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          <%= @crafter.name %>
+        </h1>
+        <h2 class="subtitle">
+          <%= @crafter.biography %>
+        </h2>
+        <%= link_to "Edit", edit_crafter_path, class: "button is-black" %>
+      </div>
+    </div>
+  </section>
+
+</section>
+
+
 
 
 <pre>

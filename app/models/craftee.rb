@@ -7,5 +7,7 @@ class Craftee < ApplicationRecord
   has_many :reviews
 
   has_many :fav_events
-  has_many :events, through: :fav_events # maybe can change to has_many :fav_events, source: events?
+
+  # may not need this
+  has_many :events, through: :fav_events
 end
