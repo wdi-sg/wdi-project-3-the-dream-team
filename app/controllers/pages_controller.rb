@@ -1,4 +1,10 @@
 class PagesController < ApplicationController
-  def home
+
+  def index
+    render 'homepage'
+  end
+
+  def about
+    render 'about'
   end
 end

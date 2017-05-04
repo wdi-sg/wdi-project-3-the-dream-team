@@ -1,0 +1,2 @@
+module CrafteesHelper
+end

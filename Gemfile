@@ -6,15 +6,27 @@ git_source(:github) do |repo_name|
 end
 
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-# Fake data
-gem 'faker'
+# installing bulma and fontawesome for rails pipeline
+gem 'font-awesome-rails'
+gem "jquery-slick-rails"
+gem 'jquery-ui-rails'
 
+gem 'owlcarousel-rails', '~> 1.1', '>= 1.1.3.3'
+gem 'bulma-rails', '~> 0.4.0'
+
+# seed data
+gem 'faker'
 gem 'gon'
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 
 gem 'rails', '~> 5.0.2'
+
 # database
 gem 'pg'
+
+gem 'pry'
+
+gem 'devise'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets

@@ -1,3 +1,43 @@
+<<<<<<< HEAD
+@import "variables";
+@import "bulma";
+@import "font-awesome";
+@import 'slick';
+
+body {
+  font: 100% $body-font-type;
+  color: $grey;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $header-font-type;
+}
+
+.footer {
+  li {
+    font-size: 30px;
+    transition: all 3s;
+
+    &:hover {
+      font-weight: bold;
+      font-size: 10 + 20px;
+    }
+
+    &.important {
+      font-style: italic;
+    }
+  }
+}
+
+#owl-demo .item{
+  margin: 3px;
+}
+#owl-demo .item img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+=======
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -13,3 +53,24 @@
  *= require_tree .
  *= require_self
  */
+
+ @import 'bulma';
+
+ * {
+   box-sizing: border-box;
+ }
+
+ div.custom-flex {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+ }
+
+ div.custom-one-third {
+   width: 24%;
+   margin-bottom: 20px;
+ }
+
+ div.card {
+   height: 520px;
+ }
