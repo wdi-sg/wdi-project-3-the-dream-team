@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   # get 'crafters/destroy'
   root 'pages#index'
   get '/' => 'pages#index'
+  get '/pages/switch'
   get 'about' => 'pages#about'
   resources :crafters
   resources :craftees

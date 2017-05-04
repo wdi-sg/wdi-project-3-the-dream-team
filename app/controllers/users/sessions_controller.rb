@@ -7,14 +7,18 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    # saving into session the user type chosen during login
+    session[:user_type] = params[:user_type]
+    super
+  end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  def destroy
+    # removing from session the user type
+    session[:user_type] = nil
+    super
+  end
 
   # protected
 
