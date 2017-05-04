@@ -12,21 +12,30 @@
 
 ActiveRecord::Schema.define(version: 20170504035040) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
     t.integer  "craftee_id"
     t.integer  "session_id"
+    t.string   "invoice_id"
+    t.string   "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["craftee_id"], name: "index_bookings_on_craftee_id", using: :btree
     t.index ["session_id"], name: "index_bookings_on_session_id", using: :btree
   end
 
-  create_table "craftees", force: :cascade do |t|
+  create_table "categories", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "craftees", force: :cascade do |t|
     t.integer  "user_id"
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_craftees_on_user_id", using: :btree
@@ -34,47 +43,91 @@ ActiveRecord::Schema.define(version: 20170504035040) do
 
   create_table "crafters", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_crafters_on_user_id", using: :btree
-  end
-
-  create_table "dummy_models", force: :cascade do |t|
+    t.integer  "category_id"
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "biography"
+    t.string   "profession"
+    t.string   "contact_number"
+    t.string   "contact_email"
+    t.string   "facebook_link"
+    t.string   "twitter_link"
+    t.string   "website_link"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["category_id"], name: "index_crafters_on_category_id", using: :btree
+    t.index ["user_id"], name: "index_crafters_on_user_id", using: :btree
   end
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
+    t.text     "description"
+    t.string   "image_link"
+    t.string   "location_link"
     t.integer  "crafter_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "category_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["category_id"], name: "index_events_on_category_id", using: :btree
     t.index ["crafter_id"], name: "index_events_on_crafter_id", using: :btree
   end
 
   create_table "fav_events", force: :cascade do |t|
     t.integer  "craftee_id"
     t.integer  "event_id"
+    t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["craftee_id"], name: "index_fav_events_on_craftee_id", using: :btree
     t.index ["event_id"], name: "index_fav_events_on_event_id", using: :btree
   end
 
+  create_table "featured_crafters", force: :cascade do |t|
+    t.string   "media_link"
+    t.text     "description"
+    t.integer  "crafter_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["crafter_id"], name: "index_featured_crafters_on_crafter_id", using: :btree
+  end
+
+  create_table "featured_events", force: :cascade do |t|
+    t.string   "media_link"
+    t.text     "description"
+    t.integer  "event_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["event_id"], name: "index_featured_events_on_event_id", using: :btree
+  end
+
+  create_table "portfolio_items", force: :cascade do |t|
+    t.string   "media_link"
+    t.string   "description"
+    t.string   "item_type"
+    t.integer  "crafter_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["crafter_id"], name: "index_portfolio_items_on_crafter_id", using: :btree
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.integer  "craftee_id"
     t.integer  "event_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "description"
+    t.string   "rating"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["craftee_id"], name: "index_reviews_on_craftee_id", using: :btree
     t.index ["event_id"], name: "index_reviews_on_event_id", using: :btree
   end
 
   create_table "sessions", force: :cascade do |t|
     t.integer  "event_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.date     "datetime_from"
+    t.date     "datetime_to"
+    t.integer  "price"
+    t.integer  "capacity"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.index ["event_id"], name: "index_sessions_on_event_id", using: :btree
   end
 

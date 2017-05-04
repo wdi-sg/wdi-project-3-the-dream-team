@@ -1,0 +1,23 @@
+<section class="section">
+  <section class="hero is-primary">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          <%= @crafter.name %>
+        </h1>
+        <h2 class="subtitle">
+          <%= @crafter.biography %>
+        </h2>
+        <%= link_to "Edit", edit_crafter_path, class: "button is-black" %>
+        <%= link_to 'Delete', crafter_path(@crafter, authenticity_token: form_authenticity_token),
+                              class: 'button is-danger',
+                              method: :delete %>
+      </div>
+    </div>
+  </section>
+
+</section>
+
+<pre>
+  <%= @crafter.inspect %>
+</pre>

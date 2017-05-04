@@ -1,0 +1,117 @@
+<section>
+  <div class="section">
+    <h1 class="title">Create Crafter</h1>
+    <h2 class="subtitle">this page is here for CRUD purpose only</h2>
+    <div class="container">
+      <dl>
+      <%= form_for @new_crafter do |f| %>
+
+      <%# start input %>
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <%= f.label :name, class: 'label' %>
+        </div>
+        <div class="field-body">
+          <%= f.text_field :name, class: 'input' %>
+        </div>
+      </div>
+      <%# end input %>
+
+      <%# start input %>
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <%= f.label :biography, class: 'label' %>
+        </div>
+        <div class="field-body">
+          <%= f.text_area :biography, class: 'textarea' %>
+        </div>
+      </div>
+      <%# end input %>
+
+      <%# start input %>
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <%= f.label :profession, class: 'label' %>
+        </div>
+        <div class="field-body">
+          <%= f.text_field :profession, class: 'input' %>
+        </div>
+      </div>
+      <%# end input %>
+
+      <%# start input %>
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <%= f.label :category_id, class: 'label' %>
+        </div>
+        <div class="field-body">
+          <%= f.text_field :category_id, class: 'input' %>
+        </div>
+      </div>
+      <%# end input %>
+
+      <%# start input %>
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <%= f.label :contact_number, class: 'label' %>
+        </div>
+        <div class="field-body">
+          <%= f.text_field :contact_number, class: 'input' %>
+        </div>
+      </div>
+      <%# end input %>
+
+      <%# start input %>
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <%= f.label :contact_email, class: 'label' %>
+        </div>
+        <div class="field-body">
+          <%= f.text_field :contact_email, class: 'input' %>
+        </div>
+      </div>
+      <%# end input %>
+
+      <%# start input %>
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <%= f.label :facebook_link, class: 'label' %>
+        </div>
+        <div class="field-body">
+          <%= f.text_field :facebook_link, class: 'input' %>
+        </div>
+      </div>
+      <%# end input %>
+
+      <%# start input %>
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <%= f.label :twitter_link, class: 'label' %>
+        </div>
+        <div class="field-body">
+          <%= f.text_field :twitter_link, class: 'input' %>
+        </div>
+      </div>
+      <%# end input %>
+
+      <%# start input %>
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <%= f.label :website_link, class: 'label' %>
+        </div>
+        <div class="field-body">
+          <%= f.text_field :website_link, class: 'input' %>
+        </div>
+      </div>
+      <%# end input %>
+
+      <%= f.submit 'Confirm', class: 'button is-primary'%>
+      <% end %>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<pre>
+  <%= @crafter.inspect %>
+</pre>

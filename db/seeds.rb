@@ -6,15 +6,28 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+10.times do
+  Category.create(name: Faker::Job.field)
+end
+
 5.times do
   @user = User.create(
     email: Faker::Internet.email,
     password: Faker::Internet.password
   )
 
-  @user.crafter = Crafter.create
+  @user.crafter = Crafter.create(
+    name: Faker::Name.name,
+    biography: Faker::StarWars.quote,
+    category_id: rand(9),
+    profession: Faker::Superhero.name
+  )
 
-  @user.crafter.events << Event.create
+  @user.crafter.events << Event.create(
+    name: Faker::Commerce.product_name + ' class',
+    description: Faker::StarWars.quote,
+    category_id: rand(9)
+  )
 
   @user.craftee = Craftee.create
 end

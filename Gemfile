@@ -7,17 +7,17 @@ end
 
 
 # installing bulma and fontawesome for rails pipeline
-gem 'bulma-rails'
 gem 'font-awesome-rails'
 gem "jquery-slick-rails"
 gem 'jquery-ui-rails'
 
 gem 'owlcarousel-rails', '~> 1.1', '>= 1.1.3.3'
+gem 'bulma-rails', '~> 0.4.0'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-# Fake data
+# seed data
 gem 'faker'
 gem 'gon'
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 
 gem 'rails', '~> 5.0.2'
 
