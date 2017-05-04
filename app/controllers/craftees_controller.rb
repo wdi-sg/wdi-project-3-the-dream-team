@@ -1,14 +1,6 @@
 class CrafteesController < ApplicationController
   before_action :find_craftee, only: %i[show edit update destroy]
 
-  # def index
-  #     @all_craftees = Craftee.all
-  #   end
-
-  # def new
-  #   @craftee = Craftee.new
-  # end
-
     def show
       @craftee =  find_craftee
     end
@@ -27,17 +19,18 @@ class CrafteesController < ApplicationController
     end
 
     def create
-       @craftee = Craftee.create
-       if @craftee.save
-         redirect_to craftee_path(@craftee)
-      else
-        render 'flights/new'
-      end
+      #  @craftee = Craftee.create
+      #  if @craftee.save
+      #    redirect_to craftee_path(@craftee)
+      # else
+      #   render 'new'
+      # end
+      
     end
 
     def destroy
       find_craftee.destroy
-      redirect_to flights_path
+      redirect_to craftees_path
     end
 
     private
