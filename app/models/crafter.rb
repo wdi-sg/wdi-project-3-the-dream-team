@@ -1,7 +1,10 @@
 class Crafter < ApplicationRecord
   belongs_to :user
   belongs_to :category
+  has_one :featured_crafter
 
+  has_many :portfolio_items
+  # has_many :events, dependent: :destroy
   has_many :events
 
   # may not work

@@ -1,5 +1,5 @@
 class CraftersController < ApplicationController
-  before_action :find_crafter, only: %i[show edit update]
+  before_action :find_crafter, only: %i[show edit update destroy]
   before_action :form_crafter, only: %i[create update]
 
   def index
@@ -10,10 +10,11 @@ class CraftersController < ApplicationController
   end
 
   def new
+    @new_crafter = Crafter.new
   end
 
   def create
-
+    # creating crafter will be automated by user sign up
   end
 
   def edit
@@ -28,6 +29,12 @@ class CraftersController < ApplicationController
   end
 
   def destroy
+    if @crafter.destroy
+      redirect_to crafters_path
+    else
+      render 'crafters/show'
+    end
+
   end
 
   private

@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
   belongs_to :crafter
   belongs_to :category
+  has_one :featured_event
 
   has_many :reviews
 

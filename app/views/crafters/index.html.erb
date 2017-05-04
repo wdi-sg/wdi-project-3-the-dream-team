@@ -1,4 +1,8 @@
 <section class="section">
+  <section class="section">
+    <%= link_to "New Crafter", new_crafter_path, class: "button is-primary" %>
+  </section>
+
   <div class="custom-flex">
     <% @all_crafters.each do |crafter| %>
     <div class="custom-one-third">

@@ -25,7 +25,8 @@ end
 
   @user.crafter.events << Event.create(
     name: Faker::Commerce.product_name + ' class',
-    description: Faker::StarWars.quote
+    description: Faker::StarWars.quote,
+    category_id: rand(9)
   )
 
   @user.craftee = Craftee.create
