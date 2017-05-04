@@ -31,8 +31,33 @@ end
     description: Faker::StarWars.quote,
     category_id: rand(9)
   )
-  
+
   p 'event creation succeeded'
 
   @user.craftee = Craftee.create
 end
+
+@user = User.create(
+  email: 'admin@mail.com',
+  password: '123456'
+)
+
+p 'user creation succeeded'
+
+@user.crafter = Crafter.create(
+  name: Faker::Name.name,
+  biography: Faker::StarWars.quote,
+  category_id: rand(9),
+  profession: Faker::Superhero.name
+)
+p 'crafter creation succeeded'
+
+@user.crafter.events << Event.create(
+  name: Faker::Commerce.product_name + ' class',
+  description: Faker::StarWars.quote,
+  category_id: rand(9)
+)
+
+p 'event creation succeeded'
+
+@user.craftee = Craftee.create

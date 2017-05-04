@@ -5,7 +5,6 @@
     <%= csrf_meta_tags %>
     <%= include_gon %>
 
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -14,27 +13,34 @@
     <%= render "partials/nav" %>
     <!-- Simple Devise Navigation Bar-->
     <p>
-    <% if user_signed_in? %>
-      Logged in as <strong><%= current_user.email %></strong>.
-      <%= link_to 'Edit profile', edit_user_registration_path%> |
+      <% if user_signed_in? %>
+      Logged in as
+      <strong><%= current_user.email %></strong>.
+      <%= link_to 'Edit profile', edit_user_registration_path%>
+      |
       <%= link_to "Logout", destroy_user_session_path, method: :delete %>
     <% else %>
-      <%= link_to "Sign up", new_user_registration_path %> |
+      <%= link_to "Sign up", new_user_registration_path %>
+      |
       <%= link_to "Login", new_user_session_path %>
-    <% end %>
+      <% end %>
     </p>
 
     <!-- Devise Alert Messages -->
     <% if notice %>
-      <p class="notice"><%= notice %></p>
+    <p class="notice"><%= notice %></p>
     <% end %>
     <% if alert %>
-      <p class="alert"><%= alert %></p>
+    <p class="alert"><%= alert %></p>
     <% end %>
-
 
     <%# render 'layouts/nav' %>
 
     <%= yield %>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
   </body>
 </html>
