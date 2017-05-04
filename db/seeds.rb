@@ -31,8 +31,10 @@ end
     description: Faker::StarWars.quote,
     category_id: rand(9)
   )
-  
+
   p 'event creation succeeded'
 
-  @user.craftee = Craftee.create
+  @user.craftee = Craftee.create(
+    name: Faker::Name.name
+  )
 end

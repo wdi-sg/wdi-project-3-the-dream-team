@@ -1,42 +1,50 @@
 class CrafteesController < ApplicationController
-  before_action :find_craftee, only: %i[show edit update destroy]
+  before_action :find_crafter, only: %i[show update destroy]
+  before_action :updated_craftee_info, only: %i[create update]
+
+
+    def new
+      @new_craftee = Craftee.new
+    end
+
+    def edit
+    end
+
 
     def show
       @craftee =  find_craftee
     end
 
-    def edit
-      @craftee = find_craftee
-    end
-
     def update
-      @updated_craftee = find_craftee
-      if (@updated_craftee.update(craftee_params))
-        redirect_to flights_path
+      if (@craftee.update(@form_data))
+        redirect_to craftee_path(@craftee)
       else
-        render 'edit'
+        render 'craftee/edit'
       end
     end
 
     def create
-      #  @craftee = Craftee.create
-      #  if @craftee.save
-      #    redirect_to craftee_path(@craftee)
-      # else
-      #   render 'new'
-      # end
-      
+      #  creating crafter will be automated by user sign up
+
     end
 
     def destroy
-      find_craftee.destroy
-      redirect_to craftees_path
+      #this is equivalent to deleting the user's account
+      if(@craftee.destroy)
+        redirect_to root
+      else
+        render craftee_path
+      end
     end
 
     private
 
       def find_craftee
         @craftee = Craftee.find(params[:id])
+      end
+
+      def updated_craftee_info
+        @form_data = params.require(:craftee).permit(:name)
       end
 
 end
