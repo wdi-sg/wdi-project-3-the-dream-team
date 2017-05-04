@@ -8,8 +8,12 @@ Rails.application.routes.draw do
   # get 'crafters/edit'
   # get 'crafters/update'
   # get 'crafters/destroy'
-
+  root 'pages#index'
+  get '/' => 'pages#index'
+  get 'about' => 'pages#about'
   resources :crafters
+  resources :craftees
+  resources :events
 
   # Craftee
 

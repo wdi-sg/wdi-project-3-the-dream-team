@@ -5,18 +5,22 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'faker'
 
-gem 'gon'
+# installing bulma and fontawesome for rails pipeline
+gem 'bulma-rails'
+gem 'font-awesome-rails'
+gem "jquery-slick-rails"
+gem 'jquery-ui-rails'
 
+gem 'owlcarousel-rails', '~> 1.1', '>= 1.1.3.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 # Fake data
 gem 'faker'
-
 gem 'gon'
 
 gem 'rails', '~> 5.0.2'
+
 # database
 gem 'pg'
 
