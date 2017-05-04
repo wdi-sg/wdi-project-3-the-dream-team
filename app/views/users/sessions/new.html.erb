@@ -1,6 +1,7 @@
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
@@ -10,6 +11,14 @@
     <%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
+
+  <div class="field browser-default">
+    <%= f.label 'Log in as:' %><br />
+
+    <%= select_tag :user_type, options_for_select([['Crafter', 'crafter'], ['Craftee', 'craftee']]), class: "browser-default" %>
+  </div>
+
+  <p>
 
   <% if devise_mapping.rememberable? -%>
     <div class="field">
