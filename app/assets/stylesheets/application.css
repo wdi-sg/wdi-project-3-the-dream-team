@@ -1,8 +1,32 @@
-<<<<<<< HEAD
 @import "variables";
-@import "bulma";
 @import "font-awesome";
 @import 'slick';
+@import "bulma";
+
+
+/* some css that I (tom) added for crafters controller */
+/* shirong you can change this as you like later <3 */
+* {
+  box-sizing: border-box;
+}
+
+div.custom-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+div.custom-one-third {
+    width: 24%;
+    margin-bottom: 20px;
+  }
+
+div.card {
+  height: 520px;
+}
+
+/* end */
+
 
 body {
   font: 100% $body-font-type;
@@ -37,40 +61,3 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   height: auto;
 }
-=======
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
-
- @import 'bulma';
-
- * {
-   box-sizing: border-box;
- }
-
- div.custom-flex {
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: space-between;
- }
-
- div.custom-one-third {
-   width: 24%;
-   margin-bottom: 20px;
- }
-
- div.card {
-   height: 520px;
- }

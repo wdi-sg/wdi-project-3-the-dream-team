@@ -11,6 +11,7 @@
   </head>
 
   <body>
+    <%= render "partials/nav" %>
     <!-- Simple Devise Navigation Bar-->
     <p>
     <% if user_signed_in? %>
@@ -31,9 +32,8 @@
       <p class="alert"><%= alert %></p>
     <% end %>
 
-    <%= render "partials/nav" %>
 
-    <%= render 'layouts/nav' %>
+    <%# render 'layouts/nav' %>
 
     <%= yield %>
   </body>

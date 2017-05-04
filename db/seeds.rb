@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-10.times do
+20.times do
   Category.create(name: Faker::Job.field)
 end
 
@@ -16,18 +16,23 @@ end
     password: Faker::Internet.password
   )
 
+  p 'user creation succeeded'
+
   @user.crafter = Crafter.create(
     name: Faker::Name.name,
     biography: Faker::StarWars.quote,
     category_id: rand(9),
     profession: Faker::Superhero.name
   )
+  p 'crafter creation succeeded'
 
   @user.crafter.events << Event.create(
     name: Faker::Commerce.product_name + ' class',
     description: Faker::StarWars.quote,
     category_id: rand(9)
   )
+  
+  p 'event creation succeeded'
 
   @user.craftee = Craftee.create
 end
