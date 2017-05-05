@@ -1,8 +1,15 @@
+@import "materialize/components/color";
 @import "variables";
 @import "font-awesome";
 @import 'slick';
-@import "bulma";
+// @import "bulma";
+@import "materialize";
 
+/* testing the dropdown menu in nav bar */
+
+#dropdown2 {
+  
+}
 
 /* some css that I (tom) added for crafters controller */
 /* shirong you can change this as you like later <3  */
@@ -28,10 +35,10 @@ div.card {
 /* end */
 
 
-body {
-  font: 100% $body-font-type;
-  color: $grey;
-}
+// body {
+//   font: 100% $body-font-type;
+//   color: $grey;
+// }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $header-font-type;

@@ -1,3 +1,18 @@
-<h1>craftee's profile</h1>
+<h1>Craftee's profile</h1>
+<div class="container">
+  <%= @craftee.name %>
 
-<p><%= @craftee.inspect%></p>
+    <!-- calender goes in here -->
+    <ul>
+      <% @craftee.sessions.each do |session| %>
+      <li>session</li>
+      <% end %>
+    </ul>
+
+    <ul>
+      <% @craftee.fav_events.each do|fav_event| %>
+        <li>fav_event.event</li>
+      <% end %>
+    </ul>
+
+</div>

@@ -1,0 +1,62 @@
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+  <li>
+    <% if current_user_type == 'craftee' %>
+      <%= link_to "Crafter", pages_switch_path %>
+    <% else %>
+      <%= link_to "Craftee", pages_switch_path %>
+    <% end %>
+  </li>
+  <li><a href="#!">two</a></li>
+  <li class="divider"></li>
+  <li><a href="#!">three</a></li>
+</ul>
+
+<ul id="dropdown2" class="dropdown-content">
+  <li>
+    <%= link_to "All", events_path %>
+  </li>
+  <li>
+    <%= link_to "New", new_event_path %>
+  </li>
+  <li>
+    <a href="#!">three</a>
+  </li>
+</ul>
+
+<!-- NAV BAR STARTS HERE -->
+
+<nav>
+  <div class="nav-fixed">
+    <ul class="left hide-on-med-and-down">
+      <!-- Dropdown Trigger -->
+      <li>
+        <a class="dropdown-button" href="#!" data-hover="true" data-activates="dropdown2">
+          Events<i class="material-icons right"></i>
+        </a>
+      </li>
+    </ul>
+    <ul class="right hide-on-med-and-down">
+      <!-- Dropdown Trigger -->
+      <li>
+        <a class="dropdown-button" href="#!" data-activates="dropdown1">
+          <%= current_user_type %><i class="material-icons right"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="section">
+  <% if user_signed_in? %>
+    <p>
+      Crafter ID: <%= current_crafter.id %>
+    </p>
+    <p>
+      Craftee ID: <%= current_craftee.id %>
+    </p>
+    <p>
+      Current User: <%= current_user.inspect %>
+    </p>
+  <% end %>
+</div>

@@ -29,12 +29,15 @@ end
   @user.crafter.events << Event.create(
     name: Faker::Commerce.product_name + ' class',
     description: Faker::StarWars.quote,
-    category_id: rand(9)
+    category_id: rand(9),
+    image_link: Faker::Avatar.image
   )
 
   p 'event creation succeeded'
 
-  @user.craftee = Craftee.create
+  @user.craftee = Craftee.create(
+    name: Faker::Name.name
+  )
 end
 # below User created will be used by Tom to login at browser for testing
 @user = User.create(
@@ -55,7 +58,8 @@ p 'crafter creation succeeded'
 @user.crafter.events << Event.create(
   name: Faker::Commerce.product_name + ' class',
   description: Faker::StarWars.quote,
-  category_id: rand(9)
+  category_id: rand(9),
+  image_link: Faker::Avatar.image
 )
 
 p 'event creation succeeded'

@@ -24,12 +24,12 @@ class ApplicationController < ActionController::Base
 
   # crafter object for the currently logged in user
   def current_crafter
-    @current_crafter ||= Crafter.find_by_user_id(current_user.id)
+    @current_crafter ||= Crafter.find(current_user.id)
   end
 
   # craftee object for the currently logged in user
   def current_craftee
-    @current_craftee ||= Craftee.find_by_user_id(current_user.id)
+    @current_craftee ||= Craftee.find(current_user.id)
   end
 
   # user type in the current session for logged in user

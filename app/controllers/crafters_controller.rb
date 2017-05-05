@@ -34,7 +34,6 @@ class CraftersController < ApplicationController
     else
       render 'crafters/show'
     end
-
   end
 
   private
