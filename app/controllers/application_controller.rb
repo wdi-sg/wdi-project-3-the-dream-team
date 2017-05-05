@@ -32,18 +32,22 @@ class ApplicationController < ActionController::Base
 
   # crafter object for the currently logged in user
   def current_crafter
-    @current_crafter ||= Crafter.find_by_user_id(current_user.id)
+    if user_signed_in?
+      @current_crafter ||= Crafter.find_by_user_id(current_user.id)
+    end
   end
 
   # craftee object for the currently logged in user
   def current_craftee
-    @current_craftee ||= Craftee.find_by_user_id(current_user.id)
+    if user_signed_in?
+      @current_craftee ||= Craftee.find_by_user_id(current_user.id)
+    end
   end
 
   # user type in the current session for logged in user
-  # def current_user_type
-  #   session[:user_type]
-  # end
+  def current_user_type
+    session[:user_type]
+  end
 
   # switch the user type in the current session
   def switch_user_type
@@ -60,7 +64,7 @@ class ApplicationController < ActionController::Base
 
   # helper methods can be called from anywhere including views
 
-  # helper_method :current_user_type
+  helper_method :current_user_type
   helper_method :current_crafter
   helper_method :current_craftee
   helper_method :is_craftee_authenticated?
