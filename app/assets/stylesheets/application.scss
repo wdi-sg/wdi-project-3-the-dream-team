@@ -1,7 +1,9 @@
+@import "materialize/components/color";
 @import "variables";
 @import "font-awesome";
 @import 'slick';
-@import "bulma";
+// @import "bulma";
+@import "materialize";
 
 
 /* some css that I (tom) added for crafters controller */
@@ -28,10 +30,10 @@ div.card {
 /* end */
 
 
-body {
-  font: 100% $body-font-type;
-  color: $grey;
-}
+// body {
+//   font: 100% $body-font-type;
+//   color: $grey;
+// }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $header-font-type;

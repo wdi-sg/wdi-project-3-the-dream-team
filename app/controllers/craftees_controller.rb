@@ -1,7 +1,7 @@
 class CrafteesController < ApplicationController
-  before_action :find_crafter, only: %i[show update destroy]
+  before_action :is_craftee_authenticated
+  before_action :find_craftee, only: %i[show update destroy]
   before_action :updated_craftee_info, only: %i[create update]
-
 
     def new
       @new_craftee = Craftee.new
@@ -12,7 +12,7 @@ class CrafteesController < ApplicationController
 
 
     def show
-      @craftee =  find_craftee
+      @craftee = find_craftee
     end
 
     def update

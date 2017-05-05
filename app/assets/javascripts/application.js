@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require materialize-sprockets
 //= require jquery-ui
 //= require jquery.slick
-//= require owl.carousel
+//= require_tree .
