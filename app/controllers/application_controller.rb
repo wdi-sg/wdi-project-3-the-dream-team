@@ -14,12 +14,20 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def is_crafter_authenticated?
+    session[:user_type] == 'crafter' ? true : false
+  end
+
   # this can be used in other controller's before actions to authenticate craftee
   def is_craftee_authenticated
     unless session[:user_type] == 'craftee'
       flash[:notice] = 'You need to switch to/be logged in as a craftee to continue.'
       redirect_to root_path
     end
+  end
+
+  def is_craftee_authenticated?
+    session[:user_type] == 'craftee' ? true : false
   end
 
   # crafter object for the currently logged in user
@@ -33,9 +41,9 @@ class ApplicationController < ActionController::Base
   end
 
   # user type in the current session for logged in user
-  def current_user_type
-    session[:user_type]
-  end
+  # def current_user_type
+  #   session[:user_type]
+  # end
 
   # switch the user type in the current session
   def switch_user_type
@@ -52,8 +60,10 @@ class ApplicationController < ActionController::Base
 
   # helper methods can be called from anywhere including views
 
-  helper_method :current_user_type
+  # helper_method :current_user_type
   helper_method :current_crafter
   helper_method :current_craftee
+  helper_method :is_craftee_authenticated?
+  helper_method :is_crafter_authenticated?
   helper_method :crafter_activated?
 end
