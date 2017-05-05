@@ -36,7 +36,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
+
+  # Signs in a user on sign up. You can overwrite this method in your own
+  # RegistrationsController.
+  def sign_up(resource_name, resource)
+    # automatically creates default records for crafter and craftee account
+    Crafter.create(user_id: resource.id, category_id: 1)
+    Craftee.create(user_id: resource.id)
+    # default to craftee session upon registration
+    session[:user_type] = 'craftee'
+    sign_in(resource_name, resource)
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
