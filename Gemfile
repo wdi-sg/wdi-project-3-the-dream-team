@@ -14,6 +14,9 @@ gem 'jquery-ui-rails'
 # materialize
 gem 'materialize-sass'
 
+# simple calendar
+gem "simple_calendar", "~> 2.0"
+
 gem 'owlcarousel-rails', '~> 1.1', '>= 1.1.3.3'
 gem 'bulma-rails', '~> 0.4.0'
 

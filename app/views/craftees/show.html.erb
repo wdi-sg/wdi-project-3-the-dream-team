@@ -2,6 +2,9 @@
 <div class="container">
   <%= @craftee.name %>
 
+  <%= month_calendar do |date| %>
+    <%= date %>
+  <% end %>
     <!-- calender goes in here -->
     <ul>
       <% @craftee.sessions.each do |session| %>
