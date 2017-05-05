@@ -10,7 +10,13 @@
   </head>
 
   <body>
-    <%= render "partials/nav" %>
+    <%# Navigation bar %>
+    <%# render "partials/nav" %>
+
+    <%# Extra navbar for controller testing %>
+    <%= render "partials/navtest" %>
+
+
     <!-- Simple Devise Navigation Bar-->
     <p>
       <% if user_signed_in? %>

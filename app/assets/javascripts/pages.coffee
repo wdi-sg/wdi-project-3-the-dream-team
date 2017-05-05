@@ -3,5 +3,8 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
   # alert 'test'
+  console.log($('ul#dropdown1 li a'))
   $('.dropdown-button').dropdown()
-  return
+
+
+return
