@@ -1,9 +1,16 @@
 <h1>Craftee's profile</h1>
 <div class="container">
-  <%= @craftee.name %>
+  <%= @craftee.sessions%>
 
-  <%= month_calendar do |date| %>
+  <%= @crafteeSessions = @craftee.sessions %>
+
+  <%= month_calendar events: @crafteeSessions.each do |date,crafteeSessions | %>
     <%= date %>
+    <% crafteeSessions.each do |crafteeSession| %>
+    <div>
+      <%= crafteeSession.name %>
+    </div>
+<% end %>
   <% end %>
     <!-- calender goes in here -->
     <ul>

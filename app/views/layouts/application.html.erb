@@ -7,6 +7,8 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <!-- Compiled and minified CSS -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css"> -->
 
@@ -14,34 +16,20 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script> -->
 
   </head>
+  <div class="container body_container">
 
-  <body>
-    <%= render "partials/nav" %>
-    <!-- Simple Devise Navigation Bar-->
-    <p>
-      <% if user_signed_in? %>
-      Logged in as
-      <strong><%= current_user.email %></strong>.
-      <%= link_to 'Edit profile', edit_user_registration_path%>
-      |
-      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Sign up", new_user_registration_path %>
-      |
-      <%= link_to "Login", new_user_session_path %>
-      <% end %>
-    </p>
+    <body>
+      <%= render "partials/nav" %>
+      <!-- Devise Alert Messages -->
+        <% if notice %>
+        <p class="notice"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+        <p class="alert"><%= alert %></p>
+        <% end %>
+      <%# render 'layouts/nav' %>
+      <%= yield %>
+    </body>
 
-    <!-- Devise Alert Messages -->
-    <% if notice %>
-    <p class="notice"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-    <p class="alert"><%= alert %></p>
-    <% end %>
-
-    <%# render 'layouts/nav' %>
-
-    <%= yield %>
-  </body>
+  </div>
 </html>

@@ -61,8 +61,23 @@ end
     }
   ]
   )
+
+  p 'session creation succeeded'
+
   @user.crafter.events.each do |event|
     event.sessions << @sessions
   end
+
+  p 'pushed session into event successfully'
+
+  @bookings = Booking.create(
+    status: 'status'
+  )
+  p 'booking creation succeeded'
+
+  @user.craftee.bookings << @bookings
+
+  p 'pushed bookings into craftee booking'
+
 
 end
