@@ -5,7 +5,8 @@ class CreateBookings < ActiveRecord::Migration[5.0]
       t.belongs_to :session
       t.string :invoice_id
       t.string :status
-
+      t.integer :pax
+      t.float :amount
       t.timestamps
     end
   end

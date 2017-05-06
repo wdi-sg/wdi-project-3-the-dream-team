@@ -6,7 +6,7 @@ class CreateSessions < ActiveRecord::Migration[5.0]
       t.date :datetime_to
       t.integer :price
       t.integer :capacity
-
+      t.integer :pax
       t.timestamps
     end
   end
