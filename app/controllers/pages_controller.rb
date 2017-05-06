@@ -12,6 +12,7 @@ class PagesController < ApplicationController
   def switch
     switch_user_type
     # using About page as debugging page for now
-    redirect_to about_path
+    # redirect_to about_path
+    render 'about'
   end
 end

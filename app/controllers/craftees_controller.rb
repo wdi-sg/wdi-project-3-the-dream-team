@@ -12,7 +12,7 @@ class CrafteesController < ApplicationController
 
 
     def show
-      @craftee = find_craftee
+      @craftee
     end
 
     def update
