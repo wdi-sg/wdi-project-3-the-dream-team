@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def is_crafter_authenticated?
+    session[:user_type] == 'crafter' ? true : false
+  end
+
   # this can be used in other controller's before actions to authenticate craftee
   def is_craftee_authenticated
     unless session[:user_type] == 'craftee'
@@ -22,14 +26,22 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def is_craftee_authenticated?
+    session[:user_type] == 'craftee' ? true : false
+  end
+
   # crafter object for the currently logged in user
   def current_crafter
-    @current_crafter ||= Crafter.find_by_user_id(current_user.id)
+    if user_signed_in?
+      @current_crafter ||= Crafter.find_by_user_id(current_user.id)
+    end
   end
 
   # craftee object for the currently logged in user
   def current_craftee
-    @current_craftee ||= Craftee.find_by_user_id(current_user.id)
+    if user_signed_in?
+      @current_craftee ||= Craftee.find_by_user_id(current_user.id)
+    end
   end
 
   # user type in the current session for logged in user
@@ -55,5 +67,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_type
   helper_method :current_crafter
   helper_method :current_craftee
+  helper_method :is_craftee_authenticated?
+  helper_method :is_crafter_authenticated?
   helper_method :crafter_activated?
 end
