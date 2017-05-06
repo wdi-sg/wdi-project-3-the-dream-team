@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20170505082711) do
     t.integer  "session_id"
     t.string   "invoice_id"
     t.string   "status"
+    t.integer  "pax"
+    t.float    "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["craftee_id"], name: "index_bookings_on_craftee_id", using: :btree
@@ -128,10 +130,11 @@ ActiveRecord::Schema.define(version: 20170505082711) do
 
   create_table "sessions", force: :cascade do |t|
     t.integer  "event_id"
-    t.date     "datetime_from"
-    t.date     "datetime_to"
+    t.datetime "datetime_from"
+    t.datetime "datetime_to"
     t.integer  "price"
     t.integer  "capacity"
+    t.integer  "pax"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.index ["event_id"], name: "index_sessions_on_event_id", using: :btree

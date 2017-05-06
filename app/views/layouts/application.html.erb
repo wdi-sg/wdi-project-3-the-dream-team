@@ -7,6 +7,8 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <!-- Compiled and minified CSS -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css"> -->
 
@@ -14,10 +16,11 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script> -->
 
   </head>
+  <div class="container body_container">
 
   <body>
     <%# Navigation bar %>
-    <%# render "partials/nav" %>
+    <%= render "partials/nav" %>
 
     <%# Extra navbar for controller testing %>
     <%= render "partials/navtesttom" %>
@@ -45,9 +48,6 @@
     <% if alert %>
     <p class="alert"><%= alert %></p>
     <% end %>
-
-    <%# render 'layouts/nav' %>
-
     <%= yield %>
-  </body>
+  </div>
 </html>

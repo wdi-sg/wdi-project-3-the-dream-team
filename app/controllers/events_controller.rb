@@ -9,6 +9,7 @@ class EventsController < ApplicationController
   end
 
   def show
+
   end
 
   def new
@@ -36,8 +37,14 @@ class EventsController < ApplicationController
   end
 
   def update
-    p 'update request received!'
-    redirect_to event_path
+    p "update params here #{@form_data.inspect}"
+    if @event.update(@form_data)
+      flash[:notice] = 'Event updated! successfully!'
+      redirect_to event_path
+    else
+      flash[:alert] = 'Failed to update event!'
+      render 'events/show'
+    end
   end
 
   def destroy
@@ -46,6 +53,10 @@ class EventsController < ApplicationController
 
   private
 
+  def find_sess(sess)
+    @to_edit = Session.find(sess.id)
+  end
+
   def find_event
     @event = Event.find(params[:id])
   end
@@ -53,5 +64,7 @@ class EventsController < ApplicationController
   def form_event
     @form_data = params.require(:event).permit(:name, :description, :category_id)
   end
+
+  helper_method :find_sess
 
 end

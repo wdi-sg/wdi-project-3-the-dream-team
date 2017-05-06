@@ -1,18 +1,61 @@
-<!-- Dropdown Structure -->
-<ul id="dropdown1" class="dropdown-content">
-  <li><a href="#!">one</a></li>
-  <li><a href="#!">two</a></li>
-  <li class="divider"></li>
-  <li><a href="#!">three</a></li>
-</ul>
-<nav>
-  <div class="nav-wrapper">
-    <a href="#!" class="brand-logo">Logo</a>
-    <ul class="right hide-on-med-and-down">
-      <li><a href="sass.html">Sass</a></li>
-      <li><a href="badges.html">Components</a></li>
-      <!-- Dropdown Trigger -->
-      <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="material-icons right"></i></a></li>
-    </ul>
+<ul id="slide-out" class="side-nav">
+  <% if user_signed_in? %>
+  <li>
+    <div class="userView">
+      <!-- <div class="background">
+        <%= link_to '#one!' do %>
+          <%= image_tag('owl/owl1.jpg') %>
+        <% end %>
+      </div> -->
+      <a href="#!user">
+        <%= link_to '#one!' do %>
+          <%= image_tag('owl/owl1.jpg', :class => "circle") %>
+        <% end %>
+      <a href="#!name">
+        <span class="black-text name">User<%= current_user.id %></span>
+      </a>
+      <a href="#!email">
+        <span class="black-text email"><%= current_user.email %></span>
+      </a>
+      </div>
+    </li>
+    <li>
+      <a href="#!">My Events</a>
+    </li>
+    <li>
+      <div class="divider"></div>
+    </li>
+    <!-- <li><a class="subheader">Subheader</a></li> -->
+    <li>
+      <%= link_to 'Switch User Type', pages_switch_path, :class=> 'waves-effect'%>
+    </li>
+    <% else %>
+    <div class="userView">
+      <li>
+      <%= link_to 'Home', root_path, :class=> 'waves-effect black-text'%>
+      </li>
+      <li>
+        <div class="divider"></div>
+      </li>
+      <li>
+      <%= link_to 'View All Events', events_path, :class=> 'waves-effect black-text'%>
+    </li>
+    </div>
+    <% end %>
+  </ul>
+
+  <div class="row valign-wrapper">
+    <a href="#" data-activates="slide-out" class="button-collapse">
+      <i class="material-icons icon-black">menu</i>
+    </a>
+
+    <div class="col s12 m6 offset-m9">
+      <% if user_signed_in? %>
+          <%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => "waves-effect waves-light btn btn-small white black-text" %>
+      <% else %>
+          <%= link_to "Register", new_user_registration_path, :class => 'waves-effect waves-light btn btn-small white black-text' %>
+          <%= link_to "Login", new_user_session_path, :class => 'waves-effect waves-light btn btn-small white black-text' %>
+      <% end %>
+    </div>
+
   </div>
-</nav>

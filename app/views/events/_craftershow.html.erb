@@ -1,0 +1,120 @@
+<!-- left column -->
+<div class="row">
+  <div class="col s6">
+    <h2><%= @event.name %></h2>
+    <p><%= @event.description %></p>
+    <p>by: <%= @event.crafter.name %> with crafter id <%= @event.crafter.id %></p>
+  </div>
+
+  <!-- right column -->
+  <div class="col s6">
+    <% @event.sessions.each do |sess| %>
+    <div class="col s12 m6">
+      <div class="card darken-1">
+        <div class="card-content">
+          <span class="card-title"><%= sess.datetime_from %></span>
+          <p>Session ID <%= sess.id %></p>
+          <p>$ <%= sess.price %></p>
+          <p>Capacity <%= sess.pax %>/<%= sess.capacity %></p>
+        </div>
+        <div class="card-action">
+          <%= link_to "Join!", new_event_booking_path(@event.id), class: "waves-effect waves-light blue-grey darken-4 btn pulse" %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="divider"></div>
+
+<% if my_event?(@event) %>
+<%= link_to "Setting", "#edit_event", class: "modal-trigger waves-effect waves-light btn" %>
+
+<div id="edit_event" class="modal bottom-sheet">
+  <div class="modal-content">
+    <div class="section">
+      <%= form_for @event, class: "col s12" do |f| %>
+      <h4>Update <%= @event.name %></h4>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.text_field :name %>
+          <%= f.label :name, class: 'active' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.text_area :description, class: "materialize-textarea" %>
+          <%= f.label :description, class: 'active' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.number_field :category_id, class: "validate" %>
+          <%= f.label :category_id, class: 'active' %>
+        </div>
+      </div>
+      <%= f.submit "Update Event", class: "modal-action modal-close waves-effect waves-green btn" %>
+      <% end %>
+    </div>
+
+    <div class="divider"></div>
+    <div class="section">
+      <h4>Update Sessions</h4>
+
+      <ul class="collapsible" data-collapsible="accordion">
+
+
+        <% @event.sessions.each do |sess| %>
+        <li>
+          <div class="collapsible-header"><%= sess.datetime_from %></div>
+          <div class="collapsible-body">
+            <%= form_for sess, url: edit_event_session_path(sess) do |f| %>
+              <div class="input-field">
+                <%= f.label :datetime_from, class: 'active' %>
+                <%= f.datetime_field :datetime_from %>
+              </div>
+
+            <% end %>
+
+            <span>Lorem ipsum dolor sit amet.</span>
+          </div>
+        </li>
+        <% end %>
+
+
+
+
+        <li>
+          <div class="collapsible-header">Second</div>
+          <div class="collapsible-body">
+            <span>Lorem ipsum dolor sit amet.</span>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header">Third</div>
+          <div class="collapsible-body">
+            <span>Lorem ipsum dolor sit amet.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+  </div>
+
+</div>
+<!-- modal box end -->
+<% end %>

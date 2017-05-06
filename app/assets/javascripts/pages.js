@@ -1,9 +1,11 @@
 $(document).on('turbolinks:load', function(){
-// $(document).ready(function(){
   // alert('test')
 
   // nav bar dropdown jquery plugin
   $('.dropdown-button').dropdown()
+
+  // session create modal box collapsible
+  $('.collapsible').collapsible()
 
   // modal box jquery plugin
   $('.modal').modal()
@@ -13,6 +15,11 @@ $(document).on('turbolinks:load', function(){
             dist:0,
             shift:0,
             padding:20,
+  })
 
-      })
+  $(".button-collapse").sideNav({
+
+  });
+  $('.collapsible').collapsible()
+
 })

@@ -39,11 +39,6 @@ end
     image_link: Faker::Avatar.image
   )
 
-  @user.crafter.events << Event.create(
-    name: Faker::Commerce.product_name + ' class',
-    description: Faker::StarWars.quote,
-    category_id: rand(9) + 1
-  )
   p 'event creation succeeded'
 
   @sessions = Session.create(
@@ -52,19 +47,38 @@ end
       :datetime_from => DateTime.strptime("05/12/2017 17:00", "%m/%d/%Y %H:%M"),
       :datetime_to => DateTime.strptime("05/12/2017 19:00", "%m/%d/%Y %H:%M"),
       price: rand(100) + 1,
-      capacity: rand(100) + 1
+      capacity: rand(100) + 1,
+      pax: 0
     },
     {
       :datetime_from => DateTime.strptime("05/13/2018 17:00", "%m/%d/%Y %H:%M"),
       :datetime_to => DateTime.strptime("05/13/2018 19:00", "%m/%d/%Y %H:%M"),
       price: rand(100) + 1,
-      capacity: rand(100) + 1
+      capacity: rand(100) + 1,
+      pax: 0
     }
   ]
   )
+
+  p 'session creation succeeded'
+
   @user.crafter.events.each do |event|
     event.sessions << @sessions
   end
+
+  p 'pushed session into event successfully'
+
+  @bookings = Booking.create(
+    craftee_id: i,
+    session_id: rand(7) + 1,
+    status: 'confirmed',
+    pax: rand(7) + 1,
+    amount: rand(50) + 1
+  )
+  p 'booking creation succeeded'
+
+  @user.craftee.bookings << @bookings
+  p 'pushed bookings into craftee booking'
 
 end
 # below User created will be used by Tom to login at browser for testing

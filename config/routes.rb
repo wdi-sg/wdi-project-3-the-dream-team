@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'bookings/index'
+
+  get 'bookings/new'
+
+  get 'bookings/create'
+
+  get 'bookings/edit'
+
+  get 'bookings/update'
+
+  get 'bookings/destroy'
+
   resources :meetings
   # devise_for :users, controllers: {sessions: 'users/sessions'}
 
@@ -20,17 +32,11 @@ Rails.application.routes.draw do
   get '/pages/switch'
   get 'about' => 'pages#about'
 
-  get '/events/:event_id/sessions/:id/book' =>
-      'sessions#book',
-      as: 'book_event_session'
-  # get '/events/:event_id/sessions/:id/book' =>
-  #     'sessions#book',
-  #     as: 'book_event_session'
-
   resources :crafters
   resources :craftees
   resources :events do
     resources :sessions
+    resources :bookings
   end
 
   # Craftee
