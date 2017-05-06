@@ -62,6 +62,16 @@ class ApplicationController < ActionController::Base
     current_crafter && current_crafter.name ? true : false
   end
 
+  def my_event?(event)
+    if user_signed_in?
+      if current_user.crafter.events.include? event
+        true
+      else
+        false
+      end
+    end
+  end
+
   # helper methods can be called from anywhere including views
 
   helper_method :current_user_type
@@ -70,4 +80,5 @@ class ApplicationController < ActionController::Base
   helper_method :is_craftee_authenticated?
   helper_method :is_crafter_authenticated?
   helper_method :crafter_activated?
+  helper_method :my_event?
 end

@@ -27,7 +27,7 @@ end
   @user.crafter = Crafter.create(
     name: Faker::Name.name,
     biography: Faker::StarWars.quote,
-    category_id: rand(9),
+    category_id: rand(9) + 1,
     profession: Faker::Superhero.name
   )
   p 'crafter creation succeeded'
@@ -35,10 +35,10 @@ end
   @user.crafter.events << Event.create(
     name: Faker::Commerce.product_name + ' class',
     description: Faker::StarWars.quote,
-    category_id: rand(9)
-
+    category_id: rand(9) + 1,
+    image_link: Faker::Avatar.image
   )
-  
+
   p 'event creation succeeded'
 
   @sessions = Session.create(
@@ -46,14 +46,16 @@ end
     {
       :datetime_from => DateTime.strptime("05/12/2017 17:00", "%m/%d/%Y %H:%M"),
       :datetime_to => DateTime.strptime("05/12/2017 19:00", "%m/%d/%Y %H:%M"),
-      price: rand(100),
-      capacity: rand(100)
+      price: rand(100) + 1,
+      capacity: rand(100) + 1,
+      pax: 0
     },
     {
       :datetime_from => DateTime.strptime("05/13/2018 17:00", "%m/%d/%Y %H:%M"),
       :datetime_to => DateTime.strptime("05/13/2018 19:00", "%m/%d/%Y %H:%M"),
-      price: rand(100),
-      capacity: rand(100)
+      price: rand(100) + 1,
+      capacity: rand(100) + 1,
+      pax: 0
     }
   ]
   )
@@ -79,3 +81,54 @@ end
   p 'pushed bookings into craftee booking'
 
 end
+# below User created will be used by Tom to login at browser for testing
+@user = User.create(
+  email: 'crafter@mail.com',
+  password: '123456'
+)
+
+p 'user creation succeeded'
+
+@user.crafter = Crafter.create(
+  name: Faker::Name.name,
+  biography: Faker::StarWars.quote,
+  category_id: rand(9) + 1,
+  profession: Faker::Superhero.name
+)
+p 'crafter creation succeeded'
+
+@user.crafter.events << Event.create(
+  name: Faker::Commerce.product_name + ' class',
+  description: Faker::StarWars.quote,
+  category_id: rand(9) + 1,
+  image_link: Faker::Avatar.image
+)
+
+p 'event creation succeeded'
+
+@user.craftee = Craftee.create
+
+@user = User.create(
+  email: 'craftee@mail.com',
+  password: '123456'
+)
+
+p 'user creation succeeded'
+
+@user.crafter = Crafter.create(
+  name: Faker::Name.name,
+  biography: Faker::StarWars.quote,
+  category_id: rand(9) + 1,
+  profession: Faker::Superhero.name
+)
+p 'crafter creation succeeded'
+
+@user.crafter.events << Event.create(
+  name: Faker::Commerce.product_name + ' class',
+  description: Faker::StarWars.quote,
+  category_id: rand(9) + 1
+)
+
+p 'event creation succeeded'
+
+@user.craftee = Craftee.create

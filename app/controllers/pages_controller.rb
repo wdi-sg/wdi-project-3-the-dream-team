@@ -13,6 +13,6 @@ class PagesController < ApplicationController
     switch_user_type
     # using About page as debugging page for now
     # redirect_to about_path
-    render 'about'
+    redirect_to :back
   end
 end

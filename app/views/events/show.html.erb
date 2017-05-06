@@ -1,0 +1,14 @@
+<section>
+  <div class="container">
+    <!-- craftee accessible section -->
+    <div class="section">
+        <% if my_event? @event %>
+          <p>display crafter only view</p>
+          <%= render 'events/craftershow' %>
+        <% else %>
+          <p>display craftee view</p>
+          <%= render 'events/crafteeshow' %>
+        <% end %>
+    </div>
+  </div>
+</section>
