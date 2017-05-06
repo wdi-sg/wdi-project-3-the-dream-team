@@ -38,11 +38,7 @@ end
     category_id: rand(9)
 
   )
-  @user.crafter.events << Event.create(
-    name: Faker::Commerce.product_name + ' class',
-    description: Faker::StarWars.quote,
-    category_id: rand(9)
-  )
+  
   p 'event creation succeeded'
 
   @sessions = Session.create(
@@ -71,13 +67,15 @@ end
   p 'pushed session into event successfully'
 
   @bookings = Booking.create(
-    status: 'status'
+    craftee_id: i,
+    session_id: rand(7) + 1,
+    status: 'confirmed',
+    pax: rand(7) + 1,
+    amount: rand(50) + 1
   )
   p 'booking creation succeeded'
 
   @user.craftee.bookings << @bookings
-
   p 'pushed bookings into craftee booking'
-
 
 end
