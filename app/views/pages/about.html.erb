@@ -4,7 +4,8 @@
 <!-- for debugging purpose !-->
 <p>
   <% if user_signed_in?  %>
-    <p>You are logged in as user type: <%= current_user_type %></p>
+    <p>is_craftee_authenticated?: <%= is_craftee_authenticated? %></p>
+    <p>is_crafter_authenticated?: <%= is_crafter_authenticated? %></p>
     <p>Crafter Account Activated? : <%= crafter_activated? %></p>
     <p><%= link_to 'Switch User Type', pages_switch_path%></p>
   <% end %>

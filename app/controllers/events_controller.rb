@@ -32,11 +32,12 @@ class EventsController < ApplicationController
   end
 
   def edit
-    
+
   end
 
   def update
-
+    p 'update request received!'
+    redirect_to event_path
   end
 
   def destroy

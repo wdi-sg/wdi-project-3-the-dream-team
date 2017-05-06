@@ -1,6 +1,6 @@
 class CrafteesController < ApplicationController
   before_action :is_craftee_authenticated
-  before_action :find_craftee, only: %i[show update destroy]
+  before_action :find_craftee, only: %i[show edit update destroy]
   before_action :updated_craftee_info, only: %i[create update]
 
     def new
@@ -16,15 +16,20 @@ class CrafteesController < ApplicationController
     end
 
     def update
-      if (@craftee.update(@form_data))
+
+    end
+
+    def create
+      puts updated_craftee_info.inspect
+      #  creating crafter will be automated by user sign up
+      @craftee = Craftee.new(updated_craftee_info)
+      @craftee.user_id = current_user.id
+      puts "This is in the controller #{@craftee}"
+      if @craftee.save
         redirect_to craftee_path(@craftee)
       else
         render 'craftee/edit'
       end
-    end
-
-    def create
-      #  creating crafter will be automated by user sign up
 
     end
 
@@ -44,7 +49,7 @@ class CrafteesController < ApplicationController
       end
 
       def updated_craftee_info
-        @form_data = params.require(:craftee).permit(:name)
+        params.require(:craftee).permit(:name)
       end
 
 end

@@ -11,6 +11,7 @@
               <th>Description</th>
               <th>Image Link</th>
               <th>Crafter Id</th>
+              <th>Crafter</th>
               <th>Category Id</th>
               <th>View</th>
               <th>Edit</th>
@@ -25,6 +26,7 @@
             <td><%= event.description %></td>
             <td><img src="<%= event.image_link %>" alt="Image"></td>
             <td><%= event.crafter_id %></td>
+            <td><%= event.crafter.name %></td>
             <td><%= event.category_id %></td>
             <td><%= link_to "View", event_path(event), class: "waves-effect waves-light btn" %></td>
           </tr>

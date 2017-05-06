@@ -1,10 +1,14 @@
-$(document).on('ready page:load', function(){
+$(document).on('turbolinks:load', function(){
+// $(document).ready(function(){
   // alert('test')
+
+  // nav bar dropdown jquery plugin
   $('.dropdown-button').dropdown()
 
+  // modal box jquery plugin
+  $('.modal').modal()
   // var $navUser = $('ul#dropdown1 li a')
 
-  console.log($navUser)
   $('.carousel').carousel({
             dist:0,
             shift:0,

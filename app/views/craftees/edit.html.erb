@@ -2,10 +2,10 @@
 
 <div class="container">
       <div class="row">
-        <%= form_for @new_craftee do |f| %>
+        <%= form_for @craftee do |f| %>
         <div class="row">
           <div class="input-field col s12">
-            <input placeholder="Placeholder" id="name" type="text" class="validate">
+            <%= f.text_field :name, id: "name" %>
             <%= f.label :name, id: 'name'%>
           </div>
         <%= f.submit 'Confirm', class: 'waves-effect waves-teal btn-flat', type:"submit"%>

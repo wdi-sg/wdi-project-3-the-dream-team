@@ -1,6 +1,6 @@
 class Crafter < ApplicationRecord
   belongs_to :user
-  belongs_to :category
+  belongs_to :category, optional: true
   has_one :featured_crafter
 
   has_many :portfolio_items
