@@ -20,6 +20,24 @@
       </div>
     </li>
     <li>
+      <a href="#!">Home</a>
+    </li>
+    <li>
+      <div class="divider"></div>
+    </li>
+    <li>
+      <a href="#!">Profile</a>
+    </li>
+    <li>
+      <div class="divider"></div>
+    </li>
+    <li>
+      <a href="#!">Portfolio</a>
+    </li>
+    <li>
+      <div class="divider"></div>
+    </li>
+    <li>
       <a href="#!">My Events</a>
     </li>
     <li>
@@ -27,7 +45,7 @@
     </li>
     <!-- <li><a class="subheader">Subheader</a></li> -->
     <li>
-      <%= link_to 'Switch User Type', pages_switch_path, :class=> 'waves-effect'%>
+      <%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => "waves-effect" %>
     </li>
     <% else %>
     <div class="userView">
@@ -48,14 +66,17 @@
     <a href="#" data-activates="slide-out" class="button-collapse">
       <i class="material-icons icon-black">menu</i>
     </a>
-
     <div class="col s12 m6 offset-m9">
       <% if user_signed_in? %>
-          <%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => "waves-effect waves-light btn btn-small white black-text" %>
+          <%= link_to 'Switch User Type', pages_switch_path, :class=> 'waves-effect waves-light btn btn-small white black-text'%>
       <% else %>
           <%= link_to "Register", new_user_registration_path, :class => 'waves-effect waves-light btn btn-small white black-text' %>
           <%= link_to "Login", new_user_session_path, :class => 'waves-effect waves-light btn btn-small white black-text' %>
       <% end %>
     </div>
+  </div>
 
+    <div class="row">
+        <%= link_to 'Crafters--', crafters_path, :class=> ' black-text'%>
+      <%= link_to 'Events-', events_path, :class=> ' black-text'%>
   </div>
