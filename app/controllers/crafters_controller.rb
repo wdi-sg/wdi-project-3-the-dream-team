@@ -29,13 +29,11 @@ class CraftersController < ApplicationController
   end
 
   def destroy
-    
     if @crafter.destroy
       redirect_to crafters_path
     else
       render 'crafters/show'
     end
-
   end
 
   private

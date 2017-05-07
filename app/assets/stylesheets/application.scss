@@ -6,6 +6,22 @@
 @import "simple_calendar";
 
 
+
+/* for edit event modal box */
+
+#edit_event {
+  max-height: 85%
+}
+
+/* to align material icons DOESNT WORK */
+
+.material-icons {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+
 /* some css that I (tom) added for crafters controller */
 /* shirong you can change this as you like later <3  */
 * {
@@ -23,9 +39,9 @@ div.custom-one-third {
     margin-bottom: 20px;
   }
 
-div.card {
-  height: 520px;
-}
+// div.card {
+//   height: 520px;
+// }
 
 
 h1, h2, h3, h4, h5, h6 {

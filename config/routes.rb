@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :meetings
   # devise_for :users, controllers: {sessions: 'users/sessions'}
 
@@ -19,9 +20,13 @@ Rails.application.routes.draw do
   get '/' => 'pages#index'
   get '/pages/switch'
   get 'about' => 'pages#about'
+
   resources :crafters
   resources :craftees
-  resources :events
+  resources :events do
+    resources :sessions
+    resources :bookings
+  end
 
   # Craftee
 

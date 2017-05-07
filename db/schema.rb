@@ -130,8 +130,8 @@ ActiveRecord::Schema.define(version: 20170505082711) do
 
   create_table "sessions", force: :cascade do |t|
     t.integer  "event_id"
-    t.date     "datetime_from"
-    t.date     "datetime_to"
+    t.datetime "datetime_from"
+    t.datetime "datetime_to"
     t.integer  "price"
     t.integer  "capacity"
     t.integer  "pax"

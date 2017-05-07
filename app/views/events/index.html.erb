@@ -1,0 +1,41 @@
+<section>
+    <div class="section">
+      <%= link_to "New Event", new_event_path, class: "waves-effect waves-light btn" %>
+    </div>
+    <div class="section">
+      <table class="highlight">
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Image Link</th>
+              <th>Crafter Id</th>
+              <th>Crafter</th>
+              <th>Category Id</th>
+              <th>View</th>
+              <th>Edit</th>
+              <th>Destroy</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @all_events.each do |event| %>
+          <tr>
+            <td><%= event.name %></td>
+            <td><%= event.description %></td>
+            <td><img src="<%= event.image_link %>" alt="Image"></td>
+            <td><%= event.crafter_id %></td>
+            <td><%= event.crafter.name %></td>
+            <td><%= event.category_id %></td>
+            <td><%= link_to "View", event_path(event), class: "waves-effect waves-light btn" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+</section>
+
+<pre>
+<%= @all_events.inspect %>
+</pre>
