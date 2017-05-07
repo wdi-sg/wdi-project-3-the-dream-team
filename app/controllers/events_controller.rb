@@ -51,6 +51,8 @@ class EventsController < ApplicationController
 
   end
 
+  helper_method :check_time
+
   private
 
   def find_event

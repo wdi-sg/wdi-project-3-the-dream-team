@@ -16,7 +16,7 @@ $(document).on('turbolinks:load', function(){
   // on change listener on select pax to change amount
   $('select#booking_pax').change(function() {
     $amount = parseInt($('span#session_price').text()) * parseInt($('select#booking_pax').val())
-    $('input#booking_amount').val($amount)
+    $('span#booking_amount').text($amount)
 })
 
   $('.carousel').carousel({

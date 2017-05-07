@@ -71,7 +71,7 @@
         <li>
           <div class="collapsible-header"><%= sess.datetime_from %></div>
           <div class="collapsible-body">
-            <%= form_for sess, url: edit_event_session_path(@event, sess) do |f| %>
+            <%= form_for sess, url: event_session_path(@event, sess) do |f| %>
               <div class="input-field">
                 <%= f.label :datetime_from, class: 'active' %>
                 <%= f.datetime_field :datetime_from %>

@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
   before_action :find_session, except: %i[create]
 
   def create
+    p @form_data
     @event = Event.find(params[:event_id])
 
     @new_session = Session.new(@form_data)
@@ -17,8 +18,12 @@ class SessionsController < ApplicationController
   end
 
   def update
-    p 'create request received'
-    render 'events/show'
+    if @session.update(@form_data)
+      flash[:notice] = 'Session updated successfully!'
+    else
+      flash[:alert] = 'Failed to update session'
+    end
+    redirect_to event_path(@session.event)
   end
 
   def destroy
@@ -32,6 +37,8 @@ class SessionsController < ApplicationController
     redirect_to event_path(@event)
   end
 
+
+
   private
 
   def form_session
@@ -43,4 +50,5 @@ class SessionsController < ApplicationController
   def find_session
     @session = Session.find(params[:id])
   end
+
 end
