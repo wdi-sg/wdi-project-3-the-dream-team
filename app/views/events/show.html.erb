@@ -1,19 +1,13 @@
-<section>
-    <div class="section">
-      <%= render 'events/eventdetails' %>
-    </div>
-    <div class="divider"></div>
-    <div class="section">
-        <% if my_event? @event %>
-          <p>display crafter only view</p>
-          <%= render 'events/craftershow' %>
-        <% else %>
-          <p>display craftee view</p>
-          <%= render 'events/crafteeshow' %>
-        <% end %>
-    </div>
-</section>
-
-<section>
-  
-</section>
+<div class="section">
+  <%= render 'events/eventdetails' %>
+</div>
+<div class="divider"></div>
+<div class="section">
+    <% if my_event? @event %>
+      <p>display crafter only view</p>
+      <%= render 'events/craftershow' %>
+    <% else %>
+      <p>display craftee view</p>
+      <%= render 'events/crafteeshow' %>
+    <% end %>
+</div>
