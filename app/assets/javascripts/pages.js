@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function(){
+$(document).on('turbolinks:load', function () {
   // alert('test')
 
   // nav bar dropdown jquery plugin
@@ -11,23 +11,54 @@ $(document).on('turbolinks:load', function(){
   $('.modal').modal()
 
   // select jquery plugin
-  $('select').material_select();
+  $('select').material_select()
 
   // on change listener on select pax to change amount
-  $('select#booking_pax').change(function() {
+  $('select#booking_pax').change(function () {
     $amount = parseInt($('span#session_price').text()) * parseInt($('select#booking_pax').val())
     $('span#booking_amount').text($amount)
-})
-
-  $('.carousel').carousel({
-            dist:0,
-            shift:0,
-            padding:20,
   })
 
-  $(".button-collapse").sideNav({
+  $('.carousel').carousel({
+    dist: 0,
+    shift: 0,
+    padding: 20
+  })
 
-  });
-  $('.collapsible').collapsible()
+  $('.button-collapse').sideNav({
+
+  })
+
+  $('ul.tabs').tabs()
+
+  $('.materialboxed').materialbox()
+
+  // custom jquery function
+  $('#favourite')
+  .on('ajax:error', function (e, data, status, xhr) {
+    alert('FAILED')
+  })
+  .on('ajax:success', function(e, data, status, xhr) {
+    alert('succeeded!')
+    console.log(data)
+  }).on('ajax:complete', function (e, data, status, xhr) {
+    alert('completed!')
+  })
+
+  // $('#favourite').on('submit', function (e)
+  //   e.preventDefault()
+  //   console.log(this)
+  //   $.ajax({
+  //     url: '/fav_events/create',
+  //     type: 'POST'
+  //   })
+  //   .done(function (json) {
+  //     $('#favourite').css('background-color', 'blue')
+  //     alert(json)
+  //   })
+  //   .always(function (xhr, status) {
+  //     alert('The request is complete!')
+  //   })
+  // })
 
 })

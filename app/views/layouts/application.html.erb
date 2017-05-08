@@ -9,12 +9,6 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <!-- Compiled and minified CSS -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css"> -->
-
-    <!-- Compiled and minified JavaScript -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script> -->
-
   </head>
   <div class="container body_container">
 
@@ -22,32 +16,36 @@
     <%# Navigation bar %>
     <%= render "partials/nav" %>
 
+
     <%# Extra navbar for controller testing %>
-    <%= render "partials/navtesttom" %>
+    <%# render "partials/navtesttom" %>
 
-
-    <!-- Simple Devise Navigation Bar-->
-    <p>
-      <% if user_signed_in? %>
-      Logged in as
-      <strong><%= current_user.email %></strong>.
-      <%= link_to 'Edit profile', edit_user_registration_path%>
-      |
-      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Sign up", new_user_registration_path %>
-      |
-      <%= link_to "Login", new_user_session_path %>
-      <% end %>
-    </p>
 
     <!-- Devise Alert Messages -->
-    <% if notice %>
-    <p class="notice"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-    <p class="alert"><%= alert %></p>
-    <% end %>
+      <% if notice %>
+        <div class="row">
+          <div class="notice center"><%= notice %></div>
+          <% end %>
+        </div>
+      <% if alert %>
+        <div class="row">
+          <div class="alert center"><%= alert %></div>
+        </div>
+        <% end %>
+
     <%= yield %>
-  </div>
+
+    <div class="section">
+      <% if user_signed_in? %>
+        <p>
+          Crafter ID: <%= current_crafter.id %>
+        </p>
+        <p>
+          Craftee ID: <%= current_craftee.id %>
+        </p>
+        <p>
+          Current User: <%= current_user.inspect %>
+        </p>
+      <% end %>
+    </div>
 </html>

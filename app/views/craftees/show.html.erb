@@ -1,17 +1,21 @@
-<h1>Craftee's profile</h1>
+<h1>Craftee's Profile</h1>
 <div class="container">
-  <%= @craftee.sessions.inspect%>
+  <%# @craftee.sessions.inspect%>
 
-  <%= @crafteeSessions = @craftee.sessions %>
+  <% @crafteeSessions = @craftee.sessions %>
 
 
+  <!-- calender goes in here -->
+  <%= month_calendar(attribute: :datetime_from, events: @crafteeSessions) do |date, crafteeSessions| %>
+    <span id='date'><%= date.day %></span>
 
-    <!-- calender goes in here -->
-    <ul>
-      <% @craftee.sessions.each do |session| %>
-      <li>session</li>
+        <% crafteeSessions.each do |crafteeSession| %>
+        <div>
+          <%= crafteeSession.event.name %>
+        </div>
       <% end %>
-    </ul>
+  <% end %>
+
 
     <ul>
       <% @craftee.fav_events.each do|fav_event| %>

@@ -2,10 +2,13 @@
 @import "variables";
 @import "font-awesome";
 @import 'slick';
-// @import "bulma";
 @import "materialize";
+@import "simple_calendar";
 
-
+/* testing ajax with fav event */
+#favourite {
+  background-color: red;
+}
 
 /* for edit event modal box */
 
@@ -45,7 +48,7 @@ div.custom-one-third {
 
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $header-font-type;
+  // font-family: $header-font-type;
 }
 
 .footer {
@@ -95,7 +98,7 @@ i.icon-black {
 }
 
 .featured_events_h4 {
-  margin-top: 10%;
+  margin-top: 5%;
 }
 
 
@@ -112,4 +115,88 @@ header, main, footer {
 
 .body_container{
   margin-top: 4%;
+}
+
+.simple-calendar {
+  .day {
+    border: 1px black solid;
+  }
+
+  .wday-0 {
+    vertical-align: top;
+    text-align: right;
+  }
+  .wday-1 {
+    vertical-align: top;
+    text-align: right;
+
+
+  }
+  .wday-2 {
+    vertical-align: top;
+    text-align: right;
+
+
+  }
+  .wday-3 {
+    vertical-align: top;
+    text-align: right;
+
+
+  }
+  .wday-4 {
+    vertical-align: top;
+    text-align: right;
+
+}
+  .wday-5 {
+    vertical-align: top;
+    text-align: right;
+
+
+  }
+  .wday-6 {
+    vertical-align: top;
+    text-align: right;
+
+
+  }
+
+  .today {}
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {}
+  .next-month { }
+  .current-month {}
+
+  .has-events {}
+}
+
+.second-nav-bar {
+  margin-top: 2%;
+}
+
+.second-nav-links:hover {
+  font-size: 16px;
+  transition: font 0.8s ease;
+}
+
+p {
+  text-align: justify;
+}
+
+td {
+  vertical-align: top;
+}
+
+.cards-container {
+  column-break-inside: avoid;
+  .card {
+    transform: translateZ(0);
+    display: inline-block;
+    // overflow: invisible;
+  }
 }

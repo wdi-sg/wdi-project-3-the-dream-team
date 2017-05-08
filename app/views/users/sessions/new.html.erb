@@ -1,35 +1,45 @@
-<h2>Log in</h2>
+<div class="container">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name),  class: "col s12" ) do |f| %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field browser-default">
-    <%= f.label 'Log in as:' %><br />
-
-    <%= select_tag :user_type, options_for_select([['Crafter', 'crafter'], ['Craftee', 'craftee']]), class: "browser-default" %>
-  </div>
-
-  <p>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <div class="row">
+      <div class="input-field col s12">
+      <%= f.label :email %><br />
+      <%= f.email_field :email %>
+      </div>
     </div>
-  <% end -%>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <div class="row">
+      <div class="input-field col s12">
+      <%= f.label :password %><br />
+      <%= f.password_field :password %>
+    </div>
+    </div>
+
+    <div class="input-field">
+        <%= f.label 'Log in As:' %><br />
+        <%= select_tag :user_type, options_for_select([['Crafter', 'crafter'], ['Craftee', 'craftee']]) %>
   </div>
-<% end %>
+    <div class="row">
+      <% if devise_mapping.rememberable? -%>
+      <!-- <div class="field"> -->
+      <p class= 'col s12'>
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+        <!-- </div> -->
+      </p>
+      <% end -%>
+    </div>
+
+    <div class="row">
+      <div class="actions col s12">
+        <%= f.submit "Log In", :class => 'waves-effect waves-light btn btn-small white black-text' %>
+      </div>
+    </div>
+  <% end %>
+
+</div>
+
+
+
 
 <%= render "users/shared/links" %>

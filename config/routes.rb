@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   resources :meetings
   # devise_for :users, controllers: {sessions: 'users/sessions'}
 
@@ -22,7 +23,10 @@ Rails.application.routes.draw do
   get 'about' => 'pages#about'
 
   resources :crafters
-  resources :craftees
+  resources :craftees do
+    post '/fav_events', to: 'fav_events#create', as: 'fav_event'
+
+  end
   resources :events do
     resources :sessions
     resources :bookings

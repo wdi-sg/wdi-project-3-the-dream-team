@@ -38,7 +38,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-  # Signs in a user on sign up. You can overwrite this method in your own
+  # Signs in a user on Register. You can overwrite this method in your own
   # RegistrationsController.
   def sign_up(resource_name, resource)
     # automatically creates default records for crafter and craftee account
@@ -59,12 +59,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
 
-  # The path used after sign up.
+  # The path used after Register.
   # def after_sign_up_path_for(resource)
   #   super(resource)
   # end
 
-  # The path used after sign up for inactive accounts.
+  # The path used after Register for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
