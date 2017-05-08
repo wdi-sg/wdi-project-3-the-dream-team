@@ -1,8 +1,5 @@
-<section>
-  <div class="section">
     <h1 class="title">Create Crafter</h1>
     <h2 class="subtitle">this page is here for CRUD purpose only</h2>
-    <div class="container">
       <dl>
       <%= form_for @new_crafter do |f| %>
 
@@ -108,9 +105,6 @@
       <%= f.submit 'Confirm', class: 'button is-primary'%>
       <% end %>
       </dl>
-    </div>
-  </div>
-</section>
 
 <pre>
   <%= @crafter.inspect %>

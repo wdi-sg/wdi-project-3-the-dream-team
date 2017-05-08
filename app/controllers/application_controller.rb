@@ -72,6 +72,17 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def check_for_clash?(sess_to_check)
+    current_craftee.sessions.each do |s|
+      if sess_to_check.datetime_from.between?(s.datetime_from, s.datetime_to)
+        @result = true
+      else
+        @result = false
+      end
+    end
+    @result
+  end
+
   # helper methods can be called from anywhere including views
 
   helper_method :current_user_type
@@ -81,4 +92,5 @@ class ApplicationController < ActionController::Base
   helper_method :is_crafter_authenticated?
   helper_method :crafter_activated?
   helper_method :my_event?
+  helper_method :check_for_clash?
 end

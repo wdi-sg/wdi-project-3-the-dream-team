@@ -9,7 +9,15 @@ $(document).on('turbolinks:load', function() {
 
   // modal box jquery plugin
   $('.modal').modal()
-  // var $navUser = $('ul#dropdown1 li a')
+
+  // select jquery plugin
+  $('select').material_select();
+
+  // on change listener on select pax to change amount
+  $('select#booking_pax').change(function() {
+    $amount = parseInt($('span#session_price').text()) * parseInt($('select#booking_pax').val())
+    $('span#booking_amount').text($amount)
+})
 
   $('.carousel').carousel({
     dist: 0,

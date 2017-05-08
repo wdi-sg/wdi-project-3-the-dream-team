@@ -1,0 +1,22 @@
+<h1><%# @portfolio_item.inspect %></h1>
+
+
+<div class="container">
+  <h4>Edit Description</h4>
+  <%= form_for :portfolio_item, url: crafter_portfolio_item_path, method: :put do |f| %>
+  <div class="row">
+    <%= f.text_field :media_link, id: "media_link" %>
+    <%= f.label :media_link, id: 'media_link'%>
+  </div>
+  <div class="row">
+    <%= f.text_field :description, id: "description" %>
+    <%= f.label :description, id: 'description'%>
+  </div>
+  <div class="row">
+    <%= f.text_field :item_type, id: "item_type" %>
+    <%= f.label :item_type, id: 'item_type'%>
+  </div>
+  <%= f.submit 'Confirm', class: 'waves-effect waves-teal btn-flat', type:"submit"%>
+
+  <% end %>
+</div>

@@ -53,11 +53,9 @@ class EventsController < ApplicationController
 
   end
 
-  private
+  helper_method :check_time
 
-  def find_sess(sess)
-    @to_edit = Session.find(sess.id)
-  end
+  private
 
   def find_event
     @event = Event.find(params[:id])
@@ -66,7 +64,5 @@ class EventsController < ApplicationController
   def form_event
     @form_data = params.require(:event).permit(:name, :description, :category_id)
   end
-
-  helper_method :find_sess
 
 end

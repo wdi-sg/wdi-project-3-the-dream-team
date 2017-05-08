@@ -1,0 +1,27 @@
+<%= form_for ([@crafter, @crafter.portfolio_items.build]) do |f| %>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.text_field :media_link %>
+      <%= f.label :media_link %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.text_area :description, class: "materialize-textarea" %>
+      <%= f.label :description %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.number_field :item_type, class: "validate" %>
+      <%= f.label :item_type %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.submit "Create", class: "waves-effect waves-light btn" %>
+    </div>
+  </div>
+
+<% end %>

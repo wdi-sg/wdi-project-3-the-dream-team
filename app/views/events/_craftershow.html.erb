@@ -1,51 +1,42 @@
-<!-- left column -->
-<div class="row">
-  <div class="col s6">
-    <h2><%= @event.name %></h2>
-    <p><%= @event.description %></p>
-    <p>by: <%= @event.crafter.name %> with crafter id <%= @event.crafter.id %></p>
-  </div>
-
-  <!-- right column -->
-  <div class="col s6">
-    <% @event.sessions.each do |sess| %>
-    <div class="col s12 m6">
-      <div class="card darken-1">
-        <div class="card-content">
-          <span class="card-title"><%= sess.datetime_from %></span>
-          <p>Session ID <%= sess.id %></p>
-          <p>$ <%= sess.price %></p>
-          <p>Capacity <%= sess.pax %>/<%= sess.capacity %></p>
-        </div>
-        <div class="card-action">
-          <%= link_to "Join!", new_event_booking_path(@event.id), class: "waves-effect waves-light blue-grey darken-4 btn pulse" %>
-        </div>
-      </div>
-    </div>
-    <% end %>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-<div class="divider"></div>
-
+<!-- event setting modal box -->
 <% if my_event?(@event) %>
 <%= link_to "Setting", "#edit_event", class: "modal-trigger waves-effect waves-light btn" %>
 
 <div id="edit_event" class="modal bottom-sheet">
   <div class="modal-content">
+    <!-- new session creation -->
+    <div class="section">
+      <h5>Create New Session</h5>
+      <%= form_for :session, url: event_sessions_path(@event) do |f| %>
+        <div class="input-field">
+          <%= f.label :datetime_from, class: 'datepicker validate active' %>
+          <%= f.datetime_field :datetime_from %>
+        </div>
+        <div class="input-field">
+          <%= f.label :datetime_to, class: 'datepicker validate active' %>
+          <%= f.datetime_field :datetime_to %>
+        </div>
+        <div class="input-field">
+          <%= f.label :price, class: 'validate' %>
+          <%= f.number_field :price %>
+        </div>
+        <div class="input-field">
+          <%= f.label :capacity, class: 'validate' %>
+          <%= f.number_field :capacity %>
+        </div>
+        <div class="input-field">
+          <%= f.label :pax, class: 'validate' %>
+          <%= f.number_field :pax %>
+        </div>
+        <div class="input-field">
+          <%= f.submit 'Confirm', class: 'waves-effect waves-green btn'%>
+        </div>
+      <% end %>
+    </div>
+    <!-- edit event  -->
     <div class="section">
       <%= form_for @event, class: "col s12" do |f| %>
-      <h4>Update <%= @event.name %></h4>
+      <h5>Update <%= @event.name %></h5>
 
       <div class="row">
         <div class="input-field col s12">
@@ -70,47 +61,47 @@
     </div>
 
     <div class="divider"></div>
+
+    <!-- update existing session -->
     <div class="section">
-      <h4>Update Sessions</h4>
+      <h5>Update Sessions</h5>
 
       <ul class="collapsible" data-collapsible="accordion">
-
-
         <% @event.sessions.each do |sess| %>
         <li>
           <div class="collapsible-header"><%= sess.datetime_from %></div>
           <div class="collapsible-body">
-            <%= form_for sess, url: edit_event_session_path(sess) do |f| %>
+            <%= form_for sess, url: event_session_path(@event, sess) do |f| %>
               <div class="input-field">
                 <%= f.label :datetime_from, class: 'active' %>
                 <%= f.datetime_field :datetime_from %>
               </div>
-
+              <div class="input-field">
+                <%= f.label :datetime_to, class: 'active' %>
+                <%= f.datetime_field :datetime_to %>
+              </div>
+              <div class="input-field">
+                <%= f.label :price, class: 'active' %>
+                <%= f.text_field :price %>
+              </div>
+              <div class="input-field">
+                <%= f.label :capacity, class: 'active' %>
+                <%= f.number_field :capacity %>
+              </div>
+              <div class="input-field">
+                <%= f.label :pax, class: 'active' %>
+                <%= f.number_field :pax %>
+              </div>
+              <div class="input-field">
+                <%= f.submit 'Confirm', class: 'waves-effect waves-green btn'%>
+                <%= link_to "Destroy", event_session_path(@event, sess), method: :delete, class: "waves-effect waves-green btn" %>
+              </div>
             <% end %>
-
-            <span>Lorem ipsum dolor sit amet.</span>
           </div>
         </li>
         <% end %>
-
-
-
-
-        <li>
-          <div class="collapsible-header">Second</div>
-          <div class="collapsible-body">
-            <span>Lorem ipsum dolor sit amet.</span>
-          </div>
-        </li>
-        <li>
-          <div class="collapsible-header">Third</div>
-          <div class="collapsible-body">
-            <span>Lorem ipsum dolor sit amet.</span>
-          </div>
-        </li>
       </ul>
     </div>
-
   </div>
   <div class="modal-footer">
 </div>

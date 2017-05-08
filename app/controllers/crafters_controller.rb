@@ -8,6 +8,8 @@ class CraftersController < ApplicationController
   end
 
   def show
+    @portfolio_items = PortfolioItem.all
+
   end
 
   def new
