@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
   # before_action :is_craftee_authenticated, only: [:new, :create, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index]
+
 
   before_action :find_event, except: %i[index new create]
   before_action :form_event, only: %i[create update]

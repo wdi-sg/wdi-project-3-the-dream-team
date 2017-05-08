@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function(){
+$(document).on('turbolinks:load', function() {
   // alert('test')
 
   // nav bar dropdown jquery plugin
@@ -20,14 +20,21 @@ $(document).on('turbolinks:load', function(){
 })
 
   $('.carousel').carousel({
-            dist:0,
-            shift:0,
-            padding:20,
+    dist: 0,
+    shift: 0,
+    padding: 20,
   })
 
   $(".button-collapse").sideNav({
 
   });
   $('.collapsible').collapsible()
+
+  $('select').material_select();
+
+   $('ul.tabs').tabs();
+
+   $('.materialboxed').materialbox();
+
 
 })

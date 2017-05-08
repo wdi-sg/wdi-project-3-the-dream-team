@@ -1,4 +1,5 @@
 class CraftersController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index]
   before_action :find_crafter, only: %i[show edit update destroy]
   before_action :form_crafter, only: %i[create update]
 
@@ -14,7 +15,7 @@ class CraftersController < ApplicationController
   end
 
   def create
-    # creating crafter will be automated by user sign up
+    # creating crafter will be automated by user Register
   end
 
   def edit

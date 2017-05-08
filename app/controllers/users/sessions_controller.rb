@@ -8,7 +8,7 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    # saving into session the user type chosen during login
+    # saving into session the user type chosen during Log In
     session[:user_type] = params[:user_type]
     super
   end
