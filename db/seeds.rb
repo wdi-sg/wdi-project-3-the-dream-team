@@ -81,7 +81,7 @@ end
   p 'pushed bookings into craftee booking'
 
 end
-# below User created will be used by Tom to login at browser for testing
+# below User created will be used by Tom to Log In at browser for testing
 @user = User.create(
   email: 'crafter@mail.com',
   password: '123456'
