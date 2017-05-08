@@ -28,7 +28,8 @@ end
     name: Faker::Name.name,
     biography: Faker::StarWars.quote,
     category_id: rand(9) + 1,
-    profession: Faker::Superhero.name
+    profession: Faker::Superhero.name,
+    profilePic_link: Faker::Avatar.image
   )
   p 'crafter creation succeeded'
 
@@ -132,3 +133,20 @@ p 'crafter creation succeeded'
 p 'event creation succeeded'
 
 @user.craftee = Craftee.create
+
+
+
+@user.crafter = Crafter.create(
+  name: Faker::Name.name,
+  biography: Faker::StarWars.quote,
+  category_id: rand(9) + 1,
+  profession: Faker::Superhero.name
+)
+p 'crafter creation succeeded'
+
+@user.crafter.portfolio_items << PortfolioItem.create(
+  media_link: Faker::Commerce.product_name,
+  description: Faker::StarWars.quote,
+  item_type: rand(9) + 1
+)
+p 'portfolio items creation succeeded'

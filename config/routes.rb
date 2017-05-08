@@ -21,12 +21,17 @@ Rails.application.routes.draw do
   get '/' => 'pages#index'
   get '/pages/switch'
   get 'about' => 'pages#about'
+  get '/portfolios' => 'portfolios#all_portfolios'
 
-  resources :crafters
+
   resources :craftees do
     post '/fav_events', to: 'fav_events#create', as: 'fav_event'
-
   end
+
+  resources :crafters do
+    resources :portfolio_items
+  end
+
   resources :events do
     resources :sessions
     resources :bookings

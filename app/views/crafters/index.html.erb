@@ -16,79 +16,40 @@
   <div class="divider"></div>
 </div>
 
-
-
-
-<section class="section">
-  <section class="section">
-    <%= link_to "New Crafter", new_crafter_path, class: "button is-primary" %>
-  </section>
-
-  <div class="custom-flex">
-    <% @all_crafters.each do |crafter| %>
-    <div class="custom-one-third">
-      <%# start of bulma card %>
-    <div class="card">
-      <div class="card-image">
-        <figure class="image is-4by3">
-          <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Image">
-        </figure>
-      </div>
-      <div class="card-content">
-        <div class="media">
-          <div class="media-left">
-            <figure class="image is-48x48">
-              <img src="<%= Faker::Avatar.image %>" alt="Image">
-            </figure>
+<div class="container">
+  <%= link_to "New Crafter", new_crafter_path, class: "button is-primary" %>
+  <div class="row">
+    <div class="col s12 cards-container">
+      <% @all_crafters.each do |crafter| %>
+      <div class="col s4">
+        <div class="card small">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img src="<%= crafter.profilePic_link %>" alt="Image" class='activator'></td>
           </div>
-          <div class="media-content">
-            <%= link_to crafter.name, crafter_path(crafter) %>
-            <p class="subtitle is-6"><%= crafter.profession %></p>
+
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4"><%= crafter.name %><i class="material-icons right">more_vert</i></span>
+            <p><a href="#">This is a link</a></p>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">Event Details<i class="material-icons right">close</i></span>
+            <!-- <p>why can't i put a table here???</p> -->
+            <div class="divider"></div>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Description:</td>
+                  <td><%= crafter.name %></td>
+                </tr>
+                <tr>
+                  <td>Crafter:</td>
+                  <td><%= crafter.biography %></td>
+                </tr>
+              </table>
           </div>
         </div>
-
-        <div class="content">
-          <%= crafter.biography %>
-          <br>
-          <small>11:09 PM - 1 Jan 2016</small>
-        </div>
       </div>
-    </div>
-    <%# end of bulma card %>
-    </div>
     <% end %>
-
-    <div class="custom-one-third">
-    <%# start of bulma card %>
-    <div class="card">
-      <div class="card-image">
-        <figure class="image is-4by3">
-          <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Image">
-        </figure>
-      </div>
-      <div class="card-content">
-        <div class="media">
-          <div class="media-left">
-            <figure class="image is-48x48">
-              <img src="http://bulma.io/images/placeholders/96x96.png" alt="Image">
-            </figure>
-          </div>
-          <div class="media-content">
-            <p class="title is-4">John Smith</p>
-            <p class="subtitle is-6">@johnsmith</p>
-          </div>
-        </div>
-
-        <div class="content">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-          <a>#css</a> <a>#responsive</a>
-          <br>
-          <small>11:09 PM - 1 Jan 2016</small>
-        </div>
-      </div>
     </div>
-    <%# end of bulma card %>
   </div>
-  </div>
-</section>
+</div>
