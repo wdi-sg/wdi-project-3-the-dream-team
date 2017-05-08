@@ -34,15 +34,17 @@ $(document).on('turbolinks:load', function () {
   $('.materialboxed').materialbox()
 
   // custom jquery function
-  $('#favourite')
+  // favourite events
+  $('.favourite')
   .on('ajax:error', function (e, data, status, xhr) {
     alert('FAILED')
   })
-  .on('ajax:success', function(e, data, status, xhr) {
-    alert('succeeded!')
-    console.log(data)
-  }).on('ajax:complete', function (e, data, status, xhr) {
-    alert('completed!')
+  .on('ajax:success', function (e, data, status, xhr) {
+    if (data.favourite) {
+      $(this).text('Unfavourite')
+    } else if (data.favourite === false) {
+      $(this).text('Favourite')
+    }
   })
 
   // $('#favourite').on('submit', function (e)

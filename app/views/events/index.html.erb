@@ -33,11 +33,33 @@
 
           <div class="card small">
             <div class="card-image waves-effect waves-block waves-light">
+              <div class="">
+                <!-- favourite event function here -->
+                <%  if my_fav_event?(event) == true
+                  @heart = 'Unfavourite!'
+                elsif my_fav_event?(event) == false
+                  @heart = 'Favourite!'
+                end
+                %>
+                <%= link_to @heart, craftee_fav_event_path(current_craftee.id),
+                data: {
+                  remote: true,
+                  method: :post,
+                  params: {
+                    craftee_id: current_craftee.id,
+                    event_id: event.id
+                  }.to_param,
+                },
+                class: "favourite" %>
+                <!-- end -->
+              </div>
               <img src="<%= event.image_link %>" alt="Image" class='activator'></td>
             </div>
             <div class="card-content">
               <span class="card-title activator grey-text text-darken-4"><%= event.name %><i class="material-icons right">more_vert</i></span>
-              <p><a href="#">This is a link</a></p>
+              <p>
+                <a href="#">This is a link</a>
+              </p>
             </div>
             <div class="card-reveal">
               <span class="card-title grey-text text-darken-4">Event Details<i class="material-icons right">close</i></span>

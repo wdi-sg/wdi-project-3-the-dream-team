@@ -1,4 +1,5 @@
 <div class="section">
+  <!-- favourite event function here -->
   <div class="">
     <%  if my_fav_event?(@event) == true
           @heart = 'Unfavourite!'
@@ -15,8 +16,9 @@
               event_id: @event.id
             }.to_param,
            },
-          id: "favourite" %>
+          class: "favourite" %>
   </div>
+  <!-- end -->
   <%= render 'events/eventdetails' %>
 </div>
 
