@@ -11,7 +11,7 @@ class CreateCrafters < ActiveRecord::Migration[5.0]
       t.string :facebook_link
       t.string :twitter_link
       t.string :website_link
-
+      t.string :profilePic_link
       t.timestamps
     end
   end

@@ -28,7 +28,8 @@ end
     name: Faker::Name.name,
     biography: Faker::StarWars.quote,
     category_id: rand(9) + 1,
-    profession: Faker::Superhero.name
+    profession: Faker::Superhero.name,
+    profilePic_link: Faker::Avatar.image
   )
   p 'crafter creation succeeded'
 
