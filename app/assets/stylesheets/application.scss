@@ -13,7 +13,7 @@ div#search-events {
 div#search-item-list {
   position: absolute;
   background-color: white;
-  overflow-y: scroll;
+  overflow-y: auto;
   width: 100%;
   max-height: 50vh;
   z-index: 999;
@@ -21,9 +21,10 @@ div#search-item-list {
 
 div.item-box {
   position: relative;
-  height: 50px;
+  height: 60px;
   div.inside-item-box {
-    margin: 5px;
+    padding: 10px;
+    // margin: 10px 0 10px 15px;
   }
   &:hover {
     background-color: #EEEEEE;
@@ -37,7 +38,6 @@ div.item-box {
     width: 100%;
     text-align: left;
     text-transform: none;
-    margin-left: 15px;
   }
 }
 

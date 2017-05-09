@@ -8,7 +8,10 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+    <% if current_page?(events_path) %>
+    <%# remove turbolink caching for events_path to prevent nonsense stuff when back button pressed %>
+        <meta name="turbolinks-cache-control" content="no-cache">
+    <% end %>
   </head>
 
 

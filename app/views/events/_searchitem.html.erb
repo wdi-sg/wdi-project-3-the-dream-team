@@ -3,7 +3,7 @@
     <li>
       <%= link_to item.name, event_path(item), class: 'search-item' %>
       <div class="">
-        <span>by: <%= item.crafter.name %></span>
+        <span><em><%= item.crafter.name %></em></span>
       </div>
     </li>
   </div>

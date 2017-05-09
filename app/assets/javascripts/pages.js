@@ -1,5 +1,4 @@
 $(document).on('turbolinks:load', function () {
-  // alert('test')
 
   // nav bar dropdown jquery plugin
   $('.dropdown-button').dropdown()
@@ -30,10 +29,8 @@ $(document).on('turbolinks:load', function () {
       type: 'GET'
     })
   })
-
+  // keyup listener on search bar to send ajax request
   $('#autocomplete').on('keyup', function (e) {
-    console.log($(this).val())
-
     if ($(this).val().length === 0) {
       $('div#search-item-list').empty()
     } else if ($(this).val().length >= 3 && e.key !== 'Enter') {
@@ -55,6 +52,12 @@ $(document).on('turbolinks:load', function () {
       }).done(function (res) {
         $('#autocomplete').val('')
       })
+    }
+  })
+  // to close search populated list if outside of element is clicked
+  $(document).on('click', function (event) {
+    if (!$(event.target).closest('#search-events').length) {
+      $('div#search-item-list').empty()
     }
   })
 
