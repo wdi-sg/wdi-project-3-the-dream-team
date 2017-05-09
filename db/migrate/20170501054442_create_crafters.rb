@@ -12,6 +12,13 @@ class CreateCrafters < ActiveRecord::Migration[5.0]
       t.string :twitter_link
       t.string :website_link
       t.string :profilePic_link
+
+      # columns for stripe integration
+      t.string :publishable_key
+      t.string :secret_key
+      t.string :stripe_user_id
+      t.string :currency
+      t.string :stripe_account_type
       t.timestamps
     end
   end
