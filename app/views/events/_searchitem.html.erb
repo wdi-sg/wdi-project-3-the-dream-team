@@ -1,0 +1,10 @@
+<div class="item-box">
+  <div class="inside-item-box">
+    <li>
+      <%= link_to item.name, event_path(item), class: 'search-item' %>
+      <div class="">
+        <span>by: <%= item.crafter.name %></span>
+      </div>
+    </li>
+  </div>
+</div>

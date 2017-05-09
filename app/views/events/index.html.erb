@@ -20,10 +20,10 @@
               class: 'categories_select'
         %>
       </div>
-      <div class="col s8">
-        <%= text_field_tag 'search', nil, {placeholder: 'Search for..', id: 'autocomplete'} %>
-        <div id="search-result">
-
+      <div class="col s8" id="search-events">
+        <%= text_field_tag 'search', nil, {placeholder: 'Search for event or crafter', id: 'autocomplete'} %>
+        <div class="z-depth-3" id="search-item-list">
+          <!-- search item list will be populated here -->
         </div>
       </div>
     </div>
@@ -37,48 +37,7 @@
     </div>
 
   <div class="row">
-<<<<<<< HEAD
       <div class="col s12 cards-container" id="event-list">
         <%= render partial: "events/event", collection: @all_events %>
-=======
-      <div class="col s12 cards-container">
-        <% @all_events.each do |event| %>
-        <div class="col s4">
-          <div class="card small">
-            <div class="card-image waves-effect waves-block waves-light">
-              <img src="<%= event.image_link %>" alt="Image" class='activator'></td>
-            </div>
-            <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4"><%= event.name %><i class="material-icons right">more_vert</i></span>
-              <p><a href="#">This is a link</a></p>
-            </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">More Info<i class="material-icons right">close</i></span>
-              <!-- <p>why can't i put a table here???</p> -->
-              <div class="divider"></div>
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Description:</td>
-                    <td><%= event.description %></td>
-                  </tr>
-                  <tr>
-                    <td>Crafter:</td>
-                    <td><%= event.crafter.name %></td>
-                  </tr>
-                </table>
-                <div class="divider"></div>
-                <table>
-                  <tr>
-                    <td>Sessions:</td>
-                  </tr>
-                </table>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        </div>
-      <% end %>
->>>>>>> shirong-develop
       </div>
 </div>
