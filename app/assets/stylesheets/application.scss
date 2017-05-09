@@ -5,7 +5,10 @@
 @import "materialize";
 @import "simple_calendar";
 
-
+/* testing ajax with fav event */
+#favourite {
+  background-color: red;
+}
 
 /* for edit event modal box */
 
@@ -181,6 +184,8 @@ header, main, footer {
   transition: font 0.8s ease;
 }
 
+
+
 p {
   text-align: justify;
 }
@@ -196,4 +201,8 @@ td {
     display: inline-block;
     // overflow: invisible;
   }
+}
+
+#edit-profile-update-button {
+  margin-top: 3%;
 }

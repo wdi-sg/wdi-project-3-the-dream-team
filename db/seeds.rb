@@ -6,11 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-20.times do
-  Category.create(name: Faker::Job.field)
+%w[Woodcraft Papercraft Jewellery Textiles Drawing Painting Sculpture Printmaking Photography Calligraphy Leathermaking Musician Hairstylist Bookbinders Tattoo Pottery]
+.each do |c|
+  Category.create(name: c)
 end
 
-5.times do |i|
+50.times do |i|
   @user = User.create(
     # email: Faker::Internet.email,
     # password: Faker::Internet.password
@@ -27,17 +28,20 @@ end
   @user.crafter = Crafter.create(
     name: Faker::Name.name,
     biography: Faker::StarWars.quote,
-    category_id: rand(9) + 1,
-    profession: Faker::Superhero.name
+    category_id: rand(Category.all.length) + 1,
+    profession: Faker::Superhero.name,
+    profilePic_link: Faker::Avatar.image
   )
   p 'crafter creation succeeded'
 
-  @user.crafter.events << Event.create(
-    name: Faker::Commerce.product_name + ' class',
-    description: Faker::StarWars.quote,
-    category_id: rand(9) + 1,
-    image_link: Faker::Avatar.image
-  )
+  4.times do
+    @user.crafter.events << Event.create(
+      name: Faker::Commerce.product_name + ' class',
+      description: Faker::StarWars.quote,
+      category_id: rand(Category.all.length) + 1,
+      image_link: Faker::Avatar.image
+    )
+  end
 
   p 'event creation succeeded'
 
@@ -81,6 +85,7 @@ end
   p 'pushed bookings into craftee booking'
 
 end
+# loop ends here
 # below User created will be used by Tom to Log In at browser for testing
 @user = User.create(
   email: 'crafter@mail.com',
@@ -92,7 +97,7 @@ p 'user creation succeeded'
 @user.crafter = Crafter.create(
   name: Faker::Name.name,
   biography: Faker::StarWars.quote,
-  category_id: rand(9) + 1,
+  category_id: rand(Category.all.length) + 1,
   profession: Faker::Superhero.name
 )
 p 'crafter creation succeeded'
@@ -100,7 +105,7 @@ p 'crafter creation succeeded'
 @user.crafter.events << Event.create(
   name: Faker::Commerce.product_name + ' class',
   description: Faker::StarWars.quote,
-  category_id: rand(9) + 1,
+  category_id: rand(Category.all.length) + 1,
   image_link: Faker::Avatar.image
 )
 
@@ -118,7 +123,7 @@ p 'user creation succeeded'
 @user.crafter = Crafter.create(
   name: Faker::Name.name,
   biography: Faker::StarWars.quote,
-  category_id: rand(9) + 1,
+  category_id: rand(Category.all.length) + 1,
   profession: Faker::Superhero.name
 )
 p 'crafter creation succeeded'
@@ -126,9 +131,26 @@ p 'crafter creation succeeded'
 @user.crafter.events << Event.create(
   name: Faker::Commerce.product_name + ' class',
   description: Faker::StarWars.quote,
-  category_id: rand(9) + 1
+  category_id: rand(Category.all.length) + 1
 )
 
 p 'event creation succeeded'
 
 @user.craftee = Craftee.create
+
+
+
+@user.crafter = Crafter.create(
+  name: Faker::Name.name,
+  biography: Faker::StarWars.quote,
+  category_id: rand(Category.all.length) + 1,
+  profession: Faker::Superhero.name
+)
+p 'crafter creation succeeded'
+
+@user.crafter.portfolio_items << PortfolioItem.create(
+  media_link: Faker::Commerce.product_name,
+  description: Faker::StarWars.quote,
+  item_type: rand(9) + 1
+)
+p 'portfolio items creation succeeded'

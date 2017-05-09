@@ -10,42 +10,46 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   </head>
-  <div class="container body_container">
+
 
   <body>
+    <div class="container body_container">
     <%# Navigation bar %>
-    <%= render "partials/nav" %>
-
+      <%= render "partials/nav" %>
+    </div>
 
     <%# Extra navbar for controller testing %>
     <%# render "partials/navtesttom" %>
 
 
     <!-- Devise Alert Messages -->
+    <div class="container">
       <% if notice %>
-        <div class="row">
-          <div class="notice center"><%= notice %></div>
-          <% end %>
-        </div>
-      <% if alert %>
-        <div class="row">
-          <div class="alert center"><%= alert %></div>
-        </div>
+      <div class="row card-panel">
+        <div class="notice center"><%= notice %></div>
         <% end %>
+      </div>
+      <% if alert %>
+      <div class="row card-panel">
+        <div class="alert center"><%= alert %></div>
+      </div>
+      <% end %>
+    </div>
 
     <%= yield %>
 
-    <div class="section">
-      <% if user_signed_in? %>
+    <!-- <div class="section">
+      <%# if user_signed_in? %>
         <p>
-          Crafter ID: <%= current_crafter.id %>
+          Crafter ID: <%# current_crafter.id %>
         </p>
         <p>
-          Craftee ID: <%= current_craftee.id %>
+          Craftee ID: <%# current_craftee.id %>
         </p>
         <p>
-          Current User: <%= current_user.inspect %>
+          Current User: <%# current_user.inspect %>
         </p>
-      <% end %>
-    </div>
+      <%# end %>
+    </div> -->
+  </body>
 </html>

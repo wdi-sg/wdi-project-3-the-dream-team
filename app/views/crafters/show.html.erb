@@ -1,17 +1,37 @@
-  <section class="hero is-primary">
-    <div class="hero-body">
-        <h1 class="title">
-          <%= @crafter.name %>
-        </h1>
-        <h2 class="subtitle">
-          <%= @crafter.biography %>
-        </h2>
-        <%= link_to "Edit", edit_crafter_path, class: "button is-black" %>
-        <%= link_to 'Delete', crafter_path(@crafter, authenticity_token: form_authenticity_token),
-                              class: 'button is-danger',
-                              method: :delete %>
+<div class="container">
+  <div class="row right-align">
+    <%= link_to "Edit", edit_crafter_path, class: "waves-effect waves-light btn btn-medium white black-text" %>
+  </div>
+
+  <div class="row">
+    <div class="col s3">
+      <!-- Grey navigation panel -->
+      <%= cl_image_tag(@crafter.profilePic_link, :width => 150, :height => 150,
+      :crop => :fill, :gravity => :face,
+      :radius => :max)%>
+      <div class="">
+        <h5><%= @crafter.name%></h5>
+
+      </div>
+      <p><%= @crafter.biography%></p>
     </div>
-  </section>
+
+    <div class="col s9">
+      <!-- Teal page content  -->
+      <div class="card-panel">
+        Events
+      </div>
+      <div class="card-panel">
+        Portfolio
+      </div>
+      <div class="card-panel">
+        Reviews
+      </div>
+
+    </div>
+  </div>
+  </div>
+
 
 <pre>
   <%= @crafter.inspect %>

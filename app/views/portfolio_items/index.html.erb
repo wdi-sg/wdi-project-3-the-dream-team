@@ -1,0 +1,59 @@
+<div class="container">
+
+  <div class="row right-align">
+    <a class="waves-effect waves-light btn black-text white" href="#modalCreate">Create New Portfolio Item</a>
+  </div>
+
+  <!-- Modal Structure for Creating New Portfolio Item -->
+  <div id="modalCreate" class="modal">
+    <div class="modal-content">
+      <h4>Create New Item</h4>
+      <%= render 'portfolio_items/newItemForm' %>
+    </div>
+    <div class="modal-footer">
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col s12">
+      <% @portfolio_items.each do |portfolio_item| %>
+      <div class="col s4">
+        <div class="card medium">
+          <div class="card-image waves-effect waves-block waves-light">
+            <%= cl_image_tag(portfolio_item.media_link, :width => 400, :height => 400)%>
+          </div>
+            <div class="card-content">
+              <a class="waves-effect waves-light btn-small black-text white" href="#modal<%= portfolio_item.id %>">More Info</a>
+              <% if my_portfolio_item?(portfolio_item) %>
+                <span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
+              <% end %>
+            </div>
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                <div class="row">
+                  <%= link_to "Edit Item", edit_crafter_portfolio_item_path(@crafter, portfolio_item) %>
+                </div>
+                <div class="row">
+                  <%= link_to "Delete Item", crafter_portfolio_item_path(@crafter.id, portfolio_item.id), method: :delete%>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+          <!-- Modal Box -->
+          <div id="modal<%= portfolio_item.id %>" class="modal">
+            <div class="modal-content">
+              <%= cl_image_tag(portfolio_item.media_link, :width => 500, :height => 700,
+              :crop => :fill, :gravity => :face,
+              :radius => :max)%>
+              <h4>Description</h4>
+              <%= render 'crafters/showDescrip', thePortfolio: portfolio_item %>
+            </div>
+         </div>
+         <% end %>
+       </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="container">
+
+  <%= form_for :portfolio_item, url: crafter_portfolio_item_path, method: :put do |f| %>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.text_area :description, class: "materialize-textarea" %>
+      <%= f.label :description %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.select :item_type, ['Photo', 'Video'] %>
+      <%= f.label :item_type %>
+    </div>
+  </div>
+
+  <%# start input %>
+  <div class="field">
+    <div class="field-label">
+      <%= f.label :Upload_Item, class: 'label' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.file_field :media_link %>
+    </div>
+  </div>
+
+
+
+  <%# end input %>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.submit "Update", class: "waves-effect waves-light btn" %>
+    </div>
+  </div>
+
+  <% end %>
+</div>

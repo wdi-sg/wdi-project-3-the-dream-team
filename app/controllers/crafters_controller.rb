@@ -8,6 +8,8 @@ class CraftersController < ApplicationController
   end
 
   def show
+    @portfolio_items = PortfolioItem.all
+
   end
 
   def new
@@ -23,6 +25,13 @@ class CraftersController < ApplicationController
 
   def update
     if @crafter.update(@form_data)
+      if params[:crafter][:profilePic_link]
+        uploaded_file = params[:crafter][:profilePic_link].path
+        cloudnary_file = Cloudinary::Uploader.upload(uploaded_file)
+        @crafter.profilePic_link = cloudnary_file['public_id']
+        @crafter.save
+        # render json: cloudnary_file
+      end
       redirect_to crafter_path(@crafter)
     else
       render 'crafters/edit'
