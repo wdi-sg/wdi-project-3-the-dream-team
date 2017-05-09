@@ -54,10 +54,21 @@ ActiveRecord::Schema.define(version: 20170505082711) do
     t.string   "twitter_link"
     t.string   "website_link"
     t.string   "profilePic_link"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "publishable_key"
+    t.string   "secret_key"
+    t.string   "stripe_user_id"
+    t.string   "currency"
+    t.string   "stripe_account_type"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.index ["category_id"], name: "index_crafters_on_category_id", using: :btree
     t.index ["user_id"], name: "index_crafters_on_user_id", using: :btree
+  end
+
+  create_table "dummy_models", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "events", force: :cascade do |t|

@@ -2,38 +2,57 @@
   <%= image_tag ('homepage_quote1.png'), :class => 'materialboxed', :style=> 'width:30%; align-item: center; margin: auto; margin-top: 5%;' %>
   <!-- <img class="materialboxed" width="650" src="/owl1.jpg"> -->
 </div>
+
+
 <%# Secondary Navigation bar %>
-<div class="container second-nav-bar">
-  <div class="row">
-    <div class="grid-example col s12 offset-s2">
-        <a href="/", class='black-text second-nav-links col s2 center-align'>Home</a>
-        <a href="/events", class='black-text second-nav-links col s2 center-align'>Events</a>
-        <a href="/crafters", class='black-text second-nav-links col s2 center-align'>Crafters</a>
-        <a href="/portfolios", class='black-text second-nav-links col s2 center-align'>Works</a>
-    </div>
-  </div>
-  <div class="divider"></div>
-    <div class="row right-align" id = "create-new-event-btn">
+<%= render 'partials/second_nav' %>
+
+
+  <div class="container">
+    <div class="row">
       <% if user_signed_in? %>
-        <%# if is_crafter_authenticated? %>
-        <%= link_to "Create New Event", new_event_path, class: "waves-effect waves-light btn white black-text" %>
-        <%# end %>
+        <% if is_crafter_authenticated? %>
+      <%= link_to "New Event", new_event_path, class: "waves-effect waves-light btn" %>
+        <% end %>
       <% end %>
     </div>
+
   <div class="row">
       <div class="col s12 cards-container">
         <% @all_events.each do |event| %>
         <div class="col s4">
           <div class="card small">
             <div class="card-image waves-effect waves-block waves-light">
+              <div class="">
+                <!-- favourite event function here (can factorize later)-->
+                <%  if my_fav_event?(event) == true
+                  @heart = 'Unfavourite!'
+                elsif my_fav_event?(event) == false
+                  @heart = 'Favourite!'
+                end
+                %>
+                <%= link_to @heart, craftee_fav_event_path(current_craftee.id),
+                data: {
+                  remote: true,
+                  method: :post,
+                  params: {
+                    craftee_id: current_craftee.id,
+                    event_id: event.id
+                  }.to_param,
+                },
+                class: "favourite" %>
+                <!-- end -->
+              </div>
               <img src="<%= event.image_link %>" alt="Image" class='activator'></td>
             </div>
             <div class="card-content">
               <span class="card-title activator grey-text text-darken-4"><%= event.name %><i class="material-icons right">more_vert</i></span>
-              <p><a href="<%= event_path(@event)%>">Event</a></p>
+              <p>
+                <a href="#">This is a link</a>
+              </p>
             </div>
             <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">More Info<i class="material-icons right">close</i></span>
+              <span class="card-title grey-text text-darken-4">Event Details<i class="material-icons right">close</i></span>
               <!-- <p>why can't i put a table here???</p> -->
               <div class="divider"></div>
               <table>
@@ -60,12 +79,4 @@
         </div>
       <% end %>
       </div>
-    </div>
 </div>
-
-
-
-
-<pre>
-<%# @all_events.inspect %>
-</pre>

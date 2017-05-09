@@ -1,17 +1,15 @@
 class EventsController < ApplicationController
-  # before_action :is_craftee_authenticated, only: [:new, :create, :edit, :update, :destroy]
-  skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :authenticate_user!, only: %i[index show filter]
 
-
-  before_action :find_event, except: %i[index new create]
+  before_action :find_event, except: %i[index new create filter]
   before_action :form_event, only: %i[create update]
 
   def index
     @all_events = Event.all
+    @categories = Category.all
   end
 
   def show
-
   end
 
   def new
@@ -35,7 +33,6 @@ class EventsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
@@ -50,7 +47,21 @@ class EventsController < ApplicationController
   end
 
   def destroy
+  end
 
+  def filter
+    p params[:category_id]
+    if params[:category_id] == ''
+      @filtered = Event.all
+    else
+      @filtered = Event.where(category_id: params[:category_id])
+    end
+
+    respond_to do |format|
+      format.js
+      # format.json { render json: {  success: true,
+      #                               data: @filtered }}
+    end
   end
 
   def my_events
@@ -62,6 +73,10 @@ class EventsController < ApplicationController
 
 
   helper_method :check_time
+  def search
+    p 'search request received'
+    p params
+  end
 
   private
 
@@ -70,7 +85,8 @@ class EventsController < ApplicationController
   end
 
   def form_event
-    @form_data = params.require(:event).permit(:name, :description, :category_id)
+    @form_data =  params
+                  .require(:event)
+                  .permit(:name, :description, :category_id)
   end
-
 end

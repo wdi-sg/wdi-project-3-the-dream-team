@@ -37,6 +37,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def crafter_is_myself?
+    @crafter == current_user.crafter
+  end
+
   # craftee object for the currently logged in user
   def current_craftee
     if user_signed_in?
@@ -83,23 +87,42 @@ class ApplicationController < ActionController::Base
     @result
   end
 
+  def my_fav_event?(event_to_check)
+    # can be improved. find out how to call craftee.events through fav_events
+    if user_signed_in?
+      unless current_craftee.fav_events.empty?
+        current_craftee.fav_events.each do |e|
+          if e.event_id == event_to_check.id
+            p 'this is a favourited event'
+            return true
+          end
+          p 'this is not a favourited event'
+          return false
+        end
+      end
+      p 'fav_events is empty'
+      false
+    end
+  end
 
-    def my_portfolio_item?(portfolio_item)
-      if current_crafter.portfolio_items.include? portfolio_item
+  def my_portfolio_item?(portfolio_item)
+    if current_crafter.portfolio_items.include? portfolio_item
       true
     else
       false
     end
-    end
+  end
   # helper methods can be called from anywhere including views
 
   helper_method :current_user_type
   helper_method :current_crafter
+  helper_method :crafter_is_myself?
   helper_method :current_craftee
   helper_method :is_craftee_authenticated?
   helper_method :is_crafter_authenticated?
   helper_method :crafter_activated?
   helper_method :my_event?
+  helper_method :my_fav_event?
   helper_method :check_for_clash?
   helper_method :my_portfolio_item?
 end

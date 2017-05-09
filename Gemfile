@@ -9,6 +9,8 @@ end
 # installing bulma and fontawesome for rails pipeline
 gem 'font-awesome-rails'
 gem "jquery-slick-rails"
+
+# jquery-ui
 gem 'jquery-ui-rails'
 
 
@@ -20,7 +22,6 @@ gem 'materialize-sass'
 gem 'jquery-turbolinks'
 
 # simple calendar
-
 gem "simple_calendar", "~> 2.0"
 
 gem 'owlcarousel-rails', '~> 1.1', '>= 1.1.3.3'
@@ -66,6 +67,11 @@ gem 'jbuilder', '~> 2.5'
 
 # devise for user authentication and registration
 gem 'devise'
+
+# gems for stripe
+gem 'stripe'
+gem 'oauth2'
+gem 'rest-client'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

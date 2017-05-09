@@ -1,0 +1,1 @@
+$('div#event-list').html("<%= escape_javascript(render partial: 'events/event', collection: @filtered, as: 'event') %>").hide().fadeIn(2000)

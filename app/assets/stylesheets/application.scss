@@ -5,20 +5,25 @@
 @import "materialize";
 @import "simple_calendar";
 
-.cal-format {
-  height: 80px;
-  overflow-y: scroll;
-  text-align: left;
-}
+/* testing ajax with fav event */
+#favourite {
+  background-color: red;
+  
+  .cal-format {
+    height: 80px;
+    overflow-y: scroll;
+    text-align: left;
+  }
 
-.simple-calendar .day {
-  height: 100px;
-}
+  .simple-calendar .day {
+    height: 100px;
+  }
 
-/* for edit event modal box */
+  /* for edit event modal box */
 
-#edit_event {
-  max-height: 85%
+  #edit_event {
+    max-height: 85%
+  }
 }
 
 /* to align material icons DOESNT WORK */
@@ -153,7 +158,7 @@ header, main, footer {
     vertical-align: top;
     text-align: right;
 
-}
+  }
   .wday-5 {
     vertical-align: top;
     text-align: right;
@@ -163,8 +168,6 @@ header, main, footer {
   .wday-6 {
     vertical-align: top;
     text-align: right;
-
-
   }
 
   .today {}

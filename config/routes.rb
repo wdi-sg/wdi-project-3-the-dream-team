@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   resources :meetings
   # devise_for :users, controllers: {sessions: 'users/sessions'}
 
@@ -24,15 +25,36 @@ Rails.application.routes.draw do
   get '/crafters/:id/events' => 'events#my_events'
 
 
+
+  resources :craftees do
+    post '/fav_events', to: 'fav_events#create', as: 'fav_event'
+  end
+
   resources :crafters do
     resources :portfolio_items
     resources :events
   end
-  resources :craftees
+
+  get '/filter_events', to: 'events#filter'
+
+  get '/search_events', to: 'events#search'
+
   resources :events do
     resources :sessions
     resources :bookings
   end
+
+  # Stripe Connect endpoints
+  #  - oauth flow
+  get '/connect/oauth' => 'stripe#oauth', as: 'stripe_oauth'
+  get '/connect/confirm' => 'stripe#confirm', as: 'stripe_confirm'
+  get '/connect/deauthorize' => 'stripe#deauthorize', as: 'stripe_deauthorize'
+  #  - create accounts
+  # post '/connect/managed' => 'stripe#managed', as: 'stripe_managed'
+  # post '/connect/standalone' => 'stripe#standalone', as: 'stripe_standalone'
+
+  # Stripe webhooks
+  post '/hooks/stripe' => 'hooks#stripe'
 
   # Craftee
 
