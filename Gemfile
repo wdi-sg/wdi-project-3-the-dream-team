@@ -9,6 +9,8 @@ end
 # installing bulma and fontawesome for rails pipeline
 gem 'font-awesome-rails'
 gem "jquery-slick-rails"
+
+# jquery-ui
 gem 'jquery-ui-rails'
 
 # materialize
@@ -18,7 +20,6 @@ gem 'materialize-sass'
 gem 'jquery-turbolinks'
 
 # simple calendar
-
 gem "simple_calendar", "~> 2.0"
 
 gem 'owlcarousel-rails', '~> 1.1', '>= 1.1.3.3'

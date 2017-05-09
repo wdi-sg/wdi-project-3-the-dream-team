@@ -1,0 +1,18 @@
+<%
+    if my_fav_event?(event) == true
+      @heart = 'Unfavourite!'
+    elsif my_fav_event?(event) == false
+      @heart = 'Favourite!'
+    end
+%>
+<%= link_to @heart, craftee_fav_event_path(current_craftee.id),
+data: {
+  remote: true,
+  method: :post,
+  params: {
+    craftee_id: current_craftee.id,
+    event_id: event.id
+  }.to_param,
+},
+class: "favourite" %>
+<!-- end -->

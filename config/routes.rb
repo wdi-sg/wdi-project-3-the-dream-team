@@ -32,6 +32,10 @@ Rails.application.routes.draw do
     resources :portfolio_items
   end
 
+  get '/filter_events', to: 'events#filter'
+
+  get '/search_events', to: 'events#search'
+
   resources :events do
     resources :sessions
     resources :bookings

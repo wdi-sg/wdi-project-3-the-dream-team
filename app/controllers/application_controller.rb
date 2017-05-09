@@ -85,18 +85,20 @@ class ApplicationController < ActionController::Base
 
   def my_fav_event?(event_to_check)
     # can be improved. find out how to call craftee.events through fav_events
-    unless current_craftee.fav_events.empty?
-      current_craftee.fav_events.each do |e|
-        if e.event_id == event_to_check.id
-          p 'this is a favourited event'
-          return true
+    if user_signed_in?
+      unless current_craftee.fav_events.empty?
+        current_craftee.fav_events.each do |e|
+          if e.event_id == event_to_check.id
+            p 'this is a favourited event'
+            return true
+          end
+          p 'this is not a favourited event'
+          return false
         end
-        p 'this is not a favourited event'
-        return false
       end
+      p 'fav_events is empty'
+      false
     end
-    p 'fav_events is empty'
-    false
   end
 
   # helper methods can be called from anywhere including views
