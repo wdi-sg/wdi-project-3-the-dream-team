@@ -8,6 +8,14 @@
 /* testing ajax with fav event */
 #favourite {
   background-color: red;
+.cal-format {
+  height: 80px;
+  overflow-y: scroll;
+  text-align: left;
+}
+
+.simple-calendar .day {
+  height: 100px;
 }
 
 /* for edit event modal box */
@@ -205,4 +213,16 @@ td {
 
 #edit-profile-update-button {
   margin-top: 3%;
+}
+
+#create-new-event-btn {
+  margin-top: 1%;
+}
+
+#all-crafters-container {
+  margin-top: 1%;
+}
+
+#all-portfolio-items-container{
+  margin-top: 1%;
 }

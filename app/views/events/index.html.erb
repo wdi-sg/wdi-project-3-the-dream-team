@@ -1,48 +1,26 @@
-
-<section>
 <div class="row">
   <%= image_tag ('homepage_quote1.png'), :class => 'materialboxed', :style=> 'width:30%; align-item: center; margin: auto; margin-top: 5%;' %>
   <!-- <img class="materialboxed" width="650" src="/owl1.jpg"> -->
 </div>
-
-
 <%# Secondary Navigation bar %>
-<%= render 'partials/second_nav' %>
-
-  <div class="container">
-    <!-- category select -->
-    <div class="row">
-      <div class="col s4">
-        <%= select "event", "category_id",
-              options_from_collection_for_select(@categories, 'id', 'name'),
-                {
-                  include_blank: 'All',
-                  prompt: 'Find From Category'
-                },
-              class: 'categories_select'
-        %>
-      </div>
-      <div class="col s8">
-        <%= text_field_tag 'search', nil, {placeholder: 'Search for..', id: 'autocomplete'} %>
-        <div id="search-result">
-
-        </div>
-      </div>
+<div class="container second-nav-bar">
+  <div class="row">
+    <div class="grid-example col s12 offset-s2">
+        <a href="/", class='black-text second-nav-links col s2 center-align'>Home</a>
+        <a href="/events", class='black-text second-nav-links col s2 center-align'>Events</a>
+        <a href="/crafters", class='black-text second-nav-links col s2 center-align'>Crafters</a>
+        <a href="/portfolios", class='black-text second-nav-links col s2 center-align'>Works</a>
     </div>
-    <!-- end -->
-    <div class="row">
+  </div>
+  <div class="divider"></div>
+    <div class="row right-align" id = "create-new-event-btn">
       <% if user_signed_in? %>
         <% if is_crafter_authenticated? %>
-      <%= link_to "New Event", new_event_path, class: "waves-effect waves-light btn" %>
+        <%= link_to "Create New Event", new_event_path, class: "waves-effect waves-light btn white black-text" %>
         <% end %>
       <% end %>
     </div>
-    </div>
-</section>
-
   <div class="row">
-      <div class="col s12 cards-container" id="event-list">
-        <%= render partial: "events/event", collection: @all_events %>
       <div class="col s12 cards-container">
         <% @all_events.each do |event| %>
         <div class="col s4">
@@ -82,8 +60,5 @@
         </div>
       <% end %>
       </div>
+    </div>
 </div>
-
-<pre>
-<%= @all_events.inspect %>
-</pre>
