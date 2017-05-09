@@ -36,5 +36,7 @@ $(document).on('turbolinks:load', function() {
 
    $('.materialboxed').materialbox();
 
+   
+
 
 })

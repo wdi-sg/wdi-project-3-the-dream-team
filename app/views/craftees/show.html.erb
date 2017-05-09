@@ -3,24 +3,27 @@
   <%# @craftee.sessions.inspect%>
 
   <% @crafteeSessions = @craftee.sessions %>
+  <% @crafteeBookings = @craftee.bookings %>
 
 
   <!-- calender goes in here -->
   <%= month_calendar(attribute: :datetime_from, events: @crafteeSessions) do |date, crafteeSessions| %>
-    <span id='date'><%= date.day %></span>
-
-        <% crafteeSessions.each do |crafteeSession| %>
-        <div>
-          <%= crafteeSession.event.name %>
+  <span id='date'><%= date.day %></span>
+  <% if crafteeSessions.length > 0 %>
+    <div class="cal-format">
+        <% crafteeSessions.each_with_index do |crafteeSession, index| %>
+        <a href = '#modal_<%= date.day %>_<%= index %>'><%= (index+1).to_s + '. ' + crafteeSession.event.name[0,10] %>..</a></br>
+        <div id="modal_<%= date.day %>_<%= index %>" class="modal">
+          <div class="modal-content">
+            <!-- <h4><%# Date._strptime(crafteeBooking.datetime_from, "%m/%d/%Y %H:%M")%></h4> -->
+            <p>Event: <a href = '<%= event_path(crafteeSession.event) %>'><%= crafteeSession.event.name %></a></p>
+            <p>Session Time: <%= crafteeSession.datetime_from.strftime("%H:%M")%> - <%= crafteeSession.datetime_to.strftime("%H:%M")%></p>
+          </div>
         </div>
       <% end %>
-  <% end %>
-
-
-    <ul>
-      <% @craftee.fav_events.each do|fav_event| %>
-        <li>fav_event.event</li>
+      </div>
       <% end %>
-    </ul>
+
+  <% end %>
 
 </div>
