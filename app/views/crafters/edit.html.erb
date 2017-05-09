@@ -1,123 +1,122 @@
-  <div class='container'>
-    <h4>Edit Profile</h4>
-    <%= form_for @crafter do |f| %>
+<div class='container'>
+  <h4>Edit Profile</h4>
+  <%= form_for @crafter do |f| %>
 
-    <%# start input %>
+  <%# start input %>
+  <div>
     <div>
-      <div>
-        <%= f.label :name %>
-      </div>
-      <div>
-        <%= f.text_field :name %>
-      </div>
+      <%= f.label :name %>
     </div>
-    <%# end input %>
-
-    <%# start input %>
     <div>
-      <div>
-        <%= f.label :biography %>
-      </div>
-      <div class="field-body">
-        <%= f.text_area :biography %>
-      </div>
+      <%= f.text_field :name %>
     </div>
-    <%# end input %>
+  </div>
+  <%# end input %>
 
-    <%# start input %>
+  <%# start input %>
+  <div class="field">
+    <div class="field-label">
+      <%= f.label :Upload_Profile_Pic, class: 'label' %>
+    </div>
+
+    <div class="field-label">
+      <%= f.file_field :profilePic_link %>
+    </div>
+  </div>
+  <%# end input %>
+
+  <%# start input %>
+  <div>
     <div>
-      <div>
-        <%= f.label :profession %>
-      </div>
-      <div class="field-body">
-        <%= f.text_field :profession %>
-      </div>
+      <%= f.label :biography %>
     </div>
-    <%# end input %>
+    <div class="field-body">
+      <%= f.text_area :biography %>
+    </div>
+  </div>
+  <%# end input %>
 
-    <%# start input %>
+  <%# start input %>
+  <div>
     <div>
-      <div>
-        <%= f.label :category_id %>
-      </div>
-      <div class="field-body">
-        <%= f.text_field :category_id, class: 'input' %>
-      </div>
+      <%= f.label :profession %>
     </div>
-    <%# end input %>
+    <div class="field-body">
+      <%= f.text_field :profession %>
+    </div>
+  </div>
+  <%# end input %>
 
-    <%# start input %>
+  <%# start input %>
+  <div>
     <div>
-      <div class="field-label is-normal">
-        <%= f.label :contact_number, class: 'label' %>
-      </div>
-      <div class="field-body">
-        <%= f.text_field :contact_number, class: 'input' %>
-      </div>
+      <%= f.label :category_id %>
     </div>
-    <%# end input %>
-
-    <%# start input %>
-    <div class="field is-horizontal">
-      <div class="field-label is-normal">
-        <%= f.label :contact_email, class: 'label' %>
-      </div>
-      <div class="field-body">
-        <%= f.text_field :contact_email, class: 'input' %>
-      </div>
+    <div class="field-body">
+      <%= f.text_field :category_id, class: 'input' %>
     </div>
-    <%# end input %>
+  </div>
+  <%# end input %>
 
-    <%# start input %>
-    <div class="field is-horizontal">
-      <div class="field-label is-normal">
-        <%= f.label :facebook_link, class: 'label' %>
-      </div>
-      <div class="field-body">
-        <%= f.text_field :facebook_link, class: 'input' %>
-      </div>
+  <%# start input %>
+  <div>
+    <div class="field-label is-normal">
+      <%= f.label :contact_number, class: 'label' %>
     </div>
-    <%# end input %>
-
-    <%# start input %>
-    <div class="field is-horizontal">
-      <div class="field-label is-normal">
-        <%= f.label :twitter_link, class: 'label' %>
-      </div>
-      <div class="field-body">
-        <%= f.text_field :twitter_link, class: 'input' %>
-      </div>
+    <div class="field-body">
+      <%= f.text_field :contact_number, class: 'input' %>
     </div>
-    <%# end input %>
+  </div>
+  <%# end input %>
 
-    <%# start input %>
-    <div class="field is-horizontal">
-      <div class="field-label is-normal">
-        <%= f.label :website_link, class: 'label' %>
-      </div>
-      <div class="field-body">
-        <%= f.text_field :website_link, class: 'input' %>
-      </div>
+  <%# start input %>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= f.label :contact_email, class: 'label' %>
     </div>
-    <%# end input %>
-
-    <%# start input %>
-    <div class="field">
-      <div class="field-label">
-        <%= f.label :Upload_Profile_Pic, class: 'label' %>
-      </div>
-
-      <div class="field-label">
-         <%= f.file_field :profilePic_link %>
-      </div>
+    <div class="field-body">
+      <%= f.text_field :contact_email, class: 'input' %>
     </div>
-    <%# end input %>
+  </div>
+  <%# end input %>
 
-
-      <div class="field-label is-normal" id="edit-profile-update-button">
-        <%= f.submit 'Update', class: 'waves-effect waves-light btn btn-medium white black-text'%>
+  <%# start input %>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= f.label :facebook_link, class: 'label' %>
     </div>
-    <% end %>
+    <div class="field-body">
+      <%= f.text_field :facebook_link, class: 'input' %>
+    </div>
+  </div>
+  <%# end input %>
+
+  <%# start input %>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= f.label :twitter_link, class: 'label' %>
+    </div>
+    <div class="field-body">
+      <%= f.text_field :twitter_link, class: 'input' %>
+    </div>
+  </div>
+  <%# end input %>
+
+  <%# start input %>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= f.label :website_link, class: 'label' %>
+    </div>
+    <div class="field-body">
+      <%= f.text_field :website_link, class: 'input' %>
+    </div>
+  </div>
+  <%# end input %>
+
+  <div class="field-label is-normal" id="edit-profile-update-button">
+    <%= f.submit 'Update', class: 'waves-effect waves-light btn btn-medium white black-text'%>
+  </div>
+  <% end %>
 </div>
 </div>
 
