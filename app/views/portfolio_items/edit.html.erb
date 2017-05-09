@@ -1,22 +1,42 @@
-<h1><%# @portfolio_item.inspect %></h1>
-
-
 <div class="container">
-  <h4>Edit Description</h4>
+
   <%= form_for :portfolio_item, url: crafter_portfolio_item_path, method: :put do |f| %>
+
   <div class="row">
-    <%= f.text_field :media_link, id: "media_link" %>
-    <%= f.label :media_link, id: 'media_link'%>
+    <div class="input-field col s12">
+      <%= f.text_area :description, class: "materialize-textarea" %>
+      <%= f.label :description %>
+    </div>
   </div>
   <div class="row">
-    <%= f.text_field :description, id: "description" %>
-    <%= f.label :description, id: 'description'%>
+    <div class="input-field col s12">
+      <%= f.select :item_type, ['Photo', 'Video'] %>
+      <%= f.label :item_type %>
+    </div>
   </div>
+
+  <%# start input %>
+  <div class="field">
+    <div class="field-label">
+      <%= f.label :Upload_Item, class: 'label' %>
+    </div>
+  </div>
+
   <div class="row">
-    <%= f.text_field :item_type, id: "item_type" %>
-    <%= f.label :item_type, id: 'item_type'%>
+    <div class="input-field col s12">
+      <%= f.file_field :media_link %>
+    </div>
   </div>
-  <%= f.submit 'Confirm', class: 'waves-effect waves-teal btn-flat', type:"submit"%>
+
+
+
+  <%# end input %>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.submit "Update", class: "waves-effect waves-light btn" %>
+    </div>
+  </div>
 
   <% end %>
 </div>

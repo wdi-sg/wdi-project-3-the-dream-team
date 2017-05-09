@@ -1,9 +1,5 @@
-<section>
-  <div>
-    <h1>Modify Profile</h1>
-    <h2><%= @crafter.name %></h2>
-  </div>
-  <dl>
+  <div class='container'>
+    <h4>Edit Profile</h4>
     <%= form_for @crafter do |f| %>
 
     <%# start input %>
@@ -105,12 +101,25 @@
     </div>
     <%# end input %>
 
-    <%= f.submit 'Confirm', class: 'button is-primary'%>
+    <%# start input %>
+    <div class="field">
+      <div class="field-label">
+        <%= f.label :Upload_Profile_Pic, class: 'label' %>
+      </div>
+
+      <div class="field-label">
+         <%= f.file_field :profilePic_link %>
+      </div>
+    </div>
+    <%# end input %>
+
+
+      <div class="field-label is-normal" id="edit-profile-update-button">
+        <%= f.submit 'Update', class: 'waves-effect waves-light btn btn-medium white black-text'%>
+    </div>
     <% end %>
-  </dl>
 </div>
 </div>
-</section>
 
 <pre>
   <%= @crafter.inspect %>

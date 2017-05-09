@@ -101,6 +101,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def my_portfolio_item?(portfolio_item)
+    if current_crafter.portfolio_items.include? portfolio_item
+      true
+    else
+      false
+    end
+  end
   # helper methods can be called from anywhere including views
 
   helper_method :current_user_type
@@ -112,4 +119,5 @@ class ApplicationController < ActionController::Base
   helper_method :my_event?
   helper_method :my_fav_event?
   helper_method :check_for_clash?
+  helper_method :my_portfolio_item?
 end

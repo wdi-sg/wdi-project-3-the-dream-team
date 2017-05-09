@@ -13,6 +13,8 @@ gem "jquery-slick-rails"
 # jquery-ui
 gem 'jquery-ui-rails'
 
+
+gem 'cloudinary'
 # materialize
 gem 'materialize-sass'
 
