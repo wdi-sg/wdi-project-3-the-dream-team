@@ -27,10 +27,10 @@ class PortfolioItemsController < ApplicationController
       @portfolio_item.validate
       puts @portfolio_item.inspect
       if @portfolio_item.save
-        flash[:notice] = 'portfolio item successfully created'
-        redirect_to crafter_portfolio_item_path(@crafter)
+        flash[:notice] = 'Portfolio Item Successfully Created'
+        redirect_to crafter_portfolio_items_path(@crafter)
       else
-        flash[:alert] = 'failed to create portfolio item!'
+        flash[:alert] = 'Failed to Create Portfolio Item!'
         render 'new'
       end
     end
@@ -59,7 +59,8 @@ class PortfolioItemsController < ApplicationController
     def destroy
       @crafter = Crafter.find(params[:crafter_id])
       @portfolio_item.destroy
-      redirect_to crafter_path(@crafter)
+      redirect_to crafter_portfolio_items_path(@crafter)
+
     end
 
     private

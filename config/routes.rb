@@ -21,9 +21,12 @@ Rails.application.routes.draw do
   get '/pages/switch'
   get 'about' => 'pages#about'
   get '/portfolios' => 'portfolio_items#all_portfolios'
+  get '/crafters/:id/events' => 'events#my_events'
+
 
   resources :crafters do
     resources :portfolio_items
+    resources :events
   end
   resources :craftees
   resources :events do
