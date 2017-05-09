@@ -11,6 +11,8 @@ gem 'font-awesome-rails'
 gem "jquery-slick-rails"
 gem 'jquery-ui-rails'
 
+
+gem 'cloudinary'
 # materialize
 gem 'materialize-sass'
 

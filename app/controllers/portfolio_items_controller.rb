@@ -5,7 +5,9 @@ class PortfolioItemsController < ApplicationController
 
     def all_portfolios
       #code
-      # this method will retrieve all portfolios from all crafters
+      # this method will retrieve  portfolio items from all crafters
+      @all_portfolio_items = PortfolioItem.all
+
     end
 
     def index
@@ -26,7 +28,7 @@ class PortfolioItemsController < ApplicationController
       puts @portfolio_item.inspect
       if @portfolio_item.save
         flash[:notice] = 'portfolio item successfully created'
-        redirect_to crafter_path(@crafter)
+        redirect_to crafter_portfolio_item_path(@crafter)
       else
         flash[:alert] = 'failed to create portfolio item!'
         render 'new'
@@ -39,15 +41,20 @@ class PortfolioItemsController < ApplicationController
 
     def update
       @crafter = Crafter.find(params[:crafter_id])
-      puts @crafter
-      if (@portfolio_item.update(portfolio_params))
-        flash[:notice] = 'portfolio item successfully updated'
-        redirect_to crafter_path(@crafter)
-      else
-        flash[:alert] = 'failed to update portfolio item!'
-        render 'edit'
+          if params[:portfolio_item][:media_link] && params[:portfolio_item][:media_link] != ''
+            uploaded_file = params[:portfolio_item][:media_link].path
+            cloudnary_file = Cloudinary::Uploader.upload(uploaded_file)
+            params[:portfolio_item][:media_link] = cloudnary_file['public_id']
+          end
+
+          if @portfolio_item.update(portfolio_params)
+            flash[:notice] = 'portfolio item successfully updated'
+            redirect_to crafter_portfolio_items_path(@crafter)
+          else
+            flash[:alert] = 'failed to update portfolio item!'
+            render 'edit'
+            end
       end
-    end
 
     def destroy
       @crafter = Crafter.find(params[:crafter_id])

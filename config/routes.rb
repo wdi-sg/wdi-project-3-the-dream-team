@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get '/' => 'pages#index'
   get '/pages/switch'
   get 'about' => 'pages#about'
-  get '/portfolios' => 'portfolios#all_portfolios'
+  get '/portfolios' => 'portfolio_items#all_portfolios'
 
   resources :crafters do
     resources :portfolio_items
