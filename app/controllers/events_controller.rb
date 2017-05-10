@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show filter]
+  skip_before_action :authenticate_user!, only: %i[index show filter search search_enter]
 
-  before_action :find_event, except: %i[index new create filter]
+  before_action :find_event, except: %i[index new create filter search search_enter]
   before_action :form_event, only: %i[create update]
 
   def index
@@ -67,8 +67,29 @@ class EventsController < ApplicationController
   end
 
   def search
+
     p 'search request received'
     p params
+
+    @search_events = Event.joins(:crafter)
+    .where('crafters.name ~* ?', params[:search_input])
+    .or(Event.joins(:crafter)
+    .where('events.name ~* ?', params[:search_input]))
+
+    respond_to do |format|
+      format.js
+      format.json { render json: { success: true, data: @search_events }}
+    end
+  end
+
+  def search_enter
+    @filtered = Event.joins(:crafter)
+    .where('crafters.name ~* ? or events.name ~* ?', params[:search_input], params[:search_input])
+
+    respond_to do |format|
+      format.js { render action: 'filter' }
+    end
+
   end
 
   def my_events
@@ -79,15 +100,12 @@ class EventsController < ApplicationController
     render 'events/index'
   end
 
-
-  helper_method :check_time
-<<<<<<< HEAD
   def search
     p 'search request received'
     p params
   end
-=======
->>>>>>> 82cdd12ea8498293324f8f8ee93eac382cba38e4
+
+  helper_method :check_time
 
   private
 

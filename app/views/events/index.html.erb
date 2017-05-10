@@ -2,87 +2,47 @@
   <%= image_tag ('homepage_quote1.png'), :class => 'materialboxed', :style=> 'width:30%; align-item: center; margin: auto; margin-top: 5%;' %>
   <!-- <img class="materialboxed" width="650" src="/owl1.jpg"> -->
 </div>
+
 <%# Secondary Navigation bar %>
-<div class="container second-nav-bar">
-  <div class="row">
-    <div class="grid-example col s12 offset-s2">
-        <a href="/", class='black-text second-nav-links col s2 center-align'>Home</a>
-        <a href="/events", class='black-text second-nav-links col s2 center-align'>Events</a>
-        <a href="/crafters", class='black-text second-nav-links col s2 center-align'>Crafters</a>
-        <a href="/portfolios", class='black-text second-nav-links col s2 center-align'>Works</a>
-    </div>
-  </div>
-  <div class="divider"></div>
-    <div class="row right-align" id = "create-new-event-btn">
-      <% if user_signed_in? %>
-        <%# if is_crafter_authenticated? %>
-        <%= link_to "Create New Event", new_event_path, class: "waves-effect waves-light btn white black-text" %>
-        <%# end %>
-      <% end %>
-    </div>
-  <div class="row">
-      <div class="col s12">
-        <% @all_events.each do |event| %>
-        <div class="col s4">
-          <div class="card small">
-            <div class="card-image waves-effect waves-block waves-light">
-              <img src="<%= event.image_link %>" alt="Image" class='activator'></td>
-            </div>
-            <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4"><%= event.name %><i class="material-icons right">more_vert</i></span>
-              <p><a href="<%= event_path(event)%>">Event</a></p>
-            </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">More Info<i class="material-icons right">close</i></span>
-              <!-- <p>why can't i put a table here???</p> -->
-              <div class="divider"></div>
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Description:</td>
-                    <td><%= event.description %></td>
-                  </tr>
-                  <tr>
-                    <td>Crafter:</td>
-                    <td><%= event.crafter.name %></td>
-                  </tr>
-                </table>
-                <div class="divider"></div>
-                <table>
-                  <tr>
-                    <td style='text-decoration: underline;'>Upcoming Sessions:</td>
-                  </tr>
-                  <% if event.sessions.length > 0 %>
-                    <% event.sessions.each do |session| %>
-                      <tr>
-                        <td>
-                          <li><%= session.datetime_from.to_formatted_s(:long) %> </li>
+<%= render 'partials/second_nav' %>
 
-                        </td>
-                      </tr>
-                    <!--end of do session loop  -->
-                    <% end %>
-                  <% else %>
-                  <tr>
-                    <td>Sorry, there are no upcoming sessions</td>
-                  </tr>
-                  <% end %>
-
-                </table>
-              </tbody>
-            </table>
-          </div>
+  <div class="container">
+    <!-- category select -->
+    <div class="row">
+      <div class="col s4">
+        <%= select "event", "category_id",
+              options_from_collection_for_select(@categories, 'id', 'name'),
+                {
+                  include_blank: 'All',
+                  prompt: 'Find From Category'
+                },
+              class: 'categories_select'
+        %>
+      </div>
+      <div class="col s8 search-box" id="search-events">
+        <%= text_field_tag 'search', nil, {placeholder: 'Search for event or crafter', id: 'autocomplete'} %>
+        <div class="z-depth-3" id="search-item-list">
+          <!-- search item list will be populated here -->
         </div>
-        </div>
-      <% end %>
       </div>
     </div>
+    <!-- end -->
+    <%# maybe move new event link to first nav? %>
+    <div class="row">
+      <% if user_signed_in? %>
+        <% if is_crafter_authenticated? %>
+          <%= link_to "New Event", new_event_path, class: "waves-effect waves-light btn" %>
+        <% end %>
+      <% end %>
+    </div>
+    <%# individual event card will be rendered as partial below %>
+    <div class="row">
+      <div class="col s12 cards-container" id="event-list">
+        <%= render partial: "events/event", collection: @all_events %>
+      </div>
+    </div>
+    <%# end card render %>
     <div class = 'row right-align'>
       <%= will_paginate @all_events, renderer: MaterializePagination::Rails %>
     </div>
 </div>
-
-
-<pre>
-<%# @all_events.inspect %>
-</pre>

@@ -1,5 +1,4 @@
 $(document).on('turbolinks:load', function () {
-  // alert('test')
 
   // nav bar dropdown jquery plugin
   $('.dropdown-button').dropdown()
@@ -30,6 +29,67 @@ $(document).on('turbolinks:load', function () {
       type: 'GET'
     })
   })
+  // keyup listener on search bar to send ajax request
+  $('#autocomplete').on('keyup', function (e) {
+    if ($(this).val().length === 0) {
+      $('div#search-item-list').empty()
+    } else if ($(this).val().length >= 3 && e.key !== 'Enter') {
+      console.log('ajax without enter key')
+      $.ajax({
+        url: '/search_events',
+        data: {
+          search_input: $(this).val()
+        }
+      })
+    } else if ($(this).val().length >= 3 && e.key === 'Enter') {
+      console.log('ajax with enter key')
+      $('div#search-item-list').empty()
+      $.ajax({
+        url: '/search_enter_events',
+        data: {
+          search_input: $(this).val()
+        }
+      }).done(function (res) {
+        $('#autocomplete').val('')
+      })
+    }
+  })
+  // to close search populated list if outside of element is clicked
+  $(document).on('click', function (event) {
+    if (!$(event.target).closest('#search-events').length) {
+      $('div#search-item-list').empty()
+    }
+  })
+
+  // $('#autocomplete').on('keyup', function (e) {
+  //   if (e.key === 'Enter') {
+  //     console.log(e.key)
+  //     $('div#search-item-list').empty()
+  //     $.ajax({
+  //       url: '/search_events',
+  //       data: {
+  //         enter: true,
+  //         search_input: $(this).val()
+  //       }
+  //     })
+  //   }
+  // })
+
+  // $('#autocomplete').on('keypress', function (e) {
+  //   console.log($(this).val())
+  //   $.ajax({
+  //     url: '/search_events',
+  //     data: {
+  //       search_input: $(this).val()
+  //     },
+  //     type: 'GET',
+  //     dataType: 'json'
+  //   })
+  //   .done(function (response) {
+  //     console.log(response.data)
+  //
+  //   })
+  // })
 
   // search bar autocomplete jquery-ui
 //   $('input#autocomplete').autocomplete({

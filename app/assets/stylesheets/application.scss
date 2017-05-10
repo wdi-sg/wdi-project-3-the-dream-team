@@ -12,22 +12,58 @@
   .cal-format {
     height: 80px;
     overflow-y: scroll;
+/* search list <li> */
+div#search-events {
+  position: relative;
+}
+
+div#search-item-list {
+  position: absolute;
+  background-color: white;
+  overflow-y: auto;
+  width: 100%;
+  max-height: 50vh;
+  z-index: 999;
+}
+
+div.item-box {
+  position: relative;
+  height: 60px;
+  div.inside-item-box {
+    padding: 10px;
+    // margin: 10px 0 10px 15px;
+  }
+  &:hover {
+    background-color: #EEEEEE;
+  }
+  li {
+    list-style-type: none;
+    clear: both;
+    color: rgba(0, 0, 0, 0.87);
+    min-height: 50px;
+    line-height: 1.5rem;
+    width: 100%;
     text-align: left;
-  }
-
-  .simple-calendar .day {
-    height: 100px;
-  }
-
-  /* for edit event modal box */
-
-  #edit_event {
-    max-height: 85%
+    text-transform: none;
   }
 }
 
-/* to align material icons DOESNT WORK */
+.cal-format {
+  height: 80px;
+  overflow-y: scroll;
+  text-align: left;
+}
 
+.simple-calendar .day {
+  height: 100px;
+}
+
+/* for edit event modal box */
+#edit_event {
+  max-height: 85%
+}
+
+/* to align material icons DOESNT WORK */
 .material-icons {
     display: inline-flex;
     align-items: center;
