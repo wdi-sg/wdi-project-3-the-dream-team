@@ -35,7 +35,8 @@ Rails.application.routes.draw do
     resources :events
   end
 
-  get '/filter_events', to: 'events#filter'
+  post '/filter_events', to: 'events#filter'
+  get '/filter_events', to: 'events#filter_paginate'
 
   get '/search_events', to: 'events#search'
   get '/search_enter_events', to: 'events#search_enter'
