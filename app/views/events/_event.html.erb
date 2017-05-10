@@ -1,11 +1,11 @@
 <div class="col s4">
   <div class="card small">
     <div class="card-image waves-effect waves-block waves-light">
-      <img src="<%= event.image_link %>" alt="Image" class='activator'></td>
+      <img src="<%= event.image_link && event.image_link != '' ? event.image_link : asset_path('default_event.png') %>" alt="Image" class="activator" width="313" height="235"></td>
     </div>
     <div class="card-content">
       <span class="card-title activator grey-text text-darken-4"><%= event.name %><i class="material-icons right">more_vert</i></span>
-      <p><a href="<%= event_path(event) %>">Event</a></p>
+      <!-- <p><a href="<%= event_path(event) %>">Event</a></p> -->
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">More Info<i class="material-icons right">close</i></span>

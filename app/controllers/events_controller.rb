@@ -81,11 +81,14 @@ class EventsController < ApplicationController
 
     p 'search request received'
     p params
+    p 'hi'
 
     @search_events = Event.joins(:crafter)
     .where('crafters.name ~* ?', params[:search_input])
     .or(Event.joins(:crafter)
     .where('events.name ~* ?', params[:search_input]))
+
+    p @search_events.inspect
 
     respond_to do |format|
       format.js
@@ -109,11 +112,6 @@ class EventsController < ApplicationController
     @categories = Category.all
     @all_events = @crafterEvents.paginate(:page => params[:page], :per_page => 15)
     render 'events/index'
-  end
-
-  def search
-    p 'search request received'
-    p params
   end
 
   helper_method :check_time
