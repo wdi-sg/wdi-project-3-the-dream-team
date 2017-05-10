@@ -6,40 +6,41 @@
 @import "simple_calendar";
 
 /* search list <li> */
-div#search-events {
+div.search-box {
   position: relative;
-}
 
-div#search-item-list {
-  position: absolute;
-  background-color: white;
-  overflow-y: auto;
-  width: 100%;
-  max-height: 50vh;
-  z-index: 999;
-}
-
-div.item-box {
-  position: relative;
-  height: 60px;
-  div.inside-item-box {
-    padding: 10px;
-    // margin: 10px 0 10px 15px;
-  }
-  &:hover {
-    background-color: #EEEEEE;
-  }
-  li {
-    list-style-type: none;
-    clear: both;
-    color: rgba(0, 0, 0, 0.87);
-    min-height: 50px;
-    line-height: 1.5rem;
+  div.search-item-list {
+    position: absolute;
+    background-color: white;
+    overflow-y: auto;
     width: 100%;
-    text-align: left;
-    text-transform: none;
+    max-height: 50vh;
+    z-index: 999;
+    
+    div.item-box {
+      position: relative;
+      height: 60px;
+      div.inside-item-box {
+        padding: 10px;
+        // margin: 10px 0 10px 15px;
+      }
+      &:hover {
+        background-color: #EEEEEE;
+      }
+      li {
+        list-style-type: none;
+        clear: both;
+        color: rgba(0, 0, 0, 0.87);
+        min-height: 50px;
+        line-height: 1.5rem;
+        width: 100%;
+        text-align: left;
+        text-transform: none;
+      }
+    }
   }
 }
+
 
 .cal-format {
   height: 80px;

@@ -36,9 +36,12 @@ Rails.application.routes.draw do
   end
 
   get '/filter_events', to: 'events#filter'
-
   get '/search_events', to: 'events#search'
   get '/search_enter_events', to: 'events#search_enter'
+
+  get '/filter_crafters', to: 'crafters#filter'
+  get '/search_crafters', to: 'crafters#search'
+  get '/search_enter_crafters', to: 'crafters#search_enter'
 
   resources :events do
     resources :sessions
