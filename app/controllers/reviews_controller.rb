@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :find_review, only: [:edit, :update, :destroy]
 
   def index
     @event = Event.find(params[:event_id])
@@ -33,6 +34,9 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    @event = Event.find(params[:event_id])
+    puts @event.inspect
+    puts @review.inspect
     if @review.destroy
       redirect_to event_path(@event)
     else
@@ -43,6 +47,10 @@ class ReviewsController < ApplicationController
   private
   def review_params
     params.require(:review).permit(:description, :rating)
+  end
+
+  def find_review
+      @review = Review.find(params[:id])
   end
 
 end

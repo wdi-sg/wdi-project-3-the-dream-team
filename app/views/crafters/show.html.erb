@@ -71,8 +71,9 @@
         </div>
       <% end %>
       <div class="card-panel">
-        <h5>Events</h5>
-        <a href= '<%= crafter_events_path(@crafter)%>' class='waves-effect waves-light btn btn-small white black-text vertical-align'>View More</a>
+        <h5 class = 'col s10'>Events</h5>
+        <a href= '<%= crafter_events_path(@crafter)%>' class='waves-effect waves-light btn btn-small white black-text vertical-align col s2'>View More</a>
+        <div class="divider"></div>
         <div class="row">
         <% for i in -6..-1 %>
           <% if @crafter.events[i] %>
@@ -90,10 +91,11 @@
       </div>
     </div>
 
-
+<!-- Portfolio Card Panel -->
       <div class="card-panel">
-        <h5>Portfolio</h5>
-        <a href= '<%= crafter_portfolio_items_path(@crafter)%>' class='waves-effect waves-light btn btn-small white black-text vertical-align'>View More</a>
+        <h5 class = 'col s10'>Portfolio</h5>
+        <a href= '<%= crafter_portfolio_items_path(@crafter)%>' class='waves-effect waves-light btn btn-small white black-text vertical-align col s2'>View More</a>
+        <div class="divider"></div>
         <div class="row">
         <% for i in -6..-1 %>
           <% if @crafter.portfolio_items[i] %>
@@ -110,6 +112,35 @@
         <% end %>
         </div>
       </div>
+<!-- End of Portfolio Card Panel -->
+
+
+<!-- Review Card Panel -->
+      <div class="card-panel">
+        <h5>Reviews</h5>
+        <div class="divider"></div>
+       <% @crafter.events.each do |event|%>
+               <% event.reviews.each do |review| %>
+               <div class="row" style = "margin-top: 3%;">
+                 <div class="col s2" >
+                   <div class="center-align vertical-align">
+                     <%= cl_image_tag(Crafter.find(review.craftee.user.crafter).profilePic_link, :width => 50, :height => 50, :crop => :fill, :gravity => :face,
+                     :radius => :max)%>
+                     <p class='center-align'><%= link_to Craftee.find(review.craftee_id).name, crafter_path(Crafter.find(review.craftee.user.crafter)) %></p>
+                   </div>
+                 </div>
+                 <div class="col s8">
+                   <%=review.description%>
+                 </div>
+               </div>
+               <div class='divider'></div>
+       <% end %>
+       <!-- end of crafter.events.each do -->
+   <% end %>
+
+
+      </div>
+<!-- End of Review Card Panel -->
 
       <!-- end of div class col 9 -->
     </div>
