@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show filter search search_enter]
+  skip_before_action :authenticate_user!, only: %i[index show filter search search_enter filter_paginate]
 
   before_action :find_event, except: %i[index new create filter search search_enter filter_paginate]
   before_action :form_event, only: %i[create update]
@@ -12,15 +12,18 @@ class EventsController < ApplicationController
   end
 
   def show
+    @categories = Category.all
   end
 
   def new
+    @categories = Category.all
     unless @new_event
       @new_event = Event.new
     end
   end
 
   def create
+    @categories = Category.all
     @crafter = current_crafter
 
     @new_event = Event.new(@form_data)
@@ -29,15 +32,17 @@ class EventsController < ApplicationController
       flash[:notice] = 'Event created successfully!'
       redirect_to event_path(@new_event)
     else
-      flash[:alert] = "Failed to create event! #{@form_data.inspect} form data"
+      flash[:alert] = "Failed to create event!"
       render 'events/new'
     end
   end
 
   def edit
+    @categories = Category.all
   end
 
   def update
+    @categories = Category.all
     p "update params here #{@form_data.inspect}"
     if @event.update(@form_data)
       flash[:notice] = 'Event updated! successfully!'
@@ -78,14 +83,12 @@ class EventsController < ApplicationController
   end
 
   def search
-
-    p 'search request received'
-    p params
-
     @search_events = Event.joins(:crafter)
     .where('crafters.name ~* ?', params[:search_input])
     .or(Event.joins(:crafter)
     .where('events.name ~* ?', params[:search_input]))
+
+    p @search_events.inspect
 
     respond_to do |format|
       format.js
@@ -103,22 +106,12 @@ class EventsController < ApplicationController
   end
 
   def my_events
-    #code
     @crafter = Crafter.find(params[:id])
     @crafterEvents = @crafter.events
     @categories = Category.all
     @all_events = @crafterEvents.paginate(:page => params[:page], :per_page => 15)
     render 'events/index'
   end
-
-
-
-  def search
-    p 'search request received'
-    p params
-  end
-
-  helper_method :check_time
 
   private
 

@@ -7,4 +7,6 @@ class Craftee < ApplicationRecord
   has_many :reviews
 
   has_many :fav_events
+
+  validates :name, presence: true
 end

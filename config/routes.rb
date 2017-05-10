@@ -35,11 +35,16 @@ Rails.application.routes.draw do
     resources :events
   end
 
+  # get '/filter_events', to: 'events#filter' # This has been replaced with post
   post '/filter_events', to: 'events#filter'
   get '/filter_events', to: 'events#filter_paginate'
 
   get '/search_events', to: 'events#search'
   get '/search_enter_events', to: 'events#search_enter'
+
+  get '/filter_crafters', to: 'crafters#filter'
+  get '/search_crafters', to: 'crafters#search'
+  get '/search_enter_crafters', to: 'crafters#search_enter'
 
   resources :events do
     resources :sessions

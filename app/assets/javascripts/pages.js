@@ -18,7 +18,7 @@ $(document).on('turbolinks:load', function () {
     $('span#booking_amount').text($amount)
   })
 
-  // on change listener on category select to send ajax request
+  // category filter on events index
   $('select#event_category_id').on('change', function (e) {
     console.log($(this).val())
     $.ajax({
@@ -29,10 +29,21 @@ $(document).on('turbolinks:load', function () {
       type: 'POST'
     })
   })
+  // category filter on crafters index
+  $('select#crafter_category_id').on('change', function (e) {
+    console.log($(this).val())
+    $.ajax({
+      url: '/filter_crafters',
+      data: {
+        category_id: $(this).val()
+      },
+      type: 'GET'
+    })
+  })
   // keyup listener on search bar to send ajax request
-  $('#autocomplete').on('keyup', function (e) {
+  $('#autocomplete-events').on('keyup', function (e) {
     if ($(this).val().length === 0) {
-      $('div#search-item-list').empty()
+      $('div.search-item-list').empty()
     } else if ($(this).val().length >= 3 && e.key !== 'Enter') {
       console.log('ajax without enter key')
       $.ajax({
@@ -43,21 +54,46 @@ $(document).on('turbolinks:load', function () {
       })
     } else if ($(this).val().length >= 3 && e.key === 'Enter') {
       console.log('ajax with enter key')
-      $('div#search-item-list').empty()
       $.ajax({
         url: '/search_enter_events',
         data: {
           search_input: $(this).val()
         }
       }).done(function (res) {
-        $('#autocomplete').val('')
+        $('#autocomplete-events').val('')
+        $('div.search-item-list').empty()
+      })
+    }
+  })
+
+  $('#autocomplete-crafters').on('keyup', function (e) {
+    if ($(this).val().length === 0) {
+      $('div.search-item-list').empty()
+    } else if ($(this).val().length >= 3 && e.key !== 'Enter') {
+      console.log('ajax without enter key')
+      $.ajax({
+        url: '/search_crafters',
+        data: {
+          search_input: $(this).val()
+        }
+      })
+    } else if ($(this).val().length >= 3 && e.key === 'Enter') {
+      console.log('ajax with enter key')
+      $.ajax({
+        url: '/search_enter_crafters',
+        data: {
+          search_input: $(this).val()
+        }
+      }).done(function (res) {
+        $('#autocomplete-crafters').val('')
+        $('div.search-item-list').empty()
       })
     }
   })
   // to close search populated list if outside of element is clicked
   $(document).on('click', function (event) {
-    if (!$(event.target).closest('#search-events').length) {
-      $('div#search-item-list').empty()
+    if (!$(event.target).closest('.search-events').length) {
+      $('div.search-item-list').empty()
     }
   })
 

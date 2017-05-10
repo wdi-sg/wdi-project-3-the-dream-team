@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :crafter
-  belongs_to :category
+  belongs_to :category, optional: true
 
   has_many :sessions
   has_many :bookings, through: :sessions
@@ -11,4 +11,6 @@ class Event < ApplicationRecord
   has_many :fav_events
 
   has_one :featured_event
+
+  validates :name, presence: true
 end

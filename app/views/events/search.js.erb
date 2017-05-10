@@ -1,4 +1,4 @@
 // $('div#search-item-list').html("<ul class='dropdown-content-2'></ul>")
 // $('ul.dropdown-content-2').html("<%= escape_javascript(render partial: 'events/searchitem', collection: @search_events, as: 'item') %>")
-
-$('div#search-item-list').html("<%= escape_javascript(render partial: 'events/searchitem', collection: @search_events, as: 'item') %>")
+$('div.search-item-list')
+  .html("<%= escape_javascript(render partial: 'events/searchitem', collection: @search_events, as: 'item') %>")

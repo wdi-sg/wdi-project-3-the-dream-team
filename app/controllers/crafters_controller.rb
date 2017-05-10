@@ -1,11 +1,11 @@
 class CraftersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show, :index]
+  skip_before_action :authenticate_user!, only: %i[show index filter search search_enter]
   before_action :find_crafter, only: %i[show edit update destroy]
   before_action :form_crafter, only: %i[create update]
 
   def index
+    @categories = Category.all
     @all_crafters = Crafter.all.paginate(:page => params[:page], :per_page => 15)
-
   end
 
   def show
@@ -22,6 +22,7 @@ class CraftersController < ApplicationController
   end
 
   def edit
+    @categories = Category.all
   end
 
   def update
@@ -44,6 +45,38 @@ class CraftersController < ApplicationController
       redirect_to crafters_path
     else
       render 'crafters/show'
+    end
+  end
+
+  def filter
+    p params[:category_id]
+    if params[:category_id] == ''
+      @filtered = Crafter.all
+    else
+      @filtered = Crafter.where(category_id: params[:category_id])
+    end
+
+    respond_to do |format|
+      format.js
+      # format.json { render json: {  success: true,
+      #                               data: @filtered }}
+    end
+  end
+
+  def search
+    @search_crafters = Crafter.where('name ~* ?', params[:search_input])
+
+    respond_to do |format|
+      format.js
+      format.json { render json: { success: true, data: @search_crafters }}
+    end
+  end
+
+  def search_enter
+    @filtered = Crafter.where('name ~* ?', params[:search_input])
+
+    respond_to do |format|
+      format.js { render action: 'filter' }
     end
   end
 

@@ -21,7 +21,7 @@ end
   p 'user creation succeeded'
 
   @user.craftee = Craftee.create(
-  name: Faker::Name.name
+    name: Faker::Name.name
   )
   p 'craftee creation succeeded'
 
@@ -111,8 +111,6 @@ p 'crafter creation succeeded'
 
 p 'event creation succeeded'
 
-@user.craftee = Craftee.create
-
 @user = User.create(
   email: 'craftee@mail.com',
   password: '123456'
@@ -136,10 +134,6 @@ p 'crafter creation succeeded'
 
 p 'event creation succeeded'
 
-@user.craftee = Craftee.create
-
-
-
 @user.crafter = Crafter.create(
   name: Faker::Name.name,
   biography: Faker::StarWars.quote,
@@ -149,8 +143,20 @@ p 'event creation succeeded'
 p 'crafter creation succeeded'
 
 @user.crafter.portfolio_items << PortfolioItem.create(
-  media_link: Faker::Commerce.product_name,
+  media_link: 'featuredEvents1.png',
   description: Faker::StarWars.quote,
   item_type: rand(9) + 1
+)
+
+@user.crafter.portfolio_items << PortfolioItem.create(
+  media_link: 'featuredEvents2.png',
+  description: Faker::StarWars.quote,
+  item_type: 'image'
+)
+
+@user.crafter.portfolio_items << PortfolioItem.create(
+  media_link: 'featuredEvents3.png',
+  description: Faker::StarWars.quote,
+  item_type: 'image'
 )
 p 'portfolio items creation succeeded'

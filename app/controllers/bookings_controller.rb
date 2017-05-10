@@ -28,8 +28,8 @@ class BookingsController < ApplicationController
       crafter = @session.event.crafter
       user = User.find(crafter.user_id)
 
-      # Charge $10.
-      amount = 1000
+      # Charge $10. => 1000 (stripe amount in cents)
+      amount = @new_booking.amount * 100
       # Calculate the fee amount that goes to the application.
       fee = (amount * Rails.application.secrets.fee_percentage).to_i
 

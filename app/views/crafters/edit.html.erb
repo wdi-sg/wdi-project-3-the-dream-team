@@ -3,123 +3,80 @@
   <%= form_for @crafter do |f| %>
 
   <%# start input %>
-  <div>
-    <div>
-      <%= f.label :name %>
-    </div>
-    <div>
+  <div class="row">
+    <div class="input-field col s12">
       <%= f.text_field :name %>
+      <%= f.label :name, class: 'active' %>
     </div>
   </div>
-  <%# end input %>
-
-  <%# start input %>
-  <div class="file-field input-field">
-    <div class="waves-effect waves-light btn btn-medium white black-text">
-      <span>Upload Profile Pic</span>
-      <%= f.file_field :profilePic_link %>
-    </div>
-    <div class="file-path-wrapper">
-      <input class="file-path validate" type="text">
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.text_area :biography, class: 'materialize-textarea' %>
+      <%= f.label :biography, class: 'active' %>
     </div>
   </div>
-  <%# end input %>
-
-  <%# start input %>
-  <div>
-    <div>
-      <%= f.label :biography %>
-    </div>
-    <div class="field-body">
-      <%= f.text_area :biography %>
-    </div>
-  </div>
-  <%# end input %>
-
-  <%# start input %>
-  <div>
-    <div>
-      <%= f.label :profession %>
-    </div>
-    <div class="field-body">
+  <div class="row">
+    <div class="input-field col s12">
       <%= f.text_field :profession %>
+      <%= f.label :profession, class: 'active' %>
     </div>
   </div>
-  <%# end input %>
-
-  <%# start input %>
-  <div>
-    <div>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.select(:category_id) do %>
+        <% @categories.each do |c| -%>
+          <%= content_tag(:option, c.name, value: c.id) %>
+        <% end %>
+      <% end %>
       <%= f.label :category_id %>
     </div>
-    <div class="field-body">
-      <%= f.text_field :category_id, class: 'input' %>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.telephone_field :contact_number %>
+      <%= f.label :contact_number %>
     </div>
   </div>
-  <%# end input %>
-
-  <%# start input %>
-  <div>
-    <div class="field-label is-normal">
-      <%= f.label :contact_number, class: 'label' %>
-    </div>
-    <div class="field-body">
-      <%= f.text_field :contact_number, class: 'input' %>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.email_field :contact_email, class: 'validate' %>
+      <%= f.label :contact_email %>
     </div>
   </div>
-  <%# end input %>
-
-  <%# start input %>
-  <div class="field is-horizontal">
-    <div class="field-label is-normal">
-      <%= f.label :contact_email, class: 'label' %>
-    </div>
-    <div class="field-body">
-      <%= f.text_field :contact_email, class: 'input' %>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.url_field :facebook_link, class: 'validate' %>
+      <%= f.label :facebook_link %>
     </div>
   </div>
-  <%# end input %>
-
-  <%# start input %>
-  <div class="field is-horizontal">
-    <div class="field-label is-normal">
-      <%= f.label :facebook_link, class: 'label' %>
-    </div>
-    <div class="field-body">
-      <%= f.text_field :facebook_link, class: 'input' %>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.url_field :twitter_link, class: 'validate' %>
+      <%= f.label :twitter_link %>
     </div>
   </div>
-  <%# end input %>
-
-  <%# start input %>
-  <div class="field is-horizontal">
-    <div class="field-label is-normal">
-      <%= f.label :twitter_link, class: 'label' %>
-    </div>
-    <div class="field-body">
-      <%= f.text_field :twitter_link, class: 'input' %>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.url_field :website_link, class: 'validate' %>
+      <%= f.label :website_link %>
     </div>
   </div>
-  <%# end input %>
-
-  <%# start input %>
-  <div class="field is-horizontal">
-    <div class="field-label is-normal">
-      <%= f.label :website_link, class: 'label' %>
-    </div>
-    <div class="field-body">
-      <%= f.text_field :website_link, class: 'input' %>
+  <div class="row">
+    <div class="file-field input-field col s12">
+      <div class="btn">
+        <span>Upload Profile Picture</span>
+        <input type="file">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+      <%= f.file_field :profilePic_link %>
     </div>
   </div>
-  <%# end input %>
-
-  <div class="field-label is-normal" id="edit-profile-update-button">
-    <%= f.submit 'Update', class: 'waves-effect waves-light btn btn-medium white black-text'%>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.submit 'Confirm', class: 'waves-effect waves-light btn'%>
+    </div>
   </div>
   <% end %>
 </div>
-</div>
-
-<pre>
-  <%# @crafter.inspect %>
-</pre>

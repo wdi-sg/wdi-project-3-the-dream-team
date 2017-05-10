@@ -1,0 +1,27 @@
+<div class="col s4">
+  <div class="card small">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img src="<%= crafter.profilePic_link %>" alt="Image" class='activator'></td>
+    </div>
+
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4"><%= crafter.name %><i class="material-icons right">more_vert</i></span>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">Crafter Details<i class="material-icons right">close</i></span>
+      <!-- <p>why can't i put a table here???</p> -->
+      <div class="divider"></div>
+      <table>
+        <tbody>
+          <tr>
+            <td>Crafter:</td>
+            <td><%= crafter.name %></td>
+          </tr>
+          <tr>
+            <td>Blurb:</td>
+            <td><%= crafter.biography %></td>
+          </tr>
+        </table>
+    </div>
+  </div>
+</div>
