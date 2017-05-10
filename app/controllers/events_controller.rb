@@ -66,6 +66,11 @@ class EventsController < ApplicationController
     end
   end
 
+  def search
+    p 'search request received'
+    p params
+  end
+
   def my_events
     #code
     @crafter = Crafter.find(params[:id])
@@ -76,10 +81,13 @@ class EventsController < ApplicationController
 
 
   helper_method :check_time
+<<<<<<< HEAD
   def search
     p 'search request received'
     p params
   end
+=======
+>>>>>>> 82cdd12ea8498293324f8f8ee93eac382cba38e4
 
   private
 

@@ -48,7 +48,7 @@ Rails.application.routes.draw do
   #  - oauth flow
   get '/connect/oauth' => 'stripe#oauth', as: 'stripe_oauth'
   get '/connect/confirm' => 'stripe#confirm', as: 'stripe_confirm'
-  get '/connect/deauthorize' => 'stripe#deauthorize', as: 'stripe_deauthorize'
+  post '/connect/deauthorize' => 'stripe#deauthorize', as: 'stripe_deauthorize'
   #  - create accounts
   # post '/connect/managed' => 'stripe#managed', as: 'stripe_managed'
   # post '/connect/standalone' => 'stripe#standalone', as: 'stripe_standalone'
