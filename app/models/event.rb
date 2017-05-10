@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :crafter
-  belongs_to :category
+  belongs_to :category, optional: true
 
   has_many :sessions
   has_many :bookings, through: :sessions
