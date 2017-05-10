@@ -5,6 +5,16 @@
 @import "materialize";
 @import "simple_calendar";
 
+/* testing ajax with fav event */
+#favourite {
+  background-color: red;
+}
+
+.cal-format {
+  height: 80px;
+  overflow-y: scroll;
+}
+
 /* search list <li> */
 div.search-box {
   position: relative;
@@ -255,4 +265,8 @@ td {
 
 #all-portfolio-items-container{
   margin-top: 1%;
+}
+
+.pagination a li.active{
+  color: #fff;
 }

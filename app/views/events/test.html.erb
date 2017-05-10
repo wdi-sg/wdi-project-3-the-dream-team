@@ -1,0 +1,136 @@
+<div class="row">
+  <%= image_tag ('homepage_quote1.png'), :class => 'materialboxed', :style=> 'width:30%; align-item: center; margin: auto; margin-top: 5%;' %>
+  <!-- <img class="materialboxed" width="650" src="/owl1.jpg"> -->
+</div>
+<%# Secondary Navigation bar %>
+<div class="container second-nav-bar">
+  <div class="row">
+    <div class="grid-example col s12 offset-s2">
+        <a href="/", class='black-text second-nav-links col s2 center-align'>Home</a>
+        <a href="/events", class='black-text second-nav-links col s2 center-align'>Events</a>
+        <a href="/crafters", class='black-text second-nav-links col s2 center-align'>Crafters</a>
+        <a href="/portfolios", class='black-text second-nav-links col s2 center-align'>Works</a>
+    </div>
+  </div>
+  <div class="divider"></div>
+    <div class="row right-align" id = "create-new-event-btn">
+      <% if user_signed_in? %>
+        <%# if is_crafter_authenticated? %>
+        <%= link_to "Create New Event", new_event_path, class: "waves-effect waves-light btn white black-text" %>
+        <%# end %>
+      <% end %>
+    </div>
+  <div class="row">
+      <div class="col s12">
+        <% @all_events.each do |event| %>
+        <div class="col s4">
+          <div class="card small">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img src="<%= event.image_link %>" alt="Image" class='activator'></td>
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4"><%= event.name %><i class="material-icons right">more_vert</i></span>
+              <p><a href="<%= event_path(event)%>">Event</a></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">More Info<i class="material-icons right">close</i></span>
+              <!-- <p>why can't i put a table here???</p> -->
+              <div class="divider"></div>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Description:</td>
+                    <td><%= event.description %></td>
+                  </tr>
+                  <tr>
+                    <td>Crafter:</td>
+                    <td><%= event.crafter.name %></td>
+                  </tr>
+                </table>
+                <div class="divider"></div>
+                <table>
+                  <tr>
+                    <td style='text-decoration: underline;'>Upcoming Sessions:</td>
+                  </tr>
+                  <% if event.sessions.length > 0 %>
+                    <% event.sessions.each do |session| %>
+                      <tr>
+                        <td>
+                          <li><%= session.datetime_from.to_formatted_s(:long) %> </li>
+
+                        </td>
+                      </tr>
+                    <!--end of do session loop  -->
+                    <% end %>
+                  <% else %>
+                  <tr>
+                    <td>Sorry, there are no upcoming sessions</td>
+                  </tr>
+                  <% end %>
+
+                </table>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+</div>
+
+<%= will_paginate @all_events %>
+
+
+
+
+
+
+<pre>
+<%# @all_events.inspect %>
+</pre>
+
+
+
+
+<div class="row">
+  <%= image_tag ('homepage_quote1.png'), :class => 'materialboxed', :style=> 'width:30%; align-item: center; margin: auto; margin-top: 5%;' %>
+  <!-- <img class="materialboxed" width="650" src="/owl1.jpg"> -->
+</div>
+<%# Secondary Navigation bar %>
+<div class="container second-nav-bar">
+  <div class="row">
+    <div class="grid-example col s12 offset-s2">
+        <a href="/", class='black-text second-nav-links col s2 center-align'>Home</a>
+        <a href="/events", class='black-text second-nav-links col s2 center-align'>Events</a>
+        <a href="/crafters", class='black-text second-nav-links col s2 center-align'>Crafters</a>
+        <a href="/portfolios", class='black-text second-nav-links col s2 center-align'>Works</a>
+    </div>
+  </div>
+  <div class="divider"></div>
+    <div class="row right-align" id = "create-new-event-btn">
+      <% if user_signed_in? %>
+        <%# if is_crafter_authenticated? %>
+        <%= link_to "Create New Event", new_event_path, class: "waves-effect waves-light btn white black-text" %>
+        <%# end %>
+      <% end %>
+    </div>
+
+    <% @eventsPaginate.each do |event| %>
+      <div>
+        <%= event.name %>
+      </div>
+    <% end %>
+
+</div>
+
+<%= will_paginate @eventsPaginate %>
+
+
+
+
+
+
+<pre>
+<%# @all_events.inspect %>
+</pre>

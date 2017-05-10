@@ -13,6 +13,10 @@ gem "jquery-slick-rails"
 # jquery-ui
 gem 'jquery-ui-rails'
 
+# will_paginate
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-materialize', github: 'harrybournis/will_paginate-materialize'
+
 
 gem 'cloudinary'
 # materialize

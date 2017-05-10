@@ -5,8 +5,10 @@ class EventsController < ApplicationController
   before_action :form_event, only: %i[create update]
 
   def index
-    @all_events = Event.all
+    @all_events = Event.all.paginate(:page => params[:page], :per_page => 15)
     @categories = Category.all
+    # @eventsPaginate = Event.all.paginate(:page => params[:page], :per_page => 10)
+
   end
 
   def show
@@ -65,6 +67,10 @@ class EventsController < ApplicationController
   end
 
   def search
+
+    p 'search request received'
+    p params
+
     @search_events = Event.joins(:crafter)
     .where('crafters.name ~* ?', params[:search_input])
     .or(Event.joins(:crafter)
@@ -83,12 +89,15 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.js { render action: 'filter' }
     end
+
   end
 
   def my_events
     #code
     @crafter = Crafter.find(params[:id])
-    @all_events = @crafter.events
+    @crafterEvents = @crafter.events
+    @categories = Category.all
+    @all_events = @crafterEvents.paginate(:page => params[:page], :per_page => 15)
     render 'events/index'
   end
 

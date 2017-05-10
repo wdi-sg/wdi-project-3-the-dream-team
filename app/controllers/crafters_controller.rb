@@ -4,8 +4,8 @@ class CraftersController < ApplicationController
   before_action :form_crafter, only: %i[create update]
 
   def index
-    @all_crafters = Crafter.all
     @categories = Category.all
+    @all_crafters = Crafter.all.paginate(:page => params[:page], :per_page => 15)
   end
 
   def show
