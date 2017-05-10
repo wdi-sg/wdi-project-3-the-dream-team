@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show filter search search_enter]
+  skip_before_action :authenticate_user!, only: %i[index show filter search search_enter filter_paginate]
 
   before_action :find_event, except: %i[index new create filter search search_enter filter_paginate]
   before_action :form_event, only: %i[create update]
