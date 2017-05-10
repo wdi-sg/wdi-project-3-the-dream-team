@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   resources :events do
     resources :sessions
     resources :bookings
+    resources :reviews
   end
 
   # Stripe Connect endpoints

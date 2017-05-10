@@ -114,6 +114,12 @@ class EventsController < ApplicationController
     render 'events/index'
   end
 
+
+  def search
+    p 'search request received'
+    p params
+  end
+
   helper_method :check_time
 
   private

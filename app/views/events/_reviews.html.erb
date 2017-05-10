@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="card-panel col s12" id = 'reviewsCard'>
+    <div class="row">
+      <h5 class = 'col s11'>Reviews</h5>
+      <div class="col s1 vertical-align-middle">
+        <a class = 'btn-floating btn-medium black' href='#modal1'><i class="material-icons icon-white">add</i></a>
+
+      </div>
+
+    </div>
+
+
+
+
+    <div id="modal1" class="modal">
+       <div class="modal-content">
+         <!-- Add New Review Form -->
+             <!-- <div class="card-panel"> -->
+             <h5>Add New Review</h5>
+                   <div class="section">
+                     <%= form_for ([@event, @event.reviews.build]) do |f| %>
+                     <div class="row">
+                       <div class="input-field col s12">
+                         <%= f.text_area :description, class: "materialize-textarea" %>
+                         <%= f.label :description %>
+                       </div>
+                     </div>
+                     <div class="modal-footer">
+                       <div class="input-field col s12">
+                         <%= f.submit "Add Review", class: "waves-effect waves-light btn white black-text" %>
+                       </div>
+                     </div>
+                   </div>
+             <!-- </div> -->
+       </div>
+       <% end %>
+     </div>
+
+    <div class="divider"></div>
+
+    <% @event.reviews.each do |review| %>
+    <% if review.craftee %>
+      <div class="row" style = "margin-top: 3%;">
+        <div class="col s2" >
+          <div class="center-align vertical-align">
+            <%= cl_image_tag(review.event.crafter.profilePic_link, :width => 50, :height => 50, :crop => :fill, :gravity => :face,
+            :radius => :max)%>
+            <p class='center-align'><%= link_to review.craftee.name, crafter_path(review.event.crafter) %></p>
+          </div>
+        </div>
+        <div class="col s8">
+          <%=review.description%>
+        </div>
+        <% if review.craftee_id == current_craftee.id %>
+          <div class="col s2">
+            <a class = 'btn-floating btn-medium black' data-method = 'delete' href="<%= event_review_path(@event.id, review.id) %>"><i class="material-icons icon-white">delete</i></a>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    <div class='divider'></div>
+    <% end %>
+  </div>
+<div class="divider"></div>
+
+
+
+
+
+    <div class="divider"></div>
+</div>
