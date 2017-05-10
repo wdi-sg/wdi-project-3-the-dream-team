@@ -111,8 +111,6 @@ p 'crafter creation succeeded'
 
 p 'event creation succeeded'
 
-@user.craftee = Craftee.create
-
 @user = User.create(
   email: 'craftee@mail.com',
   password: '123456'
@@ -135,10 +133,6 @@ p 'crafter creation succeeded'
 )
 
 p 'event creation succeeded'
-
-@user.craftee = Craftee.create
-
-
 
 @user.crafter = Crafter.create(
   name: Faker::Name.name,
