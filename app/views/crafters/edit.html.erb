@@ -17,13 +17,13 @@
   <%# end input %>
 
   <%# start input %>
-  <div class="field">
-    <div class="field-label">
-      <%= f.label :Upload_Profile_Pic, class: 'label' %>
-    </div>
-
-    <div class="field-label">
+  <div class="file-field input-field">
+    <div class="waves-effect waves-light btn btn-medium white black-text">
+      <span>Upload Profile Pic</span>
       <%= f.file_field :profilePic_link %>
+    </div>
+    <div class="file-path-wrapper">
+      <input class="file-path validate" type="text">
     </div>
   </div>
   <%# end input %>
@@ -124,5 +124,5 @@
 </div>
 
 <pre>
-  <%= @crafter.inspect %>
+  <%# @crafter.inspect %>
 </pre>
