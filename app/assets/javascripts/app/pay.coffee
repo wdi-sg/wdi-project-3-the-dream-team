@@ -38,6 +38,6 @@ $(document).on "turbolinks:load", ->
     form.addClass( 'processing' )
 
     handler.open
-      name: 'Rails Connect Example'
-      description: '$10 w/ 10% fees'
-      amount: 1000
+      name: 'WitchCraft Payment Platform'
+      description: 'Booking fees'
+      amount: Number($('#booking_amount').text()) * 100
