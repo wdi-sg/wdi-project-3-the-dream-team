@@ -69,6 +69,17 @@ class EventsController < ApplicationController
     p params
   end
 
+  def my_events
+    #code
+    @crafter = Crafter.find(params[:id])
+    @all_events = @crafter.events
+    render 'events/index'
+  end
+
+
+  helper_method :check_time
+>>>>>>> 0f5cb167ccde1a876913a6fe5573d40dd9be16fe
+
   private
 
   def find_event

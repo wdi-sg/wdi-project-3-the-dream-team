@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row right-align">
-    <%= link_to "Edit", edit_crafter_path, class: "waves-effect waves-light btn btn-medium white black-text" %>
+
+    <a class = 'btn-floating btn-medium black' href="<%= edit_crafter_path %>"><i class="material-icons icon-white">mode_edit</i></a>
   </div>
 
   <div class="row">
@@ -14,6 +15,43 @@
 
       </div>
       <p><%= @crafter.biography%></p>
+      <p><%= @crafter.profession%></p>
+      <div class="divider"></div>
+
+      <% if @crafter.contact_number != '' %>
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-phone fa-lg"></i>
+          </span>
+          <%= @crafter.contact_number%><br>
+      <% end %>
+
+      <% if @crafter.contact_email != '' %>
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-envelope fa-lg"></i>
+          </span>
+          <%= @crafter.contact_email%><br>
+      <% end %>
+
+      <% if @crafter.facebook_link != '' %>
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-facebook-square fa-lg"></i>
+          </span>
+          <%= @crafter.facebook_link%><br>
+      <% end %>
+
+      <% if @crafter.twitter_link != '' %>
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-twitter fa-lg"></i>
+          </span>
+          <%= @crafter.twitter_link%><br>
+      <% end %>
+
+      <% if @crafter.website_link != '' %>
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-paint-brush fa-lg"></i>
+          </span>
+          <%= @crafter.website_link%><br>
+      <% end %>
     </div>
 
     <div class="col s9">
@@ -33,20 +71,50 @@
         </div>
       <% end %>
       <div class="card-panel">
-        Events
+        <h5>Events</h5>
+        <a href= '<%= crafter_events_path(@crafter)%>' class='waves-effect waves-light btn btn-small white black-text vertical-align'>View More</a>
+        <div class="row">
+        <% for i in -6..-1 %>
+          <% if @crafter.events[i] %>
+            <div class="col s4">
+              <div class="card">
+                <%= image_tag (@crafter.events[i].image_link), :class => 'materialboxed', :style => 'width: 200px; height: 200px;' %>
+              </div>
+              <div class="card-content">
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
+    </div>
+
+
       <div class="card-panel">
-        Portfolio
-      </div>
-      <div class="card-panel">
-        Reviews
+        <h5>Portfolio</h5>
+        <a href= '<%= crafter_portfolio_items_path(@crafter)%>' class='waves-effect waves-light btn btn-small white black-text vertical-align'>View More</a>
+        <div class="row">
+        <% for i in -6..-1 %>
+          <% if @crafter.portfolio_items[i] %>
+            <div class="col s4">
+              <div class="card">
+                <%= image_tag (@crafter.portfolio_items[i].media_link), :class => 'materialboxed', :style => 'width: 200px; height: 200px;' %>
+              </div>
+              <div class="card-content">
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+            </div>
+          <% end %>
+        <% end %>
+        </div>
       </div>
 
+      <!-- end of div class col 9 -->
     </div>
-  </div>
-  </div>
 
 
 <pre>
-  <%= @crafter.inspect %>
+  <%# @crafter.inspect %>
 </pre>
