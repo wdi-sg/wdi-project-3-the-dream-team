@@ -5,8 +5,10 @@ class EventsController < ApplicationController
   before_action :form_event, only: %i[create update]
 
   def index
-    @all_events = Event.all
+    @all_events = Event.all.paginate(:page => params[:page], :per_page => 15)
     @categories = Category.all
+    # @eventsPaginate = Event.all.paginate(:page => params[:page], :per_page => 10)
+
   end
 
   def show
@@ -67,7 +69,8 @@ class EventsController < ApplicationController
   def my_events
     #code
     @crafter = Crafter.find(params[:id])
-    @all_events = @crafter.events
+    @crafterEvents = @crafter.events
+    @all_events = @crafterEvents.paginate(:page => params[:page], :per_page => 15)
     render 'events/index'
   end
 

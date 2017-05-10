@@ -77,10 +77,59 @@
       <% end %>
       </div>
     </div>
-    <div class = 'row right-align'>
-      <%= will_paginate @all_events, renderer: MaterializePagination::Rails %>
-    </div>
 </div>
+
+<%= will_paginate @all_events %>
+
+
+
+
+
+
+<pre>
+<%# @all_events.inspect %>
+</pre>
+
+
+
+
+<div class="row">
+  <%= image_tag ('homepage_quote1.png'), :class => 'materialboxed', :style=> 'width:30%; align-item: center; margin: auto; margin-top: 5%;' %>
+  <!-- <img class="materialboxed" width="650" src="/owl1.jpg"> -->
+</div>
+<%# Secondary Navigation bar %>
+<div class="container second-nav-bar">
+  <div class="row">
+    <div class="grid-example col s12 offset-s2">
+        <a href="/", class='black-text second-nav-links col s2 center-align'>Home</a>
+        <a href="/events", class='black-text second-nav-links col s2 center-align'>Events</a>
+        <a href="/crafters", class='black-text second-nav-links col s2 center-align'>Crafters</a>
+        <a href="/portfolios", class='black-text second-nav-links col s2 center-align'>Works</a>
+    </div>
+  </div>
+  <div class="divider"></div>
+    <div class="row right-align" id = "create-new-event-btn">
+      <% if user_signed_in? %>
+        <%# if is_crafter_authenticated? %>
+        <%= link_to "Create New Event", new_event_path, class: "waves-effect waves-light btn white black-text" %>
+        <%# end %>
+      <% end %>
+    </div>
+
+    <% @eventsPaginate.each do |event| %>
+      <div>
+        <%= event.name %>
+      </div>
+    <% end %>
+
+</div>
+
+<%= will_paginate @eventsPaginate %>
+
+
+
+
+
 
 <pre>
 <%# @all_events.inspect %>

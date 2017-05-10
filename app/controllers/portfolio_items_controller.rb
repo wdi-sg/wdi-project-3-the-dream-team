@@ -6,7 +6,8 @@ class PortfolioItemsController < ApplicationController
     def all_portfolios
       #code
       # this method will retrieve  portfolio items from all crafters
-      @all_portfolio_items = PortfolioItem.all
+      @all_portfolio_items = PortfolioItem.all.paginate(:page => params[:page], :per_page => 15)
+
 
     end
 

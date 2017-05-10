@@ -8,7 +8,7 @@
 /* testing ajax with fav event */
 #favourite {
   background-color: red;
-  
+
   .cal-format {
     height: 80px;
     overflow-y: scroll;
@@ -225,4 +225,8 @@ td {
 
 #all-portfolio-items-container{
   margin-top: 1%;
+}
+
+.pagination a li.active{
+  color: #fff;
 }
