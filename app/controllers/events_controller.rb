@@ -96,6 +96,7 @@ class EventsController < ApplicationController
     #code
     @crafter = Crafter.find(params[:id])
     @crafterEvents = @crafter.events
+    @categories = Category.all
     @all_events = @crafterEvents.paginate(:page => params[:page], :per_page => 15)
     render 'events/index'
   end

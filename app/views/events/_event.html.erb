@@ -25,8 +25,17 @@
         <div class="divider"></div>
         <table>
           <tr>
-            <td>Sessions:</td>
+            Sessions:
           </tr>
+          <% if event.sessions.length > 0 %>
+            <% event.sessions.each do |session| %>
+            <tr>
+              <li><%=session.datetime_from%></li>
+            </tr>
+            <% end %>
+          <% else %>
+            <p>Sorry there are no upcoming sessions for this event</p>
+          <% end %>
         </table>
       </tbody>
     </table>
