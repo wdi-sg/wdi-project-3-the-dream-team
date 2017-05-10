@@ -12,6 +12,7 @@
   </div>
 
   <div class="divider"></div>
+
   <div class="section">
       <% if my_event? @event %>
         <p>display crafter only view</p>
@@ -21,4 +22,9 @@
         <%= render 'events/crafteeshow' %>
       <% end %>
   </div>
+
+  <div class="divider"></div>
+
+  <%= render 'events/reviews' %>
+
 </div>

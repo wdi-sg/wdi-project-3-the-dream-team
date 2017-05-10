@@ -101,6 +101,8 @@ class EventsController < ApplicationController
     render 'events/index'
   end
 
+
+
   def search
     p 'search request received'
     p params
