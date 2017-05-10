@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row right-align">
-
-    <a class = 'btn-floating btn-medium black' href="<%= edit_crafter_path %>"><i class="material-icons icon-white">mode_edit</i></a>
+    <!-- <a class = 'waves-effect waves-light btn-floating btn-medium white' href="<%# edit_crafter_path %>"><i class="material-icons black-text">mode_edit</i></a> -->
+    <a class = 'waves-effect waves-light btn-floating btn-medium white' href="#modalEditProfile"><i class="material-icons black-text">mode_edit</i></a>
   </div>
 
   <div class="row">
@@ -18,35 +18,35 @@
       <p><%= @crafter.profession%></p>
       <div class="divider"></div>
 
-      <% if @crafter.contact_number == '' %>
+      <% if @crafter.contact_number != '' %>
           <span class="fa-stack fa-lg">
             <i class="fa fa-phone fa-lg"></i>
           </span>
           <%= @crafter.contact_number%><br>
       <% end %>
 
-      <% if @crafter.contact_email == '' %>
+      <% if @crafter.contact_email != '' %>
           <span class="fa-stack fa-lg">
             <i class="fa fa-envelope fa-lg"></i>
           </span>
           <%= @crafter.contact_email%><br>
       <% end %>
 
-      <% if @crafter.facebook_link == '' %>
+      <% if @crafter.facebook_link != '' %>
           <span class="fa-stack fa-lg">
             <i class="fa fa-facebook-square fa-lg"></i>
           </span>
           <%= @crafter.facebook_link%><br>
       <% end %>
 
-      <% if @crafter.twitter_link == '' %>
+      <% if @crafter.twitter_link != '' %>
           <span class="fa-stack fa-lg">
             <i class="fa fa-twitter fa-lg"></i>
           </span>
           <%= @crafter.twitter_link%><br>
       <% end %>
 
-      <% if @crafter.website_link == '' %>
+      <% if @crafter.website_link != '' %>
           <span class="fa-stack fa-lg">
             <i class="fa fa-paint-brush fa-lg"></i>
           </span>
@@ -70,9 +70,14 @@
           <% end %>
         </div>
       <% end %>
+
+      <!-- Events Card Panel -->
       <div class="card-panel">
-        <h5 class = 'col s10'>Events</h5>
-        <a href= '<%= crafter_events_path(@crafter)%>' class='waves-effect waves-light btn btn-small white black-text vertical-align col s2'>View More</a>
+        <% if @crafter.events.length > 0 %>
+        <h5 class = 'col s11'>Events</h5>
+        <div class="col s1">
+          <a href= '<%= crafter_events_path(@crafter)%>' class='waves-effect waves-light btn-floating btn-medium white'><i class="material-icons black-text">more_horiz</i></a>
+        </div>
         <div class="divider"></div>
         <div class="row">
         <% for i in -6..-1 %>
@@ -89,12 +94,21 @@
           <% end %>
         <% end %>
       </div>
+      <% else %>
+      <h5 class = 'col s12'>Events</h5>
+        <p style = 'font-style: italic;'>No events</p>
+      <% end %>
     </div>
+      <!-- End of Events Card Panel -->
 
-<!-- Portfolio Card Panel -->
+
+      <!-- Portfolio Card Panel -->
       <div class="card-panel">
-        <h5 class = 'col s10'>Portfolio</h5>
-        <a href= '<%= crafter_portfolio_items_path(@crafter)%>' class='waves-effect waves-light btn btn-small white black-text vertical-align col s2'>View More</a>
+        <% if @crafter.portfolio_items.length > 0 %>
+        <h5 class = 'col s11'>Portfolio</h5>
+        <div class="col s1">
+          <a href= '<%= crafter_portfolio_items_path(@crafter)%>' class='waves-effect waves-light btn-floating btn-medium white'><i class="material-icons black-text">more_horiz</i></a>
+        </div>
         <div class="divider"></div>
         <div class="row">
         <% for i in -6..-1 %>
@@ -111,15 +125,21 @@
           <% end %>
         <% end %>
         </div>
+        <% else %>
+          <h5 class = 'col s12'>Portfolio</h5>
+          <p style = 'font-style: italic;'>No Portfolio Items</p>
+          <% end %>
       </div>
-<!-- End of Portfolio Card Panel -->
+      <!-- End of Portfolio Card Panel -->
 
 
-<!-- Review Card Panel -->
+      <!-- Review Card Panel -->
       <div class="card-panel">
+        <% @noReviews %>
+       <% @crafter.events.each do |event|%>
+        <% if event.reviews.length > 0 %>
         <h5>Reviews</h5>
         <div class="divider"></div>
-       <% @crafter.events.each do |event|%>
                <% event.reviews.each do |review| %>
                <div class="row" style = "margin-top: 3%;">
                  <div class="col s2" >
@@ -134,16 +154,30 @@
                  </div>
                </div>
                <div class='divider'></div>
-       <% end %>
-       <!-- end of crafter.events.each do -->
-   <% end %>
+              <% end %>      <!-- end of event.reviews.each do -->
+            <% else %>
+                <% @noReviews = true %>
+            <% end %>
+            <% end %>
+            <% if @noReviews %>
+                <h5 class = 'col s12'>Reviews</h5>
+                <p style = 'font-style: italic;'>No Reviews</p>
+            <%end %>
+        </div>  <!-- End of Review Card Panel -->
+      </div> <!-- end of div class col 9 -->
+      <!-- End of Review Card Panel -->
 
 
+      <!-- Modal Box -->
+    <div id="modalEditProfile" class="modal">
+       <div class="modal-content">
+         <%= render 'crafters/edit' %>
       </div>
-<!-- End of Review Card Panel -->
-
-      <!-- end of div class col 9 -->
     </div>
+    <!-- End of Modal Box -->
+
+
+
 
 
 <pre>
