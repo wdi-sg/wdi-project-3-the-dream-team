@@ -1,5 +1,5 @@
 class CraftersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :authenticate_user!, only: [:show, :index]
   before_action :find_crafter, only: %i[show edit update destroy]
   before_action :form_crafter, only: %i[create update]
 
@@ -45,6 +45,7 @@ class CraftersController < ApplicationController
       render 'crafters/show'
     end
   end
+
 
   private
 

@@ -1,0 +1,40 @@
+<h1><%# @crafter.events.inspect%></h1>
+
+<% @crafterEvents = @crafter.events %>
+
+<div class="container">
+  <div class="row right-align">
+    <a class="waves-effect waves-light btn black-text white" href="#modalCreate">Create New Event</a>
+  </div>
+
+  <!-- Modal Structure for Creating New Portfolio Item -->
+  <div id="modalCreate" class="modal">
+    <div class="modal-content">
+      <h4>Create New Event</h4>
+      <%# render 'portfolio_items/newItemForm' %>
+    </div>
+    <div class="modal-footer">
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col s12">
+      <% @crafterEvents.each do |crafterEvent| %>
+      <div class="col s4">
+        <div class="card medium">
+          <div class="card-image waves-effect waves-block waves-light">
+          </div>
+            <div class="card-content">
+              <a class="waves-effect waves-light btn-small black-text white" href="#modal<%= crafterEvent.id %>">More Info</a>
+            </div>
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+              </div>
+            </div>
+          </div>
+
+
+         <% end %>
+       </div>
+</div>

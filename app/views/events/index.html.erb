@@ -3,13 +3,12 @@
   <!-- <img class="materialboxed" width="650" src="/owl1.jpg"> -->
 </div>
 
-
 <%# Secondary Navigation bar %>
 <%= render 'partials/second_nav' %>
 
   <div class="container">
     <!-- category select -->
-    <div data-no-transition-cache class="row">
+    <div class="row">
       <div class="col s4">
         <%= select "event", "category_id",
               options_from_collection_for_select(@categories, 'id', 'name'),
@@ -28,6 +27,7 @@
       </div>
     </div>
     <!-- end -->
+    <%# maybe move new event link to first nav? %>
     <div class="row">
       <% if user_signed_in? %>
         <% if is_crafter_authenticated? %>
@@ -35,9 +35,11 @@
         <% end %>
       <% end %>
     </div>
-
-  <div class="row">
+    <%# individual event card will be rendered as partial below %>
+    <div class="row">
       <div class="col s12 cards-container" id="event-list">
         <%= render partial: "events/event", collection: @all_events %>
       </div>
+    </div>
+    <%# end card render %>
 </div>

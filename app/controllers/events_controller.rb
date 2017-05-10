@@ -65,17 +65,10 @@ class EventsController < ApplicationController
   end
 
   def search
-    p 'search request received'
-    p params
     @search_events = Event.joins(:crafter)
     .where('crafters.name ~* ?', params[:search_input])
     .or(Event.joins(:crafter)
     .where('events.name ~* ?', params[:search_input]))
-
-    # @search_events = Event.joins(:crafter)
-    # .where('crafters.name ~* ? or events.name ~* ?', params[:search_input], params[:search_input])
-
-    p "PARAMS ENTER #{params[:enter]}"
 
     respond_to do |format|
       format.js
@@ -84,14 +77,19 @@ class EventsController < ApplicationController
   end
 
   def search_enter
-    p 'search request received'
-    p params
     @filtered = Event.joins(:crafter)
     .where('crafters.name ~* ? or events.name ~* ?', params[:search_input], params[:search_input])
 
     respond_to do |format|
       format.js { render action: 'filter' }
     end
+  end
+
+  def my_events
+    #code
+    @crafter = Crafter.find(params[:id])
+    @all_events = @crafter.events
+    render 'events/index'
   end
 
   private

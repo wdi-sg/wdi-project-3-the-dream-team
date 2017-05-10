@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   get '/pages/switch'
   get 'about' => 'pages#about'
   get '/portfolios' => 'portfolio_items#all_portfolios'
+  get '/crafters/:id/events' => 'events#my_events'
+
 
 
   resources :craftees do
@@ -30,6 +32,7 @@ Rails.application.routes.draw do
 
   resources :crafters do
     resources :portfolio_items
+    resources :events
   end
 
   get '/filter_events', to: 'events#filter'
