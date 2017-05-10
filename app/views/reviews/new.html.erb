@@ -1,0 +1,18 @@
+<div class="container">
+    <h1>New Review</h1>
+    <div class="section">
+      <%= form_for ([@event, @event.reviews.build]) do |f| %>
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.text_area :description, class: "materialize-textarea" %>
+            <%= f.label :description %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.submit "Confirm", class: "waves-effect waves-light btn" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+</div>

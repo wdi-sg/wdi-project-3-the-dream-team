@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show filter search search_enter]
 
-  before_action :find_event, except: %i[index new create filter search search_enter]
+  before_action :find_event, except: %i[index new create filter search search_enter filter_paginate]
   before_action :form_event, only: %i[create update]
 
   def index
@@ -59,10 +59,11 @@ class EventsController < ApplicationController
   def filter
     p params[:category_id]
     if params[:category_id] == ''
-      @filtered = Event.all
+      @filtered = Event.all.paginate(:page => params[:page], :per_page => 15)
     else
-      @filtered = Event.where(category_id: params[:category_id])
+      @filtered = Event.where(category_id: params[:category_id]).paginate(:page => params[:page], :per_page => 15)
     end
+    @category_id = params[:category_id]
 
     respond_to do |format|
       format.js
@@ -71,15 +72,23 @@ class EventsController < ApplicationController
     end
   end
 
+  def filter_paginate
+    if !params[:category_id] || params[:category_id] == ''
+      @all_events = Event.all.paginate(:page => params[:page], :per_page => 15)
+    else
+      @all_events = Event.where(category_id: params[:category_id]).paginate(:page => params[:page], :per_page => 15)
+    end
+    @categories = Category.all
+    render 'events/index'
+  end
+
   def search
-
-    p 'search request received'
-    p params
-
     @search_events = Event.joins(:crafter)
     .where('crafters.name ~* ?', params[:search_input])
     .or(Event.joins(:crafter)
     .where('events.name ~* ?', params[:search_input]))
+
+    p @search_events.inspect
 
     respond_to do |format|
       format.js
@@ -94,11 +103,9 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.js { render action: 'filter' }
     end
-
   end
 
   def my_events
-    #code
     @crafter = Crafter.find(params[:id])
     @crafterEvents = @crafter.events
     @categories = Category.all

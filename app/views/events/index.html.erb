@@ -33,7 +33,7 @@
       </div>
     </div>
     <%# end card render %>
-    <div class = 'row right-align'>
+    <div class = 'row right-align' id="event-list-paginate">
       <%= will_paginate @all_events, renderer: MaterializePagination::Rails %>
     </div>
 </div>

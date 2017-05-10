@@ -26,7 +26,7 @@ $(document).on('turbolinks:load', function () {
       data: {
         category_id: $(this).val()
       },
-      type: 'GET'
+      type: 'POST'
     })
   })
   // category filter on crafters index
