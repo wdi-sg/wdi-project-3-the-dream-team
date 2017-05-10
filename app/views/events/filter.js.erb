@@ -1,1 +1,9 @@
-$('div#event-list').html("<%= escape_javascript(render partial: 'events/event', collection: @filtered, as: 'event') %>").hide().fadeIn(2000)
+$('div#event-list')
+  .html("<%= escape_javascript(render partial: 'events/event', collection: @filtered, as: 'event') %>")
+  .hide()
+  .fadeIn(2000);
+
+$('div#event-list-paginate')
+  .html("<%= escape_javascript(will_paginate @filtered, :params => { :category_id => @category_id }, renderer: MaterializePagination::Rails) %>")
+  .hide()
+  .fadeIn(2000);
