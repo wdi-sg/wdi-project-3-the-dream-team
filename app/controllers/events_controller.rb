@@ -12,15 +12,18 @@ class EventsController < ApplicationController
   end
 
   def show
+    @categories = Category.all
   end
 
   def new
+    @categories = Category.all
     unless @new_event
       @new_event = Event.new
     end
   end
 
   def create
+    @categories = Category.all
     @crafter = current_crafter
 
     @new_event = Event.new(@form_data)
@@ -29,15 +32,17 @@ class EventsController < ApplicationController
       flash[:notice] = 'Event created successfully!'
       redirect_to event_path(@new_event)
     else
-      flash[:alert] = "Failed to create event! #{@form_data.inspect} form data"
+      flash[:alert] = "Failed to create event!"
       render 'events/new'
     end
   end
 
   def edit
+    @categories = Category.all
   end
 
   def update
+    @categories = Category.all
     p "update params here #{@form_data.inspect}"
     if @event.update(@form_data)
       flash[:notice] = 'Event updated! successfully!'

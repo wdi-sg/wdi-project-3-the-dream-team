@@ -42,8 +42,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # RegistrationsController.
   def sign_up(resource_name, resource)
     # automatically creates default records for crafter and craftee account
-    Crafter.create(user_id: resource.id, category_id: 1)
-    Craftee.create(user_id: resource.id)
+    Crafter.create(user_id: resource.id, category_id: 1, name: 'your crafter name')
+    Craftee.create(user_id: resource.id, name: 'your craftee name')
     # default to craftee session upon registration
     session[:user_type] = 'craftee'
     sign_in(resource_name, resource)

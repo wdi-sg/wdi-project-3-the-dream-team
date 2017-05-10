@@ -11,4 +11,6 @@ class Event < ApplicationRecord
   has_many :fav_events
 
   has_one :featured_event
+
+  validates :name, presence: true
 end
