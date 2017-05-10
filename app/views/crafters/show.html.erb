@@ -18,35 +18,35 @@
       <p><%= @crafter.profession%></p>
       <div class="divider"></div>
 
-      <% if @crafter.contact_number != '' %>
+      <% if @crafter.contact_number == '' %>
           <span class="fa-stack fa-lg">
             <i class="fa fa-phone fa-lg"></i>
           </span>
           <%= @crafter.contact_number%><br>
       <% end %>
 
-      <% if @crafter.contact_email != '' %>
+      <% if @crafter.contact_email == '' %>
           <span class="fa-stack fa-lg">
             <i class="fa fa-envelope fa-lg"></i>
           </span>
           <%= @crafter.contact_email%><br>
       <% end %>
 
-      <% if @crafter.facebook_link != '' %>
+      <% if @crafter.facebook_link == '' %>
           <span class="fa-stack fa-lg">
             <i class="fa fa-facebook-square fa-lg"></i>
           </span>
           <%= @crafter.facebook_link%><br>
       <% end %>
 
-      <% if @crafter.twitter_link != '' %>
+      <% if @crafter.twitter_link == '' %>
           <span class="fa-stack fa-lg">
             <i class="fa fa-twitter fa-lg"></i>
           </span>
           <%= @crafter.twitter_link%><br>
       <% end %>
 
-      <% if @crafter.website_link != '' %>
+      <% if @crafter.website_link == '' %>
           <span class="fa-stack fa-lg">
             <i class="fa fa-paint-brush fa-lg"></i>
           </span>
