@@ -18,35 +18,35 @@
       <p><%= @crafter.profession%></p>
       <div class="divider"></div>
 
-      <% if @crafter.contact_number != '' %>
+      <% if @crafter.contact_number == '' %>
           <span class="fa-stack fa-lg">
             <i class="fa fa-phone fa-lg"></i>
           </span>
           <%= @crafter.contact_number%><br>
       <% end %>
 
-      <% if @crafter.contact_email != '' %>
+      <% if @crafter.contact_email == '' %>
           <span class="fa-stack fa-lg">
             <i class="fa fa-envelope fa-lg"></i>
           </span>
           <%= @crafter.contact_email%><br>
       <% end %>
 
-      <% if @crafter.facebook_link != '' %>
+      <% if @crafter.facebook_link == '' %>
           <span class="fa-stack fa-lg">
             <i class="fa fa-facebook-square fa-lg"></i>
           </span>
           <%= @crafter.facebook_link%><br>
       <% end %>
 
-      <% if @crafter.twitter_link != '' %>
+      <% if @crafter.twitter_link == '' %>
           <span class="fa-stack fa-lg">
             <i class="fa fa-twitter fa-lg"></i>
           </span>
           <%= @crafter.twitter_link%><br>
       <% end %>
 
-      <% if @crafter.website_link != '' %>
+      <% if @crafter.website_link == '' %>
           <span class="fa-stack fa-lg">
             <i class="fa fa-paint-brush fa-lg"></i>
           </span>
@@ -71,8 +71,9 @@
         </div>
       <% end %>
       <div class="card-panel">
-        <h5>Events</h5>
-        <a href= '<%= crafter_events_path(@crafter)%>' class='waves-effect waves-light btn btn-small white black-text vertical-align'>View More</a>
+        <h5 class = 'col s10'>Events</h5>
+        <a href= '<%= crafter_events_path(@crafter)%>' class='waves-effect waves-light btn btn-small white black-text vertical-align col s2'>View More</a>
+        <div class="divider"></div>
         <div class="row">
         <% for i in -6..-1 %>
           <% if @crafter.events[i] %>
@@ -90,10 +91,11 @@
       </div>
     </div>
 
-
+<!-- Portfolio Card Panel -->
       <div class="card-panel">
-        <h5>Portfolio</h5>
-        <a href= '<%= crafter_portfolio_items_path(@crafter)%>' class='waves-effect waves-light btn btn-small white black-text vertical-align'>View More</a>
+        <h5 class = 'col s10'>Portfolio</h5>
+        <a href= '<%= crafter_portfolio_items_path(@crafter)%>' class='waves-effect waves-light btn btn-small white black-text vertical-align col s2'>View More</a>
+        <div class="divider"></div>
         <div class="row">
         <% for i in -6..-1 %>
           <% if @crafter.portfolio_items[i] %>
@@ -110,6 +112,35 @@
         <% end %>
         </div>
       </div>
+<!-- End of Portfolio Card Panel -->
+
+
+<!-- Review Card Panel -->
+      <div class="card-panel">
+        <h5>Reviews</h5>
+        <div class="divider"></div>
+       <% @crafter.events.each do |event|%>
+               <% event.reviews.each do |review| %>
+               <div class="row" style = "margin-top: 3%;">
+                 <div class="col s2" >
+                   <div class="center-align vertical-align">
+                     <%= cl_image_tag(Crafter.find(review.craftee.user.crafter).profilePic_link, :width => 50, :height => 50, :crop => :fill, :gravity => :face,
+                     :radius => :max)%>
+                     <p class='center-align'><%= link_to Craftee.find(review.craftee_id).name, crafter_path(Crafter.find(review.craftee.user.crafter)) %></p>
+                   </div>
+                 </div>
+                 <div class="col s8">
+                   <%=review.description%>
+                 </div>
+               </div>
+               <div class='divider'></div>
+       <% end %>
+       <!-- end of crafter.events.each do -->
+   <% end %>
+
+
+      </div>
+<!-- End of Review Card Panel -->
 
       <!-- end of div class col 9 -->
     </div>

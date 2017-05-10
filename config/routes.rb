@@ -36,20 +36,27 @@ Rails.application.routes.draw do
   end
 
   get '/filter_events', to: 'events#filter'
+  post '/filter_events', to: 'events#filter'
+  get '/filter_events', to: 'events#filter_paginate'
 
   get '/search_events', to: 'events#search'
   get '/search_enter_events', to: 'events#search_enter'
 
+  get '/filter_crafters', to: 'crafters#filter'
+  get '/search_crafters', to: 'crafters#search'
+  get '/search_enter_crafters', to: 'crafters#search_enter'
+
   resources :events do
     resources :sessions
     resources :bookings
+    resources :reviews
   end
 
   # Stripe Connect endpoints
   #  - oauth flow
   get '/connect/oauth' => 'stripe#oauth', as: 'stripe_oauth'
   get '/connect/confirm' => 'stripe#confirm', as: 'stripe_confirm'
-  get '/connect/deauthorize' => 'stripe#deauthorize', as: 'stripe_deauthorize'
+  post '/connect/deauthorize' => 'stripe#deauthorize', as: 'stripe_deauthorize'
   #  - create accounts
   # post '/connect/managed' => 'stripe#managed', as: 'stripe_managed'
   # post '/connect/standalone' => 'stripe#standalone', as: 'stripe_standalone'

@@ -1,3 +1,6 @@
+<%# Secondary Navigation bar %>
+<%= render 'partials/second_nav' %>
+
 <div class='container'>
   <h4>Edit Profile</h4>
   <%= form_for @crafter do |f| %>
@@ -6,24 +9,28 @@
   <div class="row">
     <div class="input-field col s12">
       <%= f.text_field :name %>
-      <%= f.label :name %>
+      <%= f.label :name, class: 'active' %>
     </div>
   </div>
   <div class="row">
     <div class="input-field col s12">
       <%= f.text_area :biography, class: 'materialize-textarea' %>
-      <%= f.label :biography %>
+      <%= f.label :biography, class: 'active' %>
     </div>
   </div>
   <div class="row">
     <div class="input-field col s12">
       <%= f.text_field :profession %>
-      <%= f.label :profession %>
+      <%= f.label :profession, class: 'active' %>
     </div>
   </div>
   <div class="row">
     <div class="input-field col s12">
-      <%= f.text_field :category_id %>
+      <%= f.select(:category_id) do %>
+        <% @categories.each do |c| -%>
+          <%= content_tag(:option, c.name, value: c.id) %>
+        <% end %>
+      <% end %>
       <%= f.label :category_id %>
     </div>
   </div>
@@ -75,5 +82,4 @@
     </div>
   </div>
   <% end %>
-
 </div>

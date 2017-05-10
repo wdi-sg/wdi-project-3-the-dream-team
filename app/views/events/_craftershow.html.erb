@@ -52,8 +52,12 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <%= f.number_field :category_id, class: "validate" %>
-          <%= f.label :category_id, class: 'active' %>
+          <%= f.select(:category_id) do %>
+            <% categories.each do |c| -%>
+              <%= content_tag(:option, c.name, value: c.id) %>
+            <% end %>
+          <% end %>
+          <%= f.label :category_id %>
         </div>
       </div>
       <%= f.submit "Update Event", class: "modal-action modal-close waves-effect waves-green btn" %>

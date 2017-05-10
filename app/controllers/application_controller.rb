@@ -38,7 +38,9 @@ class ApplicationController < ActionController::Base
   end
 
   def crafter_is_myself?
-    @crafter == current_user.crafter
+    if user_signed_in?
+      @crafter == current_user.crafter
+    end
   end
 
   # craftee object for the currently logged in user

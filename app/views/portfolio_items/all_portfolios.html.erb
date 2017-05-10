@@ -28,7 +28,7 @@
       <div class="col s4">
         <div class="card small">
           <div class="card-image waves-effect waves-block waves-light">
-            <img src="<%= portfolio_item.media_link %>" alt="Image" class='activator'></td>
+            <img src="<%= asset_path(portfolio_item.media_link) %>" alt="Image" class='activator'></td>
           </div>
 
           <div class="card-content">
@@ -54,5 +54,8 @@
       </div>
     <% end %>
     </div>
+  </div>
+  <div class = 'row right-align'>
+    <%= will_paginate @all_portfolio_items, renderer: MaterializePagination::Rails %>
   </div>
 </div>

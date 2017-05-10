@@ -9,6 +9,8 @@ class Crafter < ApplicationRecord
   has_many :bookings, through: :sessions
   has_many :reviews, through: :events
 
+  validates :name, presence: true
+
   def oauth?
     stripe_account_type == 'oauth'
   end

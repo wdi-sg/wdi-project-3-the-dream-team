@@ -1,11 +1,11 @@
 <div class="col s4">
   <div class="card small">
     <div class="card-image waves-effect waves-block waves-light">
-      <img src="<%= event.image_link %>" alt="Image" class='activator'></td>
+      <img src="<%= event.image_link && event.image_link != '' ? event.image_link : asset_path('default_event.png') %>" alt="Image" class="activator" width="313" height="235"></td>
     </div>
     <div class="card-content">
       <span class="card-title activator grey-text text-darken-4"><%= event.name %><i class="material-icons right">more_vert</i></span>
-      <p><a href="<%= event_path(event) %>">Event</a></p>
+      <!-- <p><a href="<%= event_path(event) %>">Event</a></p> -->
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">More Info<i class="material-icons right">close</i></span>
@@ -25,8 +25,17 @@
         <div class="divider"></div>
         <table>
           <tr>
-            <td>Sessions:</td>
+            <p style = 'text-decoration: underline'>Upcoming Sessions:</p>
           </tr>
+          <% if event.sessions.length > 0 %>
+            <% event.sessions.each do |session| %>
+            <tr>
+              <li><%=session.datetime_from.to_formatted_s(:rfc822)%></li>
+            </tr>
+            <% end %>
+          <% else %>
+            <p style = 'font-style: italic'>Sorry there are no upcoming sessions for this event</p>
+          <% end %>
         </table>
       </tbody>
     </table>
