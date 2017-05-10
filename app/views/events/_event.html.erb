@@ -25,16 +25,16 @@
         <div class="divider"></div>
         <table>
           <tr>
-            Sessions:
+            <p style = 'text-decoration: underline'>Upcoming Sessions:</p>
           </tr>
           <% if event.sessions.length > 0 %>
             <% event.sessions.each do |session| %>
             <tr>
-              <li><%=session.datetime_from%></li>
+              <li><%=session.datetime_from.to_formatted_s(:rfc822)%></li>
             </tr>
             <% end %>
           <% else %>
-            <p>Sorry there are no upcoming sessions for this event</p>
+            <p style = 'font-style: italic'>Sorry there are no upcoming sessions for this event</p>
           <% end %>
         </table>
       </tbody>
