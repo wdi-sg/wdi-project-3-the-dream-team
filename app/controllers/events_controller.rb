@@ -78,7 +78,6 @@ class EventsController < ApplicationController
 
 
   helper_method :check_time
->>>>>>> 0f5cb167ccde1a876913a6fe5573d40dd9be16fe
 
   private
 
