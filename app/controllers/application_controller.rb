@@ -37,6 +37,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def crafter_is_myself?
+    @crafter == current_user.crafter
+  end
+
   # craftee object for the currently logged in user
   def current_craftee
     if user_signed_in?
@@ -112,6 +116,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user_type
   helper_method :current_crafter
+  helper_method :crafter_is_myself?
   helper_method :current_craftee
   helper_method :is_craftee_authenticated?
   helper_method :is_crafter_authenticated?

@@ -32,9 +32,9 @@
           <!-- check if craftee alrdy signed up for session -->
           <% if user_signed_in? %>
             <% if current_craftee.sessions.include? sess %>
-              <p>YOU SIGNED UP LIAO LEH, SIGN UP AGAIN AH?</p>
+              <p class="blue-text">YOU SIGNED UP LIAO LEH, SIGN UP AGAIN AH?</p>
             <% elsif check_for_clash?(sess) %>
-              <p>YOUR OTHER EVENT GOT CLASH LEH</p>
+              <p class="blue-text">YOUR OTHER EVENT GOT CLASH LEH</p>
             <% end %>
           <% end %>
 

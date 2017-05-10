@@ -18,6 +18,20 @@
 
     <div class="col s9">
       <!-- Teal page content  -->
+
+      <!-- Stripe Connect Setup for Crafter -->
+      <% if crafter_is_myself? %>
+        <div class="card-panel">
+          <h5>Stripe</h5>
+          <% if current_crafter.connected? %>
+            <h6>You are already connected to stripe</h6>
+            <%= button_to "Deauthorize", stripe_deauthorize_path, class: 'btn waves-effect waves-light red lighten-3' %>
+          <% else %>
+            <%= link_to(image_tag('stripe-connect.png'), stripe_oauth_path ) %>
+            <%# button_to "Connect with Stripe", stripe_oauth_path, style: "background: url(" + asset_path('stripe-connect.png') + ')'  %>
+          <% end %>
+        </div>
+      <% end %>
       <div class="card-panel">
         Events
       </div>

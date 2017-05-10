@@ -21,10 +21,9 @@
         <li><div class="divider"></div></li>
         <li><a class="subheader">Craftee Links</a></li>
         <li><div class="divider"></div></li>
-        <li><%= link_to "My Craftee Profile", crafter_path(current_crafter.id), :class => "waves-effect" %></li>
+        <li><%= link_to "My Craftee Profile", craftee_path(current_craftee.id), :class => "waves-effect" %></li>
         <!-- <li><%# link_to "Portfolio", portfolio_path(current_crafter.id), :class => "waves-effect" %></li> -->
         <!-- <li><div class="divider"></div></li> -->
-        <li><%= link_to "My Bookings", event_path(current_crafter.id), :class => "waves-effect" %></li>
         <li><div class="divider"></div></li>
         <li><%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => "waves-effect" %></li>
         <li><div class="divider"></div></li>

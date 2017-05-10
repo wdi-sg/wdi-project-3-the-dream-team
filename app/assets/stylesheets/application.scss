@@ -41,14 +41,22 @@ div.item-box {
   }
 }
 
-/* for edit event modal box */
+.cal-format {
+  height: 80px;
+  overflow-y: scroll;
+  text-align: left;
+}
 
+.simple-calendar .day {
+  height: 100px;
+}
+
+/* for edit event modal box */
 #edit_event {
   max-height: 85%
 }
 
 /* to align material icons DOESNT WORK */
-
 .material-icons {
     display: inline-flex;
     align-items: center;
@@ -179,7 +187,7 @@ header, main, footer {
     vertical-align: top;
     text-align: right;
 
-}
+  }
   .wday-5 {
     vertical-align: top;
     text-align: right;
@@ -189,8 +197,6 @@ header, main, footer {
   .wday-6 {
     vertical-align: top;
     text-align: right;
-
-
   }
 
   .today {}
@@ -236,4 +242,16 @@ td {
 
 #edit-profile-update-button {
   margin-top: 3%;
+}
+
+#create-new-event-btn {
+  margin-top: 1%;
+}
+
+#all-crafters-container {
+  margin-top: 1%;
+}
+
+#all-portfolio-items-container{
+  margin-top: 1%;
 }

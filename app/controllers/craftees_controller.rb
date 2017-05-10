@@ -1,6 +1,6 @@
 class CrafteesController < ApplicationController
   before_action :authenticate_user!
-  before_action :is_craftee_authenticated
+  before_action :is_craftee_authenticated, only: %i[update]
   before_action :find_craftee, only: %i[show edit update destroy]
   before_action :updated_craftee_info, only: %i[create update]
 
@@ -21,7 +21,7 @@ class CrafteesController < ApplicationController
       else
         render 'craftee/edit'
     end
-  end 
+  end
 
     def create
       #  creating craftee will be automated by user Register
