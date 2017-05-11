@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     @new_session = Session.new(@form_data)
     @new_session.pax = 0
 
-    if @new_session.valid? && @new_session.datetime_from.day != @new_session.datetime_to.day
+    if @new_session.datetime_from.day == @new_session.datetime_to.day
       if @event.sessions << @new_session
         flash[:notice] = 'Session created successfully!'
       else
