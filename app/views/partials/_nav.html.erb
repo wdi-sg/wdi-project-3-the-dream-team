@@ -2,14 +2,17 @@
   <% if user_signed_in? %>
         <li>
           <div class="userView">
-            <a href="#!user">
+            <div class="center-align">
               <%= cl_image_tag(current_crafter.profilePic_link, :width => 150, :height => 150,
               :crop => :fill, :gravity => :face,
               :radius => :max)%>
-
+            </div>
             <a href="#!name"><span class="black-text name">Hello <%= current_crafter.name %>!</span></a>
             <a href="#!email"><span class="black-text email"><%= current_user.email %></span></a>
-            </div>
+          </div>
+          <div class="divider">
+
+          </div>
         </li>
         <li><a href="/">Home</a></li>
         <li><div class="divider"></div></li>
@@ -28,7 +31,7 @@
         <li><div class="divider"></div></li>
         <li><%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => "waves-effect" %></li>
         <li><div class="divider"></div></li>
-      <% elsif is_craftee_authenticated? %>
+      <% elsif user_signed_in? && is_craftee_authenticated? %>
         <li>
           <div class="userView">
             <a href="#!user">
@@ -60,34 +63,30 @@
   </ul>
 
 
-  <div class="row valign-wrapper">
-    <a href="#" data-activates="slide-out" class="button-collapse">
-      <i class="material-icons icon-black">menu</i>
-    </a>
-    <div class="col s12 right-align">
-      <% if user_signed_in? %>
-        <!-- <a class="dropdown-button waves-effect waves-light btn btn-medium white black-text" href="#!" data-hover="true" data-belowOrigin="true" data-activates="dropdown1">
-            <%# if is_craftee_authenticated? %>
-              Craftee
-            <%# elsif is_crafter_authenticated? %>
-              Crafter
-            <%# end %>
-        </a> -->
 
-        <!-- <ul id='dropdown1' class = 'dropdown-content'>
-          <li>
-            <%# if is_craftee_authenticated? %>
-                <%# link_to "Switch to Crafter", pages_switch_path %>
-            <%# elsif is_crafter_authenticated? %>
-                <%# link_to "Switch to Craftee", pages_switch_path %>
-            <%# end %>
-          </li>
-        </ul> -->
-      <% else %>
-      <%= link_to "Register", new_user_registration_path, :class => 'waves-effect waves-light btn btn-medium white black-text' %>
-      <%= link_to "Log In", new_user_session_path, :class => 'waves-effect waves-light btn btn-medium white black-text' %>
-      <% end %>
+      <% if user_signed_in? %>
+      <div class="col s11 row valign-wrapper">
+        <a href="#" data-activates="slide-out" class="button-collapse">
+          <i class="material-icons icon-black">menu</i>
+        </a>
+        <div class="col s1">
+        <a class = 'waves-effect waves-light btn-floating btn-medium white' href="javascript:history.go(-1);"><i class="material-icons black-text">chevron_left</i></a>
+      </div>
     </div>
+      <% else %>
+      <div class="col s6 row valign-wrapper">
+        <a href="#" data-activates="slide-out" class="button-collapse">
+          <i class="material-icons icon-black">menu</i>
+        </a>
+      <div class="col s6  ">
+         <%# link_to "Register", '#modalRegister', :class => 'waves-effect waves-light btn btn-medium white black-text col s3', :style => 'float: right;' %>
+         <%# link_to "Log In", '#modalLogin', :class => 'waves-effect waves-light btn btn-medium white black-text col s3', :style => 'float: right;' %>
+
+        <%= link_to "Register", new_user_registration_path, :class => 'waves-effect waves-light btn btn-medium white black-text col s3', :style => 'float: right;' %>
+        <%=  link_to "Log In", new_user_session_path, :class => 'waves-effect waves-light btn btn-medium white black-text col s3', :style => 'float: right;' %>
+      </div>
+    </div>
+      <% end %>
   </div>
 
 

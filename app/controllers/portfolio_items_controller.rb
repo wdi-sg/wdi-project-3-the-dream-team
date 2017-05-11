@@ -24,9 +24,12 @@ class PortfolioItemsController < ApplicationController
       @crafter = Crafter.find(params[:crafter_id])
       @portfolio_item = PortfolioItem.new(portfolio_params)
       @portfolio_item.crafter_id = @crafter.id
-      puts @portfolio_item.id
-      @portfolio_item.validate
-      puts @portfolio_item.inspect
+      if params[:portfolio_item][:media_link]
+        uploaded_file = params[:portfolio_item][:media_link].path
+        cloudnary_file = Cloudinary::Uploader.upload(uploaded_file)
+        params[:portfolio_item][:media_link] = cloudnary_file['public_id']
+        @portfolio_item.save
+      end
       if @portfolio_item.save
         flash[:notice] = 'Portfolio Item Successfully Created'
         redirect_to crafter_portfolio_items_path(@crafter)
