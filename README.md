@@ -2,7 +2,7 @@
 
 ![whichcraft](https://github.com/wdi-sg/wdi-project-3-the-dream-team/blob/master/homepage.png)
 
-whichcraft is a full-stack web web application that combines front end (HTML, CSS, Javascript) with back end technologies (Ruby on Rails in this case), as well as   Our team used Materialize, Google's responseive CSS framework to help build our site.
+whichcraft is a full-stack web web application that combines front end (HTML, CSS, Javascript) with back end technologies (Ruby on Rails in this case).   Our team also used Materialize, Google's responseive CSS framework to help build our site.
 
 The site has been deployed on http://whichcraft.herokuapp.com
 
@@ -22,11 +22,11 @@ We spent a fair bit of time coming up with our **E**ntity **R**elationship **D**
 
 ### 
 
-Because of our the large number of controllers and models, we also started a spreadsheet to track all koreign keys in each table in our database, and the methods associated with the instances.  
+Because of our the large number of controllers and models, we also started a spreadsheet to track all foreign keys in each table in our database, and the methods associated with the instances.  
 ![Models](https://github.com/wdi-sg/wdi-project-3-the-dream-team/blob/master/modelsAndForeignKeys.png)
 
 ### Wireframes
-We also came up with wireframes to help us visualize the flow of our routes and get sensing of what we wanted our website to look like.
+We also came up with wireframes to help us visualize the flow of our routes and get a sense of what the aesthetics of our website.
 ![Wireframes](https://github.com/wdi-sg/wdi-project-3-the-dream-team/blob/master/profilepage.png)
 ![Wireframes](https://github.com/wdi-sg/wdi-project-3-the-dream-team/blob/master/crafter.png)
 ![Wireframes](https://github.com/wdi-sg/wdi-project-3-the-dream-team/blob/master/newevent.png)
