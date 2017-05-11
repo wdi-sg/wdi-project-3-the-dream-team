@@ -10,7 +10,7 @@
     <div class="row review-card">
       <div class="col s2" >
         <div class="center-align vertical-align">
-          <%= cl_image_tag(review.event.crafter.profilePic_link, :width => 50, :height => 50, :crop => :fill, :gravity => :face,
+          <%= cl_image_tag(review.craftee.user.crafter.profilePic_link, :width => 50, :height => 50, :crop => :fill, :gravity => :face,
           :radius => :max)%>
           <p class='center-align'><%= link_to review.craftee.user.crafter.name, crafter_path(review.craftee.user.crafter) %></p>
         </div>
