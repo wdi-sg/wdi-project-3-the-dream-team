@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show filter search search_enter filter_paginate]
 
-  before_action :find_event, except: %i[index new create filter search search_enter filter_paginate]
+  before_action :find_event, except: %i[index new create filter search search_enter filter_paginate my_events]
   before_action :form_event, only: %i[create update]
 
   def index
@@ -124,7 +124,7 @@ class EventsController < ApplicationController
   end
 
   def my_events
-    @crafter = Crafter.find(params[:id])
+    @crafter = Crafter.find(params[:crafter_id])
     @crafterEvents = @crafter.events
     @categories = Category.all
     @all_events = @crafterEvents.paginate(:page => params[:page], :per_page => 15)

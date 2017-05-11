@@ -35,13 +35,15 @@
           <!-- check if craftee alrdy signed up for session -->
           <% if user_signed_in? %>
             <% if current_craftee.sessions.include? sess %>
-              <p class="blue-text">YOU SIGNED UP LIAO LEH, SIGN UP AGAIN AH?</p>
+              <p class="blue-text">Looks like you have already signed up for this event.</p>
             <% elsif check_for_clash?(sess) %>
-              <p class="blue-text">YOUR OTHER EVENT GOT CLASH LEH</p>
+              <p class="blue-text">You have an existing booking which clashes with this timing.</p>
+            <% elsif sess.pax == sess.capacity %>
+              <p class="blue-text">Fully booked.</p>
             <% end %>
           <% end %>
 
-          <% unless sess.datetime_to.past? %>
+          <% unless sess.datetime_to.past? || sess.pax == sess.capacity || check_for_clash?(sess) %>
             <%= link_to "Join!", new_event_booking_path(@event.id, session: sess.id), class: "waves-effect waves-light blue-grey darken-4 btn pulse" %>
           <% end %>
         </div>

@@ -21,7 +21,7 @@
         <li><%= link_to "My Crafter Profile", crafter_path(current_crafter.id), :class => "waves-effect" %></li>
         <li><%= link_to "My Portfolio", crafter_portfolio_items_path(current_crafter.id), :class => "waves-effect" %></li>
         <!-- <li><div class="divider"></div></li> -->
-        <li><%= link_to "My Events", event_path(current_crafter.id), :class => "waves-effect" %></li>
+        <li><%= link_to "My Events", crafter_events_path(current_crafter.id), :class => "waves-effect" %></li>
         <li><div class="divider"></div></li>
         <li><a class="subheader">Craftee Links</a></li>
         <li><div class="divider"></div></li>
