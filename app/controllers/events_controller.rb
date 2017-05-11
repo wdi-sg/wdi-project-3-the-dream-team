@@ -3,27 +3,23 @@ class EventsController < ApplicationController
 
   before_action :find_event, except: %i[index new create filter search search_enter filter_paginate]
   before_action :form_event, only: %i[create update]
+  before_action :find_categories
 
   def index
     @all_events = Event.all.paginate(:page => params[:page], :per_page => 15)
-    @categories = Category.all
     # @eventsPaginate = Event.all.paginate(:page => params[:page], :per_page => 10)
-
   end
 
   def show
-    @categories = Category.all
   end
 
   def new
-    @categories = Category.all
     unless @new_event
       @new_event = Event.new
     end
   end
 
   def create
-    @categories = Category.all
     @crafter = current_crafter
 
     @new_event = Event.new(@form_data)
@@ -38,11 +34,9 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @categories = Category.all
   end
 
   def update
-    @categories = Category.all
     p "update params here #{@form_data.inspect}"
     if @event.update(@form_data)
       flash[:notice] = 'Event updated! successfully!'
@@ -57,7 +51,6 @@ class EventsController < ApplicationController
   end
 
   def filter
-    p params[:category_id]
     if params[:category_id] == ''
       @filtered = Event.all.paginate(:page => params[:page], :per_page => 15)
     else
@@ -78,7 +71,6 @@ class EventsController < ApplicationController
     else
       @all_events = Event.where(category_id: params[:category_id]).paginate(:page => params[:page], :per_page => 15)
     end
-    @categories = Category.all
     render 'events/index'
   end
 
@@ -101,19 +93,22 @@ class EventsController < ApplicationController
     .where('crafters.name ~* ? or events.name ~* ?', params[:search_input], params[:search_input])
 
     respond_to do |format|
-      format.js { render action: 'filter' }
+      format.js
     end
   end
 
   def my_events
     @crafter = Crafter.find(params[:id])
     @crafterEvents = @crafter.events
-    @categories = Category.all
     @all_events = @crafterEvents.paginate(:page => params[:page], :per_page => 15)
     render 'events/index'
   end
 
   private
+
+  def find_categories
+    @categories = Category.all
+  end
 
   def find_event
     @event = Event.find(params[:id])

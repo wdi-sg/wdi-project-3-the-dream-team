@@ -18,14 +18,6 @@
       </div>
     </div>
     <!-- end -->
-    <%# maybe move new event link to first nav? %>
-    <div class="row">
-      <% if user_signed_in? %>
-        <% if is_crafter_authenticated? %>
-          <%= link_to "New Event", new_event_path, class: "waves-effect waves-light btn" %>
-        <% end %>
-      <% end %>
-    </div>
     <%# individual event card will be rendered as partial below %>
     <div class="row">
       <div class="col s12 cards-container" id="event-list">
