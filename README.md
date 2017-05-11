@@ -12,7 +12,7 @@ We wanted to create a platform to bring people who make fine crafts (crafters) a
 This idea was inspired by the growing art industry in Singapore, and recognizing the lack of a proper online platform for creatives to expose their works.  Skilled craftsmen in Singapore currently do not really have a centralized digital platform for them to display and share their crafts and services.  Their services are usually made known through word-of-mouth (which people seem to like and trust!  More so than Google searches).  Our platform seeks to help craftsmen to promote their expertise in their craft and have opportunities for inter-disciplinary networking.  Hopefully it would also help the local community to uncover hidden gems and enjoy unique products and services.
 
 ## Getting Started
-If you'd like to help out with this application, go to our [github](https://github.com/wdi-sg/wdi-project-3-the-dream-team) page.  Fork or clone it into your computer.  Open the repository in your editor and run bundle install......anything else????
+If you'd like to help out with this application, go to our [github](https://github.com/wdi-sg/wdi-project-3-the-dream-team) page.  Fork or clone it into your computer.  Open the repository in your editor and run bundle install.  The Ruby version is 2.2.3
 
 
 ## Development
