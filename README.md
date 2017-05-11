@@ -12,12 +12,16 @@ If you'd like to help out with this application, go to our [github](https://gith
 
 
 ## Development
+### ERD
 We spent a fair bit of time coming up with our **E**ntity **R**elationship **D**iagram because we knew we would have quite a fair number of models.  After a number of iterations, our ERD is as follows:
 ![Entity Relationship Diagram](https://github.com/wdi-sg/wdi-project-3-the-dream-team/blob/master/erd_diagram.png)
+
+### 
 
 Because of our the large number of controllers and models, we also started a spreadsheet to track all koreign keys in each table in our database, and the methods associated with the instances.  
 ![Models](https://github.com/wdi-sg/wdi-project-3-the-dream-team/blob/master/modelsAndForeignKeys.png)
 
+### Wireframes
 We also came up with wireframes to help us visualize the flow of our routes and get sensing of what we wanted our website to look like.
 ![Wireframes](https://github.com/wdi-sg/wdi-project-3-the-dream-team/blob/master/profilepage.png)
 ![Wireframes](https://github.com/wdi-sg/wdi-project-3-the-dream-team/blob/master/crafter.png)
