@@ -1,5 +1,7 @@
 # whichcraft
 
+![whichcraft] (https://github.com/wdi-sg/wdi-project-3-the-dream-team/blob/master/homepage.png)
+
 whichcraft is a full-stack web web application that combines front end (HTML, CSS, Javascript) with back end technologies (Ruby on Rails in this case).  Our team used Materialize, Google's responseive CSS framework to help build our site.
 
 ## Our Pitch
@@ -60,18 +62,16 @@ Stripe-connect API for multi-seller [RAYMOND PLEASE COMPLETE]
 ## Working with the UX Team
 We were fortunate enough to work with three students from the UX class that was ongoing simultaneously.  Gavin, Angela and Rachel offered to partner with us on this project.  WDI UX for offering to work with us and helping us grasp a better understanding of user interaction on apps.  They also helped steer our discussion of who our target audience would be whether we should be crafter-centric/craftee-centric/scheduling-centric etc. This aided us in our decision making process how to structure our website.
  
-
 ## Further Developments
 We hope to be able to implement a marketplace in addition to event scheduling so users crafters can have a platform to market their goods and other users would be able to purchase them directly.  Other developments include Google Maps API, Facebook Login, as well as a Chat room with ActionCable.
 
-
 ## Makers
 Raymond, Tom Shue Ze and Shirong
-
 
 ## References and Acknowledgments:
 * http://materializecss.com/
 * https://github.com/excid3/simple_calendar
 * https://material.io/icons/
+* Sharona Yisheng and Prima <3
 
 
