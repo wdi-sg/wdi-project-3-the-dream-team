@@ -1,3 +1,5 @@
+<a class="waves-effect waves-light btn-floating btn-medium white black-text" id="tpBtn" onclick="topFunction()"><i class="material-icons right">swap_vert</i></a>
+
 <div class="row whichcraftImage">
   <div class="center">
     <%= link_to(image_tag('homepage_quote1.png', :class => '', :style=> 'width:30%; align-item: center; margin: auto; margin-top: 5%;'), '/') %>
@@ -67,8 +69,21 @@
 
 
 
-
-
+<a class="btn tooltipped" data-position="top" data-delay="50" data-tooltip="I am tooltip">Hover me!</a>
 
 
 </div>
+
+
+
+<script type="text/javascript">
+window.onscroll = function () { scrollFunction()}
+
+function scrollFunction () {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById('tpBtn').style.display = 'block'
+  } else {
+    document.getElementById('tpBtn').style.display = 'none'
+  }
+}
+</script>

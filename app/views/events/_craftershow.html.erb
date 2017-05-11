@@ -44,6 +44,19 @@
           <%= f.label :name, class: 'active' %>
         </div>
       </div>
+
+      <div class="row">
+        <div class="file-field input-field col s12">
+          <div class="waves-effect waves-light btn white black-text">
+            <span>Upload File</span>
+            <%= f.file_field :image_link %>
+            <!-- <input type="file"> -->
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
+      </div>
       <div class="row">
         <div class="input-field col s12">
           <%= f.text_area :description, class: "materialize-textarea" %>
@@ -60,11 +73,15 @@
           <%= f.label :category_id %>
         </div>
       </div>
+
       <%= f.submit "Update Event", class: "modal-action modal-close waves-effect waves-green btn" %>
       <% end %>
     </div>
 
     <div class="divider"></div>
+
+
+
 
     <!-- update existing session -->
     <div class="section">
