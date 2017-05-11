@@ -1,7 +1,12 @@
 <div class="col s4">
   <div class="card small">
     <div class="card-image waves-effect waves-block waves-light">
-      <img src="<%= event.image_link && event.image_link != '' ? event.image_link : asset_path('default_event.png') %>" alt="Image" class="activator" width="313" height="235"></td>
+      <% if !event.image_link || event.image_link == ''  %>
+        <img src="<%= asset_path('default_event.png') %>" alt="Image" class="activator" width="313" height="235">
+      <% else %>
+        <%= cl_image_tag(event.image_link) %>
+      <% end %>
+
     </div>
     <div class="card-content">
       <div class="row">
