@@ -1,15 +1,12 @@
-<div class="row">
   <div class="card-panel col s12" id = 'reviewsCard'>
     <div class="row">
-      <h5 class = 'col s11'>Reviews</h5>
-      <div class="col s1 vertical-align-middle">
-        <a class = 'btn-floating btn-medium black' href='#modal1'><i class="material-icons icon-white">add</i></a>
-
+      <h5 class = 'col s1'>Reviews</h5>
+      <div class="col s1 vertical-align-middle" style = 'margin-left: 4%;'>
+        <a class = 'waves-effect waves-light btn-floating btn-medium white tooltipped' data-position="top" data-delay="50" data-tooltip="Create New Review" href='#modal1'><i class="material-icons black-text">add</i></a>
       </div>
-
     </div>
-
-
+    <div class="row">
+    </div>
 
 
     <div id="modal1" class="modal">
@@ -36,7 +33,6 @@
        <% end %>
     </div>
 
-    <div class="divider"></div>
 
     <% @event.reviews.each do |review| %>
     <% if review.craftee %>
@@ -45,7 +41,7 @@
           <div class="center-align vertical-align">
             <%= cl_image_tag(review.event.crafter.profilePic_link, :width => 50, :height => 50, :crop => :fill, :gravity => :face,
             :radius => :max)%>
-            <p class='center-align'><%= link_to review.craftee.name, crafter_path(review.event.crafter) %></p>
+            <p class='center-align'><%= link_to review.craftee.user.crafter.name, crafter_path(review.craftee.user.crafter) %></p>
           </div>
         </div>
         <div class="col s8">
@@ -53,14 +49,13 @@
         </div>
         <% if review.craftee_id == current_craftee.id %>
           <div class="col s2">
-            <a class = 'btn-floating btn-medium black' data-method = 'delete' href="<%= event_review_path(@event.id, review.id) %>"><i class="material-icons icon-white">delete</i></a>
+            <a class = 'btn-floating btn-medium white black-text' data-method = 'delete' href="<%= event_review_path(@event.id, review.id) %>"><i class="material-icons icon-black">delete</i></a>
           </div>
         <% end %>
       </div>
     <% end %>
     <div class='divider'></div>
     <% end %>
-  </div>
 <div class="divider"></div>
 
 

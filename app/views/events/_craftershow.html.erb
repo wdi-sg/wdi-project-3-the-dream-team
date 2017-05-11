@@ -1,6 +1,7 @@
 <!-- event setting modal box -->
 <% if my_event?(@event) %>
-<%= link_to "Setting", "#edit_event", class: "modal-trigger waves-effect waves-light btn" %>
+
+<a href="#edit_event" class = 'tooltipped' data-position="top" data-delay="50" data-tooltip="Update Events & Sessions"><i class = 'material-icons medium'>expand_more</i></a>
 
 <div id="edit_event" class="modal bottom-sheet">
   <div class="modal-content">

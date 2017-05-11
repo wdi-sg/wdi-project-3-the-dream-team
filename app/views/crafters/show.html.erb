@@ -5,7 +5,7 @@
   <div class="row right-align">
     <!-- <a class = 'waves-effect waves-light btn-floating btn-medium white' href="<%# edit_crafter_path %>"><i class="material-icons black-text">mode_edit</i></a> -->
     <% if crafter_is_myself? %>
-      <a class = 'waves-effect waves-light btn-floating btn-medium white' href="#modalEditProfile"><i class="material-icons black-text">mode_edit</i></a>
+      <a class = 'waves-effect waves-light btn-floating btn-medium white tooltipped' data-position="top" data-delay="50" data-tooltip="Edit Your Profile"  href="#modalEditProfile"><i class="material-icons black-text">mode_edit</i></a>
     <% end %>
   </div>
 
@@ -81,7 +81,7 @@
         <% if @crafter.events.length > 0 %>
         <h5 class = 'col s11'>Events</h5>
         <div class="col s1">
-          <a href= '<%= crafter_events_path(@crafter)%>' class='waves-effect waves-light btn-floating btn-medium white'><i class="material-icons black-text">more_horiz</i></a>
+          <a href= '<%= crafter_events_path(@crafter)%>' class='waves-effect waves-light btn-floating btn-medium white tooltipped' data-position="top" data-delay="50" data-tooltip="View More Events"><i class="material-icons black-text">more_horiz</i></a>
         </div>
         <div class="divider"></div>
         <div class="row">
@@ -112,7 +112,7 @@
         <% if @crafter.portfolio_items.length > 0 %>
         <h5 class = 'col s11'>Portfolio</h5>
         <div class="col s1">
-          <a href= '<%= crafter_portfolio_items_path(@crafter)%>' class='waves-effect waves-light btn-floating btn-medium white'><i class="material-icons black-text">more_horiz</i></a>
+          <a href= '<%= crafter_portfolio_items_path(@crafter)%>' class='waves-effect waves-light btn-floating btn-medium white tooltipped' data-position="top" data-delay="50" data-tooltip="View More Portfolio Items"><i class="material-icons black-text">more_horiz</i></a>
         </div>
         <div class="divider"></div>
         <div class="row">
