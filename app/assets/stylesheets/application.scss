@@ -233,10 +233,24 @@ header, main, footer {
   margin-top: 2%;
 }
 
-.second-nav-links:hover {
-  font-size: 16px;
-  transition: font 0.8s ease;
+.second-nav-links:active {
+  text-decoration: underline;
 }
+
+
+.second-nav-links:hover{
+  /* hover state */
+  font-size: 13px;
+}
+
+.second-nav-links:active{
+}
+
+.second-nav-links.active{
+  /* after click state */
+  text-decoration: underline;
+}
+
 
 
 

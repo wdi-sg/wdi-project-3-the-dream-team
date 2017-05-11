@@ -287,7 +287,7 @@ p 'portfolio items creation succeeded'
   biography: 'Classical and contemporary violinist',
   category_id: 9,
   profession: 'Musician',
-  profilePic_link: 'photo_zg7rfd.png.png'
+  profilePic_link: 'photo_zg7rfd.png'
 )
 
 @crafter.featured_crafter = FeaturedCrafter.create(

@@ -20,13 +20,17 @@
     <%# maybe move new event link to first nav? %>
     <div class="row">
       <% if user_signed_in? %>
-          <div class="row right-align">
+      <div class="row valign-wrapper">
+        <div class="col s11">
+          <h5>Events</h5>
+        </div>
+        <div class="col s1">
           <a class = 'waves-effect waves-light btn-floating btn-medium white tooltipped' data-position="top" data-delay="50" data-tooltip="Create New Event" href='<%=new_event_path%>'><i class="material-icons black-text">add</i></a>
-          <%# link_to "New Event", new_event_path, class: "waves-effect waves-light btn" %>
-          </div>
-
+        </div>
+      </div>
       <% end %>
     </div>
+
     <%# individual event card will be rendered as partial below %>
     <div class="row">
       <div class="col s12 cards-container" id="event-list">
