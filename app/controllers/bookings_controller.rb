@@ -47,7 +47,7 @@ class BookingsController < ApplicationController
 
       begin
         charge_attrs = {
-          amount: amount,
+          amount: amount.to_i,
           currency: crafter.currency,
           source: params[:token],
           description: "Test Charge via Stripe Connect",
