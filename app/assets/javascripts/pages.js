@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function () {
   // tooltip
-  $('.tooltippedAddEvent').tooltip({delay: 50})
+  $('.tooltipped').tooltip({delay: 50})
 
   // nav bar dropdown jquery plugin
   $('.dropdown-button').dropdown()
