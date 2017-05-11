@@ -10,11 +10,6 @@
 
 <div class="container">
   <h5 class='featured_events_h4'>Featured Events</h5>
-
-  <div class="row">
-
-  </div>
-
 <div class="row">
   <div class="carousel valign-wrapper">
     <a style = 'cursor:pointer'><i class="small material-icons black-text" id = "carouselPrevButton">chevron_left</i></a>
@@ -30,40 +25,37 @@
         <a style = 'cursor:pointer;'><i class="small material-icons black-text" id = 'carouselNextButton'>chevron_right</i></a>
 
       </div>
-
   </div>
 </div>
 
 
 <div class="divider"></div>
-
-  <h5 class='featured_events_h4'>Featured Crafters</h5>
-  <br /><br />
-  <div class="row">
+<div class="">
+  <h5>Featured Crafters</h5>
+</div>
+<div class="row">
   <% @all_crafters_pagesC.each do |feat_crafter| %>
-  <div class="col s4">
-    <div class="center promo promo-example">
+  <div class="col s4 crafter-promo">
+    <div class="crafter-promo-image">
       <a href = '<%= crafter_path(feat_crafter.crafter) %>'>
-        <%= cl_image_tag(feat_crafter.media_link, :style => 'width: 200px; height: 200px; border-radius: 100%; ') %>
+        <%= cl_image_tag(feat_crafter.media_link) %>
         <!-- Promo Content 1 goes here -->
-        <p class = 'promo-caption center-align'><%= feat_crafter.crafter.name%></p>
-        <p class = 'light center'><%= feat_crafter.description%></p>
-
       </a>
+    </div>
+    <div class="flex-content">
+      <div class="">
+        <%= link_to feat_crafter.crafter.name, crafter_path(feat_crafter.crafter), class: 'promo-caption center' %>
+      </div>
+    </div>
+    <div class="flex-content">
+      <div class="">
+        <p class='light center'><%= feat_crafter.description%></p>
+      </div>
     </div>
   </div>
   <% end %>
 </div>
-
-
-
-
 </div>
-
-
-
-
-
 
 <script type="text/javascript">
 window.onscroll = function () { scrollFunction()}

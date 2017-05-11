@@ -5,7 +5,6 @@
 @import "materialize";
 @import "simple_calendar";
 
-
 /* event-show-image */
 .event-details {
   position: relative;
@@ -354,4 +353,42 @@ td {
   position: fixed;
   bottom: 0;
   right: 0;
+}
+
+.crafter-promo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0;
+  margin: 10px 0 0 0;
+  .crafter-promo-image {
+    img {
+      object-fit: cover;
+      width: 250px;
+      height: 250px;
+      border-radius: 100%;
+    }
+  }
+  .flex-content {
+    display: flex;
+    justify-content: space-around;
+    p {
+      margin-top: 0;
+    }
+  }
+}
+
+div.image-snippet {
+  width: 200px;
+  height: 200px;
+  img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+  }
+}
+
+.divider {
+  margin-bottom: 50px;
 }
