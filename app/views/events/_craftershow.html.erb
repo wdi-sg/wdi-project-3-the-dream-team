@@ -116,10 +116,10 @@
                 <%= f.label :capacity, class: 'active' %>
                 <%= f.number_field :capacity %>
               </div>
-              <div class="input-field">
-                <%= f.label :pax, class: 'active' %>
-                <%= f.number_field :pax %>
-              </div>
+              <!-- <div class="input-field"> -->
+                <%# f.label :pax, class: 'active' %>
+                <%# f.number_field :pax %>
+              <!-- </div> -->
               <div class="input-field">
                 <%= f.submit 'Confirm', class: 'waves-effect waves-green btn'%>
                 <%= link_to "Destroy", event_session_path(@event, sess), method: :delete, class: "waves-effect waves-green btn" %>
