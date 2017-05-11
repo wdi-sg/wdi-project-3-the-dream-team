@@ -29,9 +29,10 @@
   <div class="carousel valign-wrapper">
     <a style = 'cursor:pointer'><i class="small material-icons black-text" id = "carouselPrevButton">chevron_left</i></a>
 
-      <% @all_events_pagesC.sample(12).each do|event| %>
-      <%= link_to event_path(event.id), class: 'carousel-item' do %>
-      <%= image_tag(event.image_link, class: 'imageCarousel')%>
+      <% @all_events_pagesC.each do|feat_event| %>
+      <%= link_to event_path(feat_event.event.id), class: 'carousel-item' do %>
+      <%= cl_image_tag(feat_event.media_link, class: 'imageCarousel')%>
+
       <% end %>
       <p style = 'display: hide'></p>
       <% end %>
@@ -49,14 +50,14 @@
   <h5 class='featured_events_h4'>Featured Crafters</h5>
 
   <div class="row">
-  <% @all_crafters_pagesC.sample(6).each do |crafter| %>
+  <% @all_crafters_pagesC.each do |feat_crafter| %>
   <div class="col s4">
     <div class="center promo promo-example">
-      <a href = '<%= crafter_path(crafter) %>'>
-        <%= image_tag(crafter.profilePic_link, :style => 'width: 200px; height: 200px; border-radius: 100%; ')%>
+      <a href = '<%= crafter_path(feat_crafter.crafter) %>'>
+        <%= cl_image_tag(feat_crafter.media_link, :style => 'width: 200px; height: 200px; border-radius: 100%; ') %>
         <!-- Promo Content 1 goes here -->
-        <p class = 'promo-caption center-align'><%= crafter.name%></p>
-        <p class = 'light center'><%= crafter.biography%></p>
+        <p class = 'promo-caption center-align'><%= feat_crafter.crafter.name%></p>
+        <p class = 'light center'><%= feat_crafter.description%></p>
 
       </a>
     </div>
