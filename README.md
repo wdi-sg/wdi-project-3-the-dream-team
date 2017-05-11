@@ -19,8 +19,10 @@ Because of our the large number of controllers and models, we also started a spr
 ![Models](https://github.com/wdi-sg/wdi-project-3-the-dream-team/blob/master/modelsAndForeignKeys.png)
 
 We also came up with wireframes to help us visualize the flow of our routes and get sensing of what we wanted our website to look like.
-![Wireframes]
-
+![Wireframes](https://github.com/wdi-sg/wdi-project-3-the-dream-team/blob/master/profilepage.png)
+![Wireframes](https://github.com/wdi-sg/wdi-project-3-the-dream-team/blob/master/crafter.png)
+![Wireframes](https://github.com/wdi-sg/wdi-project-3-the-dream-team/blob/master/newevent.png)
+![Wireframes](https://github.com/wdi-sg/wdi-project-3-the-dream-team/blob/master/bookings.png)
 
 
 ## User Flow:
