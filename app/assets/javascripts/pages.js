@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function () {
   // tooltip
-  $('.tooltipped').tooltip({delay: 50});
+  $('.tooltippedAddEvent').tooltip({delay: 50})
 
   // nav bar dropdown jquery plugin
   $('.dropdown-button').dropdown()
@@ -14,6 +14,13 @@ $(document).on('turbolinks:load', function () {
   // select jquery plugin
   $('select').material_select()
 
+
+  // back to top scroll
+  $('#tpBtn').click(function(){
+    $("body, html").animate({
+    scrollTop: $("body").position().top
+},500)
+  })
 
 
   // on change listener on select pax to change amount

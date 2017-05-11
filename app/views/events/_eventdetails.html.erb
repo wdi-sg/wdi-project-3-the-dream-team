@@ -6,6 +6,9 @@
     <p>by: <%= @event.crafter.name %> with crafter id <%= @event.crafter.id %></p>
   </div>
 
+  <%= cl_image_tag (@event.image_link), :class => 'materialboxed', :style => 'width: 313px; height: 235px;' %>
+
+
   <!-- right column -->
   <div class="col s6">
     <% @event.sessions.each do |sess| %>

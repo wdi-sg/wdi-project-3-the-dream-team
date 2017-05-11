@@ -25,8 +25,14 @@ class EventsController < ApplicationController
   def create
     @categories = Category.all
     @crafter = current_crafter
-
     @new_event = Event.new(@form_data)
+    if params[:event][:image_link]
+      uploaded_file = params[:event][:image_link].path
+      cloudnary_file = Cloudinary::Uploader.upload(uploaded_file)
+      params[:event][:image_link] = cloudnary_file['public_id']
+      @new_event.image_link = cloudnary_file['public_id']
+      @new_event.save
+    end
 
     if @crafter.events << @new_event
       flash[:notice] = 'Event created successfully!'
@@ -42,6 +48,13 @@ class EventsController < ApplicationController
   end
 
   def update
+    @event = Event.find(params[:id])
+    if params[:event][:image_link] && params[:event][:image_link] != ''
+      uploaded_file = params[:event][:image_link].path
+      cloudnary_file = Cloudinary::Uploader.upload(uploaded_file)
+      params[:event][:image_link] = cloudnary_file['public_id']
+      @form_data.image_link = cloudnary_file['public_id']
+    end
     @categories = Category.all
     p "update params here #{@form_data.inspect}"
     if @event.update(@form_data)
@@ -122,6 +135,6 @@ class EventsController < ApplicationController
   def form_event
     @form_data =  params
                   .require(:event)
-                  .permit(:name, :description, :category_id)
+                  .permit(:name, :description, :category_id, :image_link)
   end
 end
