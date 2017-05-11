@@ -27,7 +27,8 @@ Rails.application.routes.draw do
 
 
   resources :craftees do
-    post '/fav_events', to: 'fav_events#create', as: 'fav_event'
+    post '/fav_events', to: 'fav_events#create', as: 'create_fav_event'
+    get '/fav_events', to: 'fav_events#index', as: 'fav_event'
   end
 
   resources :crafters do

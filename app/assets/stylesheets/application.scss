@@ -5,6 +5,7 @@
 @import "materialize";
 @import "simple_calendar";
 
+
 /* event-show-image */
 .event-details {
   position: relative;
@@ -259,26 +260,38 @@ header, main, footer {
   margin-top: 2%;
 }
 
-.second-nav-links:active {
-  text-decoration: underline;
+.flex-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  div {
+    width: 120px;
+    height: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    a {
+      color: black;
+    }
+  }
+  div.aktif {
+    background-color: #9C9990;
+    a {
+      color: white;
+    }
+  }
 }
 
+.cheat {
+  margin-bottom: 30px;
+}
 
 .second-nav-links:hover{
   /* hover state */
   font-size: 13px;
 }
-
-.second-nav-links:active{
-}
-
-.second-nav-links.active{
-  /* after click state */
-  text-decoration: underline;
-}
-
-
-
 
 p {
   text-align: justify;

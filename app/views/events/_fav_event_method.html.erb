@@ -1,7 +1,7 @@
 <%
     if my_fav_event?(event) == true %>
     <div class="btn-fav">
-      <%= link_to(craftee_fav_event_path(current_craftee.id), data: {
+      <%= link_to(craftee_create_fav_event_path(current_craftee.id), data: {
         remote: true,
         method: :post,
         params: {
@@ -14,9 +14,9 @@
       </i>
       <% end %>
     </div>
-<%  elsif my_fav_event?(event) == false %>
+<%  else %>
 <div class="btn-fav">
-  <%= link_to(craftee_fav_event_path(current_craftee.id), data: {
+  <%= link_to(craftee_create_fav_event_path(current_craftee.id), data: {
     remote: true,
     method: :post,
     params: {

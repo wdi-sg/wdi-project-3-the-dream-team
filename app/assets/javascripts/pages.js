@@ -1,4 +1,27 @@
 $(document).on('turbolinks:load', function () {
+
+  if (window.location.pathname === '/') {
+    $('#homepage-nav').addClass('aktif')
+    $('#events-nav').removeClass('aktif')
+    $('#crafters-nav').removeClass('aktif')
+    $('#works-nav').removeClass('aktif')
+  } else if (window.location.pathname === '/events') {
+    $('#events-nav').addClass('aktif')
+    $('#homepage-nav').removeClass('aktif')
+    $('#crafters-nav').removeClass('aktif')
+    $('#works-nav').removeClass('aktif')
+  } else if (window.location.pathname === '/crafters') {
+    $('#crafters-nav').addClass('aktif')
+    $('#events-nav').removeClass('aktif')
+    $('#homepage-nav').removeClass('aktif')
+    $('#works-nav').removeClass('aktif')
+  } else if (window.location.pathname === '/portfolios') {
+    $('#works-nav').addClass('aktif')
+    $('#events-nav').removeClass('aktif')
+    $('#crafters-nav').removeClass('aktif')
+    $('#homepage-nav').removeClass('aktif')
+  }
+
   // tooltip
   $('.tooltipped').tooltip({delay: 50})
 

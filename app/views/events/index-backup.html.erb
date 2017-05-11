@@ -31,7 +31,7 @@
                   @heart = 'Favourite!'
                 end
                 %>
-                <%= link_to @heart, craftee_fav_event_path(current_craftee.id),
+                <%= link_to @heart, craftee_create_fav_event_path(current_craftee.id),
                 data: {
                   remote: true,
                   method: :post,
