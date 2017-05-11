@@ -2,12 +2,6 @@
 
 <div class="container">
   <div class="section">
-
-    <!-- favourite event function here -->
-    <div class="">
-      <%= render partial: 'events/fav_event_method', locals: {event: @event} if user_signed_in? %>
-    </div>
-    <!-- end -->
     <%= render 'events/eventdetails' %>
   </div>
 

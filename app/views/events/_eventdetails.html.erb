@@ -1,50 +1,102 @@
 <!-- left column -->
-<div class="row">
-  <div class="col s6">
-    <h2><%= @event.name %></h2>
-    <p><%= @event.description %></p>
-    <p>by: <%= @event.crafter.name %> with crafter id <%= @event.crafter.id %></p>
+<div class="row event-show-details">
+<div class="card horizontal">
+  <div class="card-image">
+    <img src="https://cdn.foodism.co.uk/gallery/575eb10c053d9.jpeg">
   </div>
+  <div class="card-stacked">
+    <div class="card-content event-details">
+      <div class="">
+        <h4><%= @event.name %></h4>
+        <p><%= @event.description %></p>
+      </div>
+      <p>by: <%= link_to @event.crafter.name, crafter_path(@event.crafter) %></p>
+      <%= render partial: 'events/fav_event_method', locals: {event: @event} if user_signed_in? %>
+    </div>
+  </div>
+</div>
+</div>
 
-  <!-- right column -->
-  <div class="col s6">
+<div class="divider"></div>
+
+<!-- show sessions -->
+<div class="row">
+  <h4>Sessions</h4>
+  <% unless @event.sessions.empty? %>
+  <ul class="collapsible" data-collapsible="accordion">
     <% @event.sessions.each do |sess| %>
-    <div class="col s12 m6">
-      <div class="card darken-1">
-        <div class="card-content">
-          <span class="card-title">
-            <% if Time.now.between?(sess.datetime_from, sess.datetime_to) %>
-              Ongoing
-            <% else %>
-              <% if sess.datetime_to.past? %>
-                Over
-              <% elsif sess.datetime_from.future? %>
-                Happening in the future
-              <% end %>
-            <% end %>
-          </span>
-          <p>From: <%= sess.datetime_from %></p>
-          <p>To: <%= sess.datetime_to %></p>
-          <p>$ <%= sess.price %></p>
-          <p>Capacity <%= sess.pax %>/<%= sess.capacity %></p>
-        </div>
-        <div class="card-action">
-          <!-- check if craftee alrdy signed up for session -->
-          <% if user_signed_in? %>
-            <% if current_craftee.sessions.include? sess %>
-              <p class="blue-text">YOU SIGNED UP LIAO LEH, SIGN UP AGAIN AH?</p>
-            <% elsif check_for_clash?(sess) %>
-              <p class="blue-text">YOUR OTHER EVENT GOT CLASH LEH</p>
-            <% end %>
-          <% end %>
-
-          <% unless sess.datetime_to.past? %>
-            <%= link_to "Join!", new_event_booking_path(@event.id, session: sess.id), class: "waves-effect waves-light blue-grey darken-4 btn pulse" %>
-          <% end %>
+    <% if Time.now.between?(sess.datetime_from, sess.datetime_to) %>
+    <!-- collapsible -->
+    <li>
+      <div class="collapsible-header">
+        Ongoing
+        <span> // <%= sess.datetime_from %></span>
+      </div>
+      <div class="collapsible-body">
+        <div class="row">
+          <div class="col s8">
+            <p>Ends at <%= sess.datetime_to %></p>
+            <p>$ <%= sess.price %></p>
+            <p>Capacity <%= sess.pax %>/<%= sess.capacity %></p>
+          </div>
+          <div class="col s4">
+            Event is ongoing!
+          </div>
         </div>
       </div>
-    </div>
-    <% end %>
-  </div>
+    </li>
 
+    <% elsif sess.datetime_to.future? %>
+    <!-- collapsible -->
+    <li>
+      <div class="collapsible-header">
+        Upcoming
+        <span> // <%= sess.datetime_from %></span>
+      </div>
+      <div class="collapsible-body">
+        <div class="row">
+            <p>
+              Ends at <%= sess.datetime_to %><br>$ <%= sess.price %><br>Capacity <%= sess.pax %>/<%= sess.capacity %></p>
+
+              <% if user_signed_in? %>
+                <% if current_craftee.sessions.include? sess %>
+                  <%= render partial: 'events/join_button', locals: {
+                    tooltip_notes: 'You\'ve signed up',
+                    event_id: @event.id,
+                    sess_id: sess.id} %>
+                <% elsif check_for_clash?(sess) %>
+                  <%= render partial: 'events/join_button', locals: {
+                    tooltip_notes: 'You\'ve another event that clashes',
+                    event_id: @event.id,
+                    sess_id: sess.id} %>
+                <% else %>
+                <%= render partial: 'events/join_button', locals: {
+                  tooltip_notes: 'Join us!',
+                  event_id: @event.id,
+                  sess_id: sess.id} %>
+                <% end %>
+              <% else %>
+              <%= render partial: 'events/join_button', locals: {
+                tooltip_notes: 'Sign up to join!',
+                event_id: @event.id,
+                sess_id: sess.id} %>
+              <% end %>
+        </div>
+      </div>
+      <div class="collapsible-footer">
+        <!-- check if craftee alrdy signed up for session -->
+        <% if user_signed_in? %>
+          <% if current_craftee.sessions.include? sess %>
+            <p class=“blue-text”>You've signed up for this session</p>
+          <% elsif check_for_clash?(sess) %>
+            <p class=“blue-text”>You have another event that clashes with this session</p>
+          <% end %>
+        <% end %>
+      </div>
+    </li>
+    <% end %>
+    <% end %>
+  </ul>
+  <% end %>
 </div>
+<!-- end session show -->

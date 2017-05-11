@@ -5,9 +5,28 @@
 @import "materialize";
 @import "simple_calendar";
 
-/* testing ajax with fav event */
-#favourite {
-  background-color: red;
+/* event-show-image */
+.event-details {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  h4 {
+    margin-top: 0;
+  }
+
+  .btn-fav {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 3rem;
+    height: 3rem;
+    a {
+      color: red;
+    }
+  }
+
 }
 
 .cal-format {
@@ -26,7 +45,7 @@ div.search-box {
     width: 100%;
     max-height: 50vh;
     z-index: 999;
-    
+
     div.item-box {
       position: relative;
       height: 60px;
@@ -144,7 +163,13 @@ i.icon-black {
 }
 
 .carousel{
-  margin-top: -5%;
+  margin-top: -8%;
+  padding-bottom: 0px;
+}
+
+.carousel .carousel-item > img {
+    width: 100%;
+    height: 100%;
 }
 
 .featured_events_h4 {

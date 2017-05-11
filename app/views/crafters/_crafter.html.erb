@@ -1,15 +1,17 @@
 <div class="col s4">
   <div class="card small">
     <div class="card-image waves-effect waves-block waves-light">
-      <img src="<%= crafter.profilePic_link %>" alt="Image" class='activator'></td>
+      <img src="<%= crafter.profilePic_link && crafter.profilePic_link != '' ? crafter.profilePic_link : asset_path('default_event.png') %>" alt="Image" class="activator" width="313" height="235"></td>
     </div>
 
     <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4"><%= crafter.name %><i class="material-icons right">more_vert</i></span>
+      <div class="row">
+        <a href="<%= crafter_path(crafter)%>" style = 'font-size: 1.2em; '><%= crafter.name %></a>
+        <i class = "material-icons right card-title activator"> more_vert </i>
+      </div>
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">Crafter Details<i class="material-icons right">close</i></span>
-      <!-- <p>why can't i put a table here???</p> -->
       <div class="divider"></div>
       <table>
         <tbody>
@@ -20,6 +22,10 @@
           <tr>
             <td>Blurb:</td>
             <td><%= crafter.biography %></td>
+          </tr>
+          <tr>
+            <td>Category:</td>
+            <td><%= crafter.category.name %></td>
           </tr>
         </table>
     </div>

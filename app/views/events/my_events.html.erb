@@ -1,17 +1,15 @@
 <h1><%# @crafter.events.inspect%></h1>
 
-<% @crafterEvents = @crafter.events %>
+<% @crafterEvents = current_crafter.events %>
 
 <div class="container">
   <div class="row right-align">
     <a class="waves-effect waves-light btn black-text white" href="#modalCreate">Create New Event</a>
   </div>
 
-  <!-- Modal Structure for Creating New Portfolio Item -->
   <div id="modalCreate" class="modal">
     <div class="modal-content">
       <h4>Create New Event</h4>
-      <%# render 'portfolio_items/newItemForm' %>
     </div>
     <div class="modal-footer">
     </div>

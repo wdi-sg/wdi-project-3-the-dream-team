@@ -117,6 +117,6 @@ class EventsController < ApplicationController
   def form_event
     @form_data =  params
                   .require(:event)
-                  .permit(:name, :description, :category_id)
+                  .permit(:name, :description, :category_id, :image_link)
   end
 end

@@ -11,7 +11,7 @@
   Category.create(name: c)
 end
 
-50.times do |i|
+20.times do |i|
   @user = User.create(
     # email: Faker::Internet.email,
     # password: Faker::Internet.password
