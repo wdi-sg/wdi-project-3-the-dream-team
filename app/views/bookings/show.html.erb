@@ -1,14 +1,18 @@
 <%= render 'partials/second_nav' %>
-<div class="container">
-  <h1>Booking Details</h1>
-  <h2>Please find booking details</h2>
 
-  <p>Invoice Id:
-    <%= @booking.invoice_id %></p>
-  <p>Session Details:
-    <%= @booking.session.datetime_from %>
-    -
-    <%= @booking.session.datetime_to %></p>
-  <p>Amount:
-    <%= @booking.amount %></p>
+<div class="col s6 offset-s6">
+  <div class="container">
+    <h1>Booking Details</h1>
+    <h2>Please find booking details</h2>
+
+    <p>Invoice Id:
+      <%= @booking.invoice_id %></p>
+      <p>Session Details:
+        <%= @booking.session.datetime_from %>
+        -
+        <%= @booking.session.datetime_to %></p>
+        <p>Amount:
+          <%= @booking.amount %></p>
+        </div>
+
 </div>
