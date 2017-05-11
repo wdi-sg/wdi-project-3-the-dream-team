@@ -70,6 +70,8 @@
             <h6>You are already connected to stripe</h6>
             <%= button_to "Deauthorize", stripe_deauthorize_path, class: 'btn waves-effect waves-light red lighten-3' %>
           <% else %>
+            <h6>You need to setup your stripe account so that you can start creating new events and charge booking fees.</h6>
+            <p>
             <%= link_to(image_tag('stripe-connect.png'), stripe_oauth_path ) %>
             <%# button_to "Connect with Stripe", stripe_oauth_path, style: "background: url(" + asset_path('stripe-connect.png') + ')'  %>
           <% end %>
