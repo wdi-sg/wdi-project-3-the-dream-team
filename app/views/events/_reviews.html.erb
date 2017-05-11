@@ -18,7 +18,7 @@
       <div class="col s8">
         <%=review.description%>
       </div>
-      <% if review.craftee_id == current_craftee.id %>
+      <% if user_signed_in? && review.craftee_id == current_craftee.id %>
       <div class="col s2">
         <a class = 'btn-floating btn-medium white black-text' data-method = 'delete' href="<%= event_review_path(@event.id, review.id) %>"><i class="material-icons icon-black">delete</i></a>
       </div>

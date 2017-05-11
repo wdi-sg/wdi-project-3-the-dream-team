@@ -10,11 +10,15 @@ class SessionsController < ApplicationController
     @new_session = Session.new(@form_data)
     @new_session.pax = 0
 
-    if @new_session.datetime_from.day == @new_session.datetime_to.day
-      if @event.sessions << @new_session
-        flash[:notice] = 'Session created successfully!'
+    if Time.at(@new_session.datetime_from).to_date === Time.at(@new_session.datetime_to).to_date
+      if @new_session.datetime_from < @new_session.datetime_to
+        if @event.sessions << @new_session
+          flash[:notice] = 'Session created successfully!'
+        else
+          flash[:alert] = 'Failed to create session'
+        end
       else
-        flash[:alert] = 'Failed to create session'
+          flash[:alert] = 'From Datetime must be earlier than To Datetime.'
       end
     else
       flash[:alert] = 'Sorry. System only support sessions within the same day.'
@@ -23,10 +27,19 @@ class SessionsController < ApplicationController
   end
 
   def update
-    if @session.update(@form_data)
-      flash[:notice] = 'Session updated successfully!'
+    sess = Session.new(@form_data)
+    if Time.at(sess.datetime_from).to_date === Time.at(sess.datetime_to).to_date
+      if sess.datetime_from < sess.datetime_to
+        if @session.update(@form_data)
+          flash[:notice] = 'Session updated successfully!'
+        else
+          flash[:alert] = 'Failed to update session'
+        end
+      else
+        flash[:alert] = 'From Datetime must be earlier than To Datetime.'
+      end
     else
-      flash[:alert] = 'Failed to update session'
+      flash[:alert] = 'Sorry. System only support sessions within the same day.'
     end
     redirect_to event_path(@session.event)
   end
