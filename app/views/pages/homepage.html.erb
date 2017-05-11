@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row whichcraftImage">
   <div class="center">
     <%= link_to(image_tag('homepage_quote1.png', :class => '', :style=> 'width:30%; align-item: center; margin: auto; margin-top: 5%;'), '/') %>
   </div>
@@ -21,118 +21,50 @@
 <div class="container">
   <h5 class='featured_events_h4'>Featured Events</h5>
 
-  <div class="carousel">
-    <%= link_to '#one!', class: 'carousel-item' do %>
-    <%= image_tag('featuredEvents/featuredEvents1.png')%>
-    <% end %>
-    <%= link_to '#two!', class: 'carousel-item' do %>
-    <%= image_tag('featuredEvents/featuredEvents2.png') %>
-    <% end %>
-    <%= link_to '#three!', class: 'carousel-item' do %>
-    <%= image_tag('featuredEvents/featuredEvents3.png') %>
-    <% end %>
-    <%= link_to '#four!', class: 'carousel-item' do %>
-    <%= image_tag('featuredEvents/featuredEvents4.png') %>
-    <% end %>
-    <%= link_to '#four!', class: 'carousel-item'  do %>
-    <%= image_tag('featuredEvents/featuredEvents5.png') %>
-    <% end %>
-    <%= link_to '#four!', class: 'carousel-item' do %>
-    <%= image_tag('featuredEvents/featuredEvents6.png') %>
-    <% end %>
-    <%= link_to '#four!', class: 'carousel-item' do %>
-    <%= image_tag('featuredEvents/featuredEvents7.png') %>
-    <% end %>
-    <%= link_to '#four!', class: 'carousel-item' do %>
-    <%= image_tag('featuredEvents/featuredEvents8.png') %>
-    <% end %>
+  <div class="row">
+
   </div>
+
+<div class="row">
+  <div class="carousel valign-wrapper">
+    <a style = 'cursor:pointer'><i class="small material-icons black-text" id = "carouselPrevButton">chevron_left</i></a>
+
+      <% @all_events_pagesC.sample(12).each do|event| %>
+      <%= link_to event_path(event.id), class: 'carousel-item' do %>
+      <%= image_tag(event.image_link, class: 'imageCarousel')%>
+      <% end %>
+      <p style = 'display: hide'></p>
+      <% end %>
+      <div class="col s1 offset-s11">
+        <a style = 'cursor:pointer;'><i class="small material-icons black-text" id = 'carouselNextButton'>chevron_right</i></a>
+
+      </div>
+
+  </div>
+</div>
+
+
+<div class="divider"></div>
 
   <h5 class='featured_events_h4'>Featured Crafters</h5>
 
+  <div class="row">
+  <% @all_crafters_pagesC.sample(6).each do |crafter| %>
+  <div class="col s4">
+    <div class="center promo promo-example">
+      <a href = '<%= crafter_path(crafter) %>'>
+        <%= image_tag(crafter.profilePic_link, :style => 'width: 200px; height: 200px; border-radius: 100%; ')%>
+        <!-- Promo Content 1 goes here -->
+        <p class = 'promo-caption center-align'><%= crafter.name%></p>
+        <p class = 'light center'><%= crafter.biography%></p>
 
-  <!-- <div class="row">
-    <div class="col s4 ">
-      <div class="card-small">
-        <div class="card-image">
-          <%= image_tag('owl/owl8.jpg') %>
-          <span class="card-title">Card Title</span>
-        </div>
-        <div class="card-content">
-          <p>Butcher bespoke ennui neutra lo-fi. Ennui flexitarian forage vinyl seitan. Freegan literally next level organic distillery artisan. Mlkshk authentic umami, unicorn cornhole banh mi venmo single-origin coffee celiac vinyl humblebrag master cleanse.</p>
-          </div>
-          <div class="card-action">
-          </div>
-        </div>
-      </div>
-      <div class="col s4">
-        <div class="card-small">
-          <div class="card-image">
-            <%= image_tag('owl/owl7.jpg') %>
-            <span class="card-title">Card Title</span>
-          </div>
-          <div class="card-content">
-            <p >Four loko deep v health goth, kombucha pour-over snackwave air plant cold-pressed taxidermy kickstarter church-key. Gastropub fashion axe lomo distillery sriracha. Tilde cornhole farm-to-table, bespoke polaroid subway tile meditation enamel pin flexitarian asymmetrical unicorn chicharrones gastropub master cleanse. </p>
-            </div>
-            <div class="card-action">
-            </div>
-          </div>
-        </div>
-        <div class="col s4">
-          <div class="card-small">
-            <div class="card-image">
-              <%= image_tag('owl/owl6.jpg') %>
-              <span class="card-title">Card Title</span>
-            </div>
-            <div class="card-content">
-              <p>Banjo coloring book man bun wayfarers health goth, food truck plaid tbh farm-to-table cred. Chambray ugh photo booth hoodie, squid readymade chillwave kogi selfies shoreditch kitsch whatever. Chia enamel pin brunch, kale chips raw denim vinyl fingerstache. </p>
-              </div>
-              <div class="card-action">
-              </div>
-            </div>
-          </div>
+      </a>
     </div>
-    <div class="row">
-      <div class="col s4">
-        <div class="card-small">
-          <div class="card-image">
-            <%= image_tag('owl/owl5.jpg') %>
-            <span class="card-title">Card Title</span>
-          </div>
-          <div class="card-content">
-            <p>Fam PBRB celiac craft beer viral. Next level put a bird on it bitters, banh mi photo booth fap mlkshk succulents lyft waistcoat seitan man bun. Subway tile health goth gochujang cred, fanny pack pickled hell of intelligentsia offal</p>
-            </div>
-            <div class="card-action">
-            </div>
-          </div>
-        </div>
-        <div class="col s4">
-          <div class="card-small">
-            <div class="card-image">
-              <%= image_tag('owl/owl4.jpg') %>
-              <span class="card-title">Card Title</span>
-            </div>
-            <div class="card-content">
-              <p>Pug you probably haven't heard of them selfies PBR&B irony. Green juice banjo mumblecore butcher, sustainable normcore taxidermy banh mi austin. Mustache PBR&B beard helvetica forage YOLO. Art party prism succulents hammock, cliche tattooed asymmetrical small batch poutine. </p>
-              </div>
-              <div class="card-action">
-              </div>
-            </div>
-          </div>
-          <div class="col s4">
-            <div class="card-small">
-              <div class="card-image">
-                <%= image_tag('owl/owl3.jpg') %>
-                <span class="card-title">Card Title</span>
-              </div>
-              <div class="card-content">
-                <p>Banjo chambray quinoa cray. Pork belly listicle man braid, woke crucifix typewriter vape. Squid unicorn kickstarter mumblecore, irony seitan fap cardigan messenger bag</p>
-                </div>
-                <div class="card-action">
-                </div>
-              </div>
-            </div>
-      </div> -->
+  </div>
+  <% end %>
+</div>
+
+
 
 
 

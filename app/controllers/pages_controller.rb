@@ -2,6 +2,8 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :about]
 
   def index
+    @all_events_pagesC = Event.all
+    @all_crafters_pagesC = Crafter.all
     render 'homepage'
   end
 

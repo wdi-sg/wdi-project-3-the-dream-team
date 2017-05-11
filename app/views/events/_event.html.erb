@@ -4,12 +4,13 @@
       <img src="<%= event.image_link && event.image_link != '' ? event.image_link : asset_path('default_event.png') %>" alt="Image" class="activator" width="313" height="235"></td>
     </div>
     <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4"><%= event.name %><i class="material-icons right">more_vert</i></span>
-      <p><a href="<%= event_path(event) %>">Event</a></p>
+      <div class="row">
+        <a href="<%= event_path(event)%>" style = 'font-size: 1.2em; '><%= event.name %></a>
+        <i class = "material-icons right card-title activator"> more_vert </i>
+      </div>
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">More Info<i class="material-icons right">close</i></span>
-      <!-- <p>why can't i put a table here???</p> -->
       <div class="divider"></div>
       <table>
         <tbody>

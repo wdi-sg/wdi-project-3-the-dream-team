@@ -2,7 +2,6 @@
   <%= image_tag ('homepage_quote1.png'), :class => 'materialboxed', :style=> 'width:30%; align-item: center; margin: auto; margin-top: 5%;' %>
   <!-- <img class="materialboxed" width="650" src="/owl1.jpg"> -->
 </div>
-
 <%# Secondary Navigation bar %>
 <%= render 'partials/second_nav' %>
 
@@ -22,7 +21,12 @@
     <div class="row">
       <% if user_signed_in? %>
         <% if is_crafter_authenticated? %>
-          <%= link_to "New Event", new_event_path, class: "waves-effect waves-light btn" %>
+          <% if crafter_is_myself? %>
+          <div class="row right-align">
+          <a class = 'waves-effect waves-light btn-floating btn-medium white tooltipped' data-position="top" data-delay="50" data-tooltip="I am tooltip" href='<%=new_event_path%>'><i class="material-icons black-text">add</i></a>
+          <%# link_to "New Event", new_event_path, class: "waves-effect waves-light btn" %>
+          </div>
+          <% end %>
         <% end %>
       <% end %>
     </div>
@@ -33,6 +37,7 @@
       </div>
     </div>
     <%# end card render %>
+
     <div class = 'row right-align' id="event-list-paginate">
       <%= will_paginate @all_events, renderer: MaterializePagination::Rails %>
     </div>

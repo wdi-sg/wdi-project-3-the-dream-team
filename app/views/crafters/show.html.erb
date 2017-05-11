@@ -1,7 +1,12 @@
+<%# Secondary Navigation bar %>
+<%= render 'partials/second_nav' %>
+
 <div class="container">
   <div class="row right-align">
     <!-- <a class = 'waves-effect waves-light btn-floating btn-medium white' href="<%# edit_crafter_path %>"><i class="material-icons black-text">mode_edit</i></a> -->
-    <a class = 'waves-effect waves-light btn-floating btn-medium white' href="#modalEditProfile"><i class="material-icons black-text">mode_edit</i></a>
+    <% if crafter_is_myself? %>
+      <a class = 'waves-effect waves-light btn-floating btn-medium white' href="#modalEditProfile"><i class="material-icons black-text">mode_edit</i></a>
+    <% end %>
   </div>
 
   <div class="row">
@@ -115,7 +120,7 @@
           <% if @crafter.portfolio_items[i] %>
             <div class="col s4">
               <div class="card">
-                <%= image_tag (@crafter.portfolio_items[i].media_link), :class => 'materialboxed', :style => 'width: 200px; height: 200px;' %>
+                <%= cl_image_tag (@crafter.portfolio_items[i].media_link), :class => 'materialboxed', :style => 'width: 200px; height: 200px;' %>
               </div>
               <div class="card-content">
               <p>I am a very simple card. I am good at containing small bits of information.
@@ -135,37 +140,39 @@
 
       <!-- Review Card Panel -->
       <div class="card-panel">
-        <% @noReviews %>
+        <% @noReviewsArray = [] %>
        <% @crafter.events.each do |event|%>
         <% if event.reviews.length > 0 %>
-        <h5>Reviews</h5>
-        <div class="divider"></div>
-               <% event.reviews.each do |review| %>
-               <div class="row" style = "margin-top: 3%;">
-                 <div class="col s2" >
-                   <div class="center-align vertical-align">
-                     <%= cl_image_tag(Crafter.find(review.craftee.user.crafter).profilePic_link, :width => 50, :height => 50, :crop => :fill, :gravity => :face,
-                     :radius => :max)%>
-                     <p class='center-align'><%= link_to Craftee.find(review.craftee_id).name, crafter_path(Crafter.find(review.craftee.user.crafter)) %></p>
-                   </div>
-                 </div>
-                 <div class="col s8">
-                   <%=review.description%>
-                 </div>
-               </div>
-               <div class='divider'></div>
-              <% end %>      <!-- end of event.reviews.each do -->
+                            <% @noReviews = false %>
+                            <h5>Reviews</h5>
+                            <div class="divider"></div>
+                                   <% event.reviews.each do |review| %>
+                                   <div class="row" style = "margin-top: 3%;">
+                                     <div class="col s2" >
+                                       <div class="center-align vertical-align">
+                                         <%= cl_image_tag(Crafter.find(review.craftee.user.crafter).profilePic_link, :width => 50, :height => 50, :crop => :fill, :gravity => :face,
+                                         :radius => :max)%>
+                                         <p class='center-align'><%= link_to Craftee.find(review.craftee_id).name, crafter_path(Crafter.find(review.craftee.user.crafter)) %></p>
+                                       </div>
+                                     </div>
+                                     <div class="col s8">
+                                       <%=review.description%>
+                                     </div>
+                                   </div>
+                                   <div class='divider'></div>
+                                  <% end %>      <!-- end of event.reviews.each do -->
             <% else %>
-                <% @noReviews = true %>
-            <% end %>
-            <% end %>
-            <% if @noReviews %>
+                    <% @noReviews = true %>
+            <% end %> <!-- else for if event.reviews.length > 0 -->
+            <% @noReviewsArray << @noReviews %>
+          <% end %> <!-- end of crafter.events.each do -->
+          <%# @noReviewsArray %>
+          <% if !@noReviewsArray.include?(false)  %>
                 <h5 class = 'col s12'>Reviews</h5>
                 <p style = 'font-style: italic;'>No Reviews</p>
-            <%end %>
+          <%end %>
         </div>  <!-- End of Review Card Panel -->
-      </div> <!-- end of div class col 9 -->
-      <!-- End of Review Card Panel -->
+</div> <!-- end of div class col 9 -->
 
 
       <!-- Modal Box -->
@@ -175,9 +182,6 @@
       </div>
     </div>
     <!-- End of Modal Box -->
-
-
-
 
 
 <pre>
