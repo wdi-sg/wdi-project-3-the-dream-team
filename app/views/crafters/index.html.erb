@@ -19,17 +19,7 @@
   </div>
 
   <div class="row">
-    <% if user_signed_in? %>
-    <div class="row valign-wrapper">
-      <div class="col s12">
-        <h5>Crafters</h5>
-      </div>
-    </div>
-    <% end %>
-  </div>
-
-
-  <div class="row">
+    <h5>Crafters</h5>
     <div class="col s12 cards-container" id="crafter-list">
       <%= render partial: "crafters/crafter", collection: @all_crafters %>
     </div>

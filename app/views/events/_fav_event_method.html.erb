@@ -1,18 +1,32 @@
 <%
-    if my_fav_event?(event) == true
-      @heart = 'Unfavourite!'
-    elsif my_fav_event?(event) == false
-      @heart = 'Favourite!'
-    end
-%>
-<%= link_to @heart, craftee_fav_event_path(current_craftee.id),
-data: {
-  remote: true,
-  method: :post,
-  params: {
-    craftee_id: current_craftee.id,
-    event_id: event.id
-  }.to_param,
-},
-class: "favourite" %>
-<!-- end -->
+    if my_fav_event?(event) == true %>
+    <div class="btn-fav">
+      <%= link_to(craftee_fav_event_path(current_craftee.id), data: {
+        remote: true,
+        method: :post,
+        params: {
+          craftee_id: current_craftee.id,
+          event_id: event.id
+        }.to_param
+      }, class: 'favourite') do %>
+      <i class="small material-icons">
+          favorite
+      </i>
+      <% end %>
+    </div>
+<%  elsif my_fav_event?(event) == false %>
+<div class="btn-fav">
+  <%= link_to(craftee_fav_event_path(current_craftee.id), data: {
+    remote: true,
+    method: :post,
+    params: {
+      craftee_id: current_craftee.id,
+      event_id: event.id
+    }.to_param,
+  }, class: 'favourite') do %>
+  <i class="small material-icons">
+      favorite_border
+  </i>
+  <% end %>
+</div>
+<%  end %>

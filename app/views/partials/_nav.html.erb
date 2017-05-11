@@ -10,9 +10,7 @@
             <a href="#!name"><span class="black-text name">Hello <%= current_crafter.name %>!</span></a>
             <a href="#!email"><span class="black-text email"><%= current_user.email %></span></a>
           </div>
-          <div class="divider">
-
-          </div>
+          <div class="divider"></div>
         </li>
         <li><a href="/">Home</a></li>
         <li><div class="divider"></div></li>
@@ -20,7 +18,8 @@
         <li><div class="divider"></div></li>
         <li><%= link_to "My Crafter Profile", crafter_path(current_crafter.id), :class => "waves-effect" %></li>
         <li><%= link_to "My Portfolio", crafter_portfolio_items_path(current_crafter.id), :class => "waves-effect" %></li>
-        <!-- <li><div class="divider"></div></li> -->
+        <li><div class="divider"></div></li>
+        <li><%= link_to "New Event", new_event_path, :class => "waves-effect" %></li>
         <li><%= link_to "My Events", crafter_events_path(current_crafter.id), :class => "waves-effect" %></li>
         <li><div class="divider"></div></li>
         <li><a class="subheader">Craftee Links</a></li>

@@ -193,7 +193,7 @@ end
 
 @event.featured_event = FeaturedEvent.create(
   media_link: 'mhsexj3uisrorctpnrpn.png',
-  description: 'Woodcraft Class',
+  description: 'Woodcraft Class'
 )
 
 @sessions = Session.create(
@@ -479,6 +479,19 @@ p 'session creation succeeded'
 p 'session creation succeeded'
 
 @event.sessions << @sessions
+
+
+@bookings = Booking.create(
+  craftee_id: 2,
+  session_id: 1,
+  status: 'confirmed',
+  pax: 1,
+  amount: 10
+)
+p 'booking creation succeeded'
+
+@user.craftee.bookings << @bookings
+p 'pushed bookings into craftee booking'
 
 # Portfolio items creations
 #

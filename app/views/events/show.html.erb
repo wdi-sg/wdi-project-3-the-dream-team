@@ -2,26 +2,12 @@
 
 <div class="container">
   <div class="section">
-
-    <!-- favourite event function here -->
-    <div class="">
-      <%= render partial: 'events/fav_event_method', locals: {event: @event} if user_signed_in? %>
-    </div>
-    <!-- end -->
     <%= render 'events/eventdetails' %>
   </div>
 
-  <div class="divider"></div>
-
-  <div class="section">
       <% if my_event? @event %>
-        <p>display crafter only view</p>
-        <%= render partial: 'events/craftershow', locals: {categories: @categories} %>
-      <% else %>
-        <p>display craftee view</p>
-        <%= render 'events/crafteeshow' %>
+          <%= render partial: 'events/craftershow', locals: {categories: @categories} %>
       <% end %>
-  </div>
 
   <div class="divider"></div>
 

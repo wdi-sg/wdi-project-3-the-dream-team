@@ -1,0 +1,8 @@
+<%= link_to 'Join!',
+    new_event_booking_path(event_id, session: sess_id),
+    data: {
+      'position': 'right',
+      'delay': '50',
+      'tooltip': tooltip_notes
+    },
+    class: 'waves-effect waves-light blue-grey tooltipped btn' %>
