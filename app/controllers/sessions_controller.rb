@@ -4,15 +4,20 @@ class SessionsController < ApplicationController
   before_action :find_session, except: %i[create]
 
   def create
-    p @form_data
+    # p @form_data
     @event = Event.find(params[:event_id])
 
     @new_session = Session.new(@form_data)
+    @new_session.pax = 0
 
-    if @event.sessions << @new_session
-      flash[:notice] = 'Session created successfully!'
+    if @new_session.valid? && @new_session.datetime_from.day != @new_session.datetime_to.day
+      if @event.sessions << @new_session
+        flash[:notice] = 'Session created successfully!'
+      else
+        flash[:alert] = 'Failed to create session'
+      end
     else
-      flash[:alert] = 'Failed to create session'
+      flash[:alert] = 'Sorry. System only support sessions within the same day.'
     end
     redirect_to event_path(@event)
   end
