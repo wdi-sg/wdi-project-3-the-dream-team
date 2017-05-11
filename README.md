@@ -20,7 +20,7 @@ If you'd like to help out with this application, go to our [github](https://gith
 We spent a fair bit of time coming up with our **E**ntity **R**elationship **D**iagram because we knew we would have quite a fair number of models.  After a number of iterations, our ERD is as follows:
 ![Entity Relationship Diagram](https://github.com/wdi-sg/wdi-project-3-the-dream-team/blob/master/erd_diagram.png)
 
-### 
+###
 
 Because of our the large number of controllers and models, we also started a spreadsheet to track all foreign keys in each table in our database, and the methods associated with the instances.  
 ![Models](https://github.com/wdi-sg/wdi-project-3-the-dream-team/blob/master/modelsAndForeignKeys.png)
@@ -34,10 +34,10 @@ We also came up with wireframes to help us visualize the flow of our routes and 
 
 
 ## User Flow:
-Users are able to view the 
+Users are able to view the
 - homepage
 - events index page
-- individual event page 
+- individual event page
 - crafters index page
 - individual crafters' profile page
 - portfolios index page
@@ -58,12 +58,12 @@ Searching was a MVP for our web app.  AJAX Filtering and Search and Auto-Complet
 
 
 ### Noteworthy Point 5
-Stripe-connect API for multi-seller [RAYMOND PLEASE COMPLETE]
+Stripe-connect API for all the crafters to setup payment accounts to hold events and collect booking fees. This makes it available for direct payment channel between the event holder and event joiner. For this purpose, crafters/event holders are required to setup their stripe payment account first upon joining before they can start creating events. They can choose to deauthorize or revoke their stripe connection with our system anytime from their profile page.
 
 
 ## Working with the UX Team
 We were fortunate enough to work with three students (Gavin, Angela and Rachel) from the WDI UX class that was ongoing simultaneously.  In addition to helping us grasp a better understanding of usability and the considerations for different design components of our website, they also helped steer our discussion so we could come to a conclusion on our target audience -  would be whether we should be crafter-centric/craftee-centric/scheduling-centric etc. This aided us in our decision making process how to structure our website.
- 
+
 ## Further Developments
 We hope to be able to implement a marketplace in addition to event scheduling so users crafters can have a platform to market their goods and other users would be able to purchase them directly.  Other developments include Google Maps API, Facebook Login, as well as a Chat room with ActionCable.
 
@@ -74,6 +74,6 @@ Raymond, Tom Shue Ze and Shirong
 * http://materializecss.com/
 * https://github.com/excid3/simple_calendar
 * https://material.io/icons/
+* https://github.com/rfunduk/rails-stripe-connect-example
+* https://stripe.com/sg
 * Sharona Yisheng and Prima <3
-
-
