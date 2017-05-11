@@ -1,10 +1,10 @@
 # whichcraft
 
-![whichcraft] (https://github.com/wdi-sg/wdi-project-3-the-dream-team/blob/master/homepage.png)
+![whichcraft](https://github.com/wdi-sg/wdi-project-3-the-dream-team/blob/master/homepage.png)
 
 whichcraft is a full-stack web web application that combines front end (HTML, CSS, Javascript) with back end technologies (Ruby on Rails in this case), as well as   Our team used Materialize, Google's responseive CSS framework to help build our site.
 
-The site has been deployed on www.whichcraft.herokuapp.com
+The site has been deployed on http://whichcraft.herokuapp.com
 
 ## Our Pitch
 We wanted to create a platform to bring people who make fine crafts (crafters) and people who appreciate their products (henceforth known as crafteeeeees) together.  Through whichcraft, crafters would be able to showcase their crafts via a customizable portfolio, offer their services to the community through our event management feature, as well as access payment services.  Craftees would be able to search, obtain and enjoy bespoke services from the finest of craftsmen.
