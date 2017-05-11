@@ -1,7 +1,5 @@
 <!-- event setting modal box -->
 <% if my_event?(@event) %>
-<%= link_to "Setting", "#edit_event", class: "modal-trigger waves-effect waves-light btn" %>
-
 <div id="edit_event" class="modal bottom-sheet">
   <div class="modal-content">
     <!-- new session creation -->
@@ -42,6 +40,19 @@
         <div class="input-field col s12">
           <%= f.text_field :name %>
           <%= f.label :name, class: 'active' %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="file-field input-field col s12">
+          <div class="waves-effect waves-light btn white black-text">
+            <span>Upload File</span>
+            <%= f.file_field :image_link %>
+            <!-- <input type="file"> -->
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
         </div>
       </div>
       <div class="row">

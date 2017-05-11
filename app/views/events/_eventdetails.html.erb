@@ -11,7 +11,15 @@
         <p><%= @event.description %></p>
       </div>
       <p>by: <%= link_to @event.crafter.name, crafter_path(@event.crafter) %></p>
-      <%= render partial: 'events/fav_event_method', locals: {event: @event} if user_signed_in? %>
+      <% if user_signed_in? %>
+        <% if my_event? @event %>
+        <div class="btn-edit">
+          <a href="#edit_event" class = 'tooltipped' data-position="top" data-delay="50" data-tooltip="Update Events & Sessions"><i class = 'material-icons small'>settings</i></a>
+        </div>
+        <% else %>
+          <%= render partial: 'events/fav_event_method', locals: {event: @event} %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
@@ -21,42 +29,24 @@
 
 <!-- show sessions -->
 <div class="row">
-  <h4>Sessions</h4>
-  <% unless @event.sessions.empty? %>
+  <h4>Upcoming Sessions</h4>
+  <% if @event.sessions.empty? %>
+    <p>Sorry there are no scheduled session for this event!</p>
+  <% else %>
   <ul class="collapsible" data-collapsible="accordion">
     <% @event.sessions.each do |sess| %>
-    <% if Time.now.between?(sess.datetime_from, sess.datetime_to) %>
+    <% if sess.datetime_to.future? %>
     <!-- collapsible -->
     <li>
       <div class="collapsible-header">
-        Ongoing
-        <span> // <%= sess.datetime_from %></span>
-      </div>
-      <div class="collapsible-body">
-        <div class="row">
-          <div class="col s8">
-            <p>Ends at <%= sess.datetime_to %></p>
-            <p>$ <%= sess.price %></p>
-            <p>Capacity <%= sess.pax %>/<%= sess.capacity %></p>
-          </div>
-          <div class="col s4">
-            Event is ongoing!
-          </div>
-        </div>
-      </div>
-    </li>
-
-    <% elsif sess.datetime_to.future? %>
-    <!-- collapsible -->
-    <li>
-      <div class="collapsible-header">
-        Upcoming
-        <span> // <%= sess.datetime_from %></span>
+        <strong><%= sess.datetime_from.to_formatted_s(:rfc822) %>
+          <span class="align-right"><i class="material-icons">expand_more</i></span>
+        </strong>
       </div>
       <div class="collapsible-body">
         <div class="row">
             <p>
-              Ends at <%= sess.datetime_to %><br>$ <%= sess.price %><br>Capacity <%= sess.pax %>/<%= sess.capacity %></p>
+              Ends at <strong><%= sess.datetime_to.to_formatted_s(:rfc822) %></strong><br>$ <%= sess.price %><br>Capacity <%= sess.pax %> / <%= sess.capacity %></p>
 
               <% if user_signed_in? %>
                 <% if current_craftee.sessions.include? sess %>
@@ -82,16 +72,6 @@
                 sess_id: sess.id} %>
               <% end %>
         </div>
-      </div>
-      <div class="collapsible-footer">
-        <!-- check if craftee alrdy signed up for session -->
-        <% if user_signed_in? %>
-          <% if current_craftee.sessions.include? sess %>
-            <p class=“blue-text”>You've signed up for this session</p>
-          <% elsif check_for_clash?(sess) %>
-            <p class=“blue-text”>You have another event that clashes with this session</p>
-          <% end %>
-        <% end %>
       </div>
     </li>
     <% end %>

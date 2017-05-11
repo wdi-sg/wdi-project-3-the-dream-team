@@ -1,7 +1,11 @@
 <div class="col s4">
   <div class="card small">
     <div class="card-image waves-effect waves-block waves-light">
-      <img src="<%= crafter.profilePic_link && crafter.profilePic_link != '' ? crafter.profilePic_link : asset_path('default_event.png') %>" alt="Image" class="activator" width="313" height="235"></td>
+      <% if !crafter.profilePic_link || crafter.profilePic_link == ''  %>
+        <img src="<%= asset_path('default.jpeg') %>" alt="Image" class="activator" width="313" height="235">
+      <% else %>
+        <%= cl_image_tag(crafter.profilePic_link) %>
+      <% end %>
     </div>
 
     <div class="card-content">

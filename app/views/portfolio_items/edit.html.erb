@@ -1,3 +1,6 @@
+<%# Secondary Navigation bar %>
+<%= render 'partials/second_nav' %>
+
 <div class="container">
 
   <%= form_for :portfolio_item, url: crafter_portfolio_item_path, method: :put do |f| %>
@@ -16,32 +19,19 @@
   </div>
 
   <%# start input %>
-  <div class="field">
-    <div class="field-label">
-      <%= f.label :Upload_Item, class: 'label' %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="input-field col s12">
-      <%= f.file_field :media_link %>
-    </div>
-  </div>
-
 
   <div class="row">
     <div class="file-field input-field col s12">
       <div class="waves-effect waves-light btn white black-text">
         <span>Upload File</span>
-        <input type="file">
+        <%= f.file_field :media_link %>
+        <!-- <input type="file"> -->
       </div>
       <div class="file-path-wrapper">
         <input class="file-path validate" type="text">
       </div>
-      <%= f.file_field :media_link %>
     </div>
   </div>
-
 
 
 

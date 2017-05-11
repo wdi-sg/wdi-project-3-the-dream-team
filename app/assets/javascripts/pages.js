@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function () {
   // tooltip
-  $('.tooltipped').tooltip({delay: 50});
+  $('.tooltipped').tooltip({delay: 50})
 
   // nav bar dropdown jquery plugin
   $('.dropdown-button').dropdown()
@@ -14,8 +14,12 @@ $(document).on('turbolinks:load', function () {
   // select jquery plugin
   $('select').material_select()
 
-  // parallax jquery plugin
-  $('.parallax').parallax()
+  // back to top scroll
+  $('#tpBtn').click(function(){
+    $("body, html").animate({
+    scrollTop: $("body").position().top
+},500)
+  })
 
   // on change listener on select pax to change amount
   $('select#booking_pax').on('change', function (e) {
@@ -200,17 +204,12 @@ $(document).on('turbolinks:load', function () {
   // custom jquery function
   // favourite events
   $('.favourite')
-  .on('ajax:error', function (e, data, status, xhr) {
-    alert('FAILED')
-  })
   .on('ajax:success', function (e, data, status, xhr) {
     if (data.favourite) {
       $(this)
       .html('<i class="small material-icons">favorite</i>')
-      $('.favourite').data('tooltip', 'YOYOYOYOYO')
     } else if (data.favourite === false) {
       $(this).html('<i class="small material-icons">favorite_border</i>')
-      $('.favourite').data('tooltip', 'YOYOYOYOYO')
     }
   })
 
@@ -229,6 +228,7 @@ $(document).on('turbolinks:load', function () {
   //     alert('The request is complete!')
   //   })
   // })
+
 
 
 })

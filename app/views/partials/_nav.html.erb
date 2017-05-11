@@ -10,9 +10,7 @@
             <a href="#!name"><span class="black-text name">Hello <%= current_crafter.name %>!</span></a>
             <a href="#!email"><span class="black-text email"><%= current_user.email %></span></a>
           </div>
-          <div class="divider">
-
-          </div>
+          <div class="divider"></div>
         </li>
         <li><a href="/">Home</a></li>
         <li><div class="divider"></div></li>
@@ -32,7 +30,7 @@
         <li><div class="divider"></div></li>
         <li><%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => "waves-effect" %></li>
         <li><div class="divider"></div></li>
-      <% elsif is_craftee_authenticated? %>
+      <% elsif user_signed_in? && is_craftee_authenticated? %>
         <li>
           <div class="userView">
             <a href="#!user">

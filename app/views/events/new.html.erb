@@ -1,49 +1,52 @@
 <%# Secondary Navigation bar %>
 <%= render 'partials/second_nav' %>
 
-<div class="container">
-    <h1>New Event</h1>
+<div class="row">
+  <div class="col s6 offset-s3">
+    <h5>New Event</h5>
     <div class="section">
       <%= form_for @new_event, url: events_path, method: 'post', class: "col s12" do |f| %>
-        <div class="row">
-          <div class="input-field col s12">
-            <%= f.text_field :name %>
-            <%= f.label :name, class: 'active' %>
-          </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.text_field :name %>
+          <%= f.label :name, class: 'active' %>
         </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <%= f.text_area :description, class: "materialize-textarea" %>
-            <%= f.label :description, class: 'active' %>
-          </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.text_area :description, class: "materialize-textarea" %>
+          <%= f.label :description, class: 'active' %>
         </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <%= f.select(:category_id) do %>
-              <% @categories.each do |c| -%>
-                <%= content_tag(:option, c.name, value: c.id) %>
-              <% end %>
-            <% end %>
-            <%= f.label :category_id, class: 'active' %>
-          </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.select(:category_id) do %>
+          <% @categories.each do |c| -%>
+          <%= content_tag(:option, c.name, value: c.id) %>
+          <% end %>
+          <% end %>
+          <%= f.label :category_id, class: 'active' %>
         </div>
-        <div class="row">
-          <div class="file-field input-field col s12">
-            <div class="btn">
-              <span>Upload Event Picture</span>
-              <input type="file">
-            </div>
-            <div class="file-path-wrapper">
-              <input class="file-path validate" type="text">
-            </div>
+      </div>
+      <div class="row">
+        <div class="file-field input-field col s12">
+          <div class="waves-effect waves-light btn white black-text">
+            <span>Upload File</span>
             <%= f.file_field :image_link %>
           </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <%= f.submit "Confirm", class: "waves-effect waves-light btn" %>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
           </div>
+      </div>
+    </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.submit "Confirm", class: "waves-effect waves-light btn white black-text" %>
         </div>
+      </div>
       <% end %>
     </div>
+  </div>
+
 </div>

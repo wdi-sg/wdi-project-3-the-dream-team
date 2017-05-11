@@ -26,6 +26,13 @@
       color: red;
     }
   }
+  .btn-edit {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 3rem;
+    height: 3rem;
+  }
 
 }
 
@@ -252,10 +259,24 @@ header, main, footer {
   margin-top: 2%;
 }
 
-.second-nav-links:hover {
-  font-size: 16px;
-  transition: font 0.8s ease;
+.second-nav-links:active {
+  text-decoration: underline;
 }
+
+
+.second-nav-links:hover{
+  /* hover state */
+  font-size: 13px;
+}
+
+.second-nav-links:active{
+}
+
+.second-nav-links.active{
+  /* after click state */
+  text-decoration: underline;
+}
+
 
 
 
@@ -299,5 +320,25 @@ td {
 #reviewsCard {
     height: 400px;
     overflow-y: scroll;
+    box-sizing: border-box;
+    .review-card {
+      min-height: 50%;
+      margin: 0;
+      padding: 10px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+}
 
+.align-right {
+   float: right;
+}
+
+
+#tpBtn {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 0;
 }
