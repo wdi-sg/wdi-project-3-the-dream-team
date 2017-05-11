@@ -26,6 +26,8 @@ class EventsController < ApplicationController
     @categories = Category.all
     @crafter = current_crafter
     @new_event = Event.new(@form_data)
+    p 'checking create params'
+    p params[:event].inspect
     if params[:event][:image_link]
       uploaded_file = params[:event][:image_link].path
       cloudnary_file = Cloudinary::Uploader.upload(uploaded_file)
@@ -48,12 +50,15 @@ class EventsController < ApplicationController
   end
 
   def update
+    # render html: params.inspect
     @event = Event.find(params[:id])
     if params[:event][:image_link] && params[:event][:image_link] != ''
       uploaded_file = params[:event][:image_link].path
       cloudnary_file = Cloudinary::Uploader.upload(uploaded_file)
       params[:event][:image_link] = cloudnary_file['public_id']
-      @form_data.image_link = cloudnary_file['public_id']
+      p 'checking form data'
+      # render html: @form_data
+      @form_data[:image_link] = cloudnary_file['public_id']
     end
     @categories = Category.all
     p "update params here #{@form_data.inspect}"
