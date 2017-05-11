@@ -79,14 +79,16 @@ class ApplicationController < ActionController::Base
   end
 
   def check_for_clash?(sess_to_check)
-    current_craftee.sessions.each do |s|
-      if sess_to_check.datetime_from.between?(s.datetime_from, s.datetime_to)
-        @result = true
-      else
-        @result = false
+    if user_signed_in?
+      current_craftee.sessions.each do |s|
+        if sess_to_check.datetime_from.between?(s.datetime_from, s.datetime_to)
+          @result = true
+        else
+          @result = false
+        end
       end
+      @result
     end
-    @result
   end
 
   def my_fav_event?(event_to_check)

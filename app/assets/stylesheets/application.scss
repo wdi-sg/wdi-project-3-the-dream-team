@@ -5,9 +5,35 @@
 @import "materialize";
 @import "simple_calendar";
 
-/* testing ajax with fav event */
-#favourite {
-  background-color: red;
+/* event-show-image */
+.event-details {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  h4 {
+    margin-top: 0;
+  }
+
+  .btn-fav {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 3rem;
+    height: 3rem;
+    a {
+      color: red;
+    }
+  }
+  .btn-edit {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 3rem;
+    height: 3rem;
+  }
+
 }
 
 .cal-format {
@@ -26,7 +52,7 @@ div.search-box {
     width: 100%;
     max-height: 50vh;
     z-index: 999;
-    
+
     div.item-box {
       position: relative;
       height: 60px;
@@ -144,7 +170,13 @@ i.icon-black {
 }
 
 .carousel{
-  margin-top: -5%;
+  margin-top: -8%;
+  padding-bottom: 0px;
+}
+
+.carousel .carousel-item > img {
+    width: 100%;
+    height: 100%;
 }
 
 .featured_events_h4 {
@@ -227,10 +259,24 @@ header, main, footer {
   margin-top: 2%;
 }
 
-.second-nav-links:hover {
-  font-size: 16px;
-  transition: font 0.8s ease;
+.second-nav-links:active {
+  text-decoration: underline;
 }
+
+
+.second-nav-links:hover{
+  /* hover state */
+  font-size: 13px;
+}
+
+.second-nav-links:active{
+}
+
+.second-nav-links.active{
+  /* after click state */
+  text-decoration: underline;
+}
+
 
 
 
@@ -274,5 +320,25 @@ td {
 #reviewsCard {
     height: 400px;
     overflow-y: scroll;
+    box-sizing: border-box;
+    .review-card {
+      min-height: 50%;
+      margin: 0;
+      padding: 10px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+}
 
+.align-right {
+   float: right;
+}
+
+
+#tpBtn {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 0;
 }

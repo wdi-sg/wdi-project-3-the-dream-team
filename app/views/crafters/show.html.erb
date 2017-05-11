@@ -1,7 +1,12 @@
+<%# Secondary Navigation bar %>
+<%= render 'partials/second_nav' %>
+
 <div class="container">
   <div class="row right-align">
-
-    <a class = 'btn-floating btn-medium black' href="<%= edit_crafter_path %>"><i class="material-icons icon-white">mode_edit</i></a>
+    <!-- <a class = 'waves-effect waves-light btn-floating btn-medium white' href="<%# edit_crafter_path %>"><i class="material-icons black-text">mode_edit</i></a> -->
+    <% if crafter_is_myself? %>
+      <a class = 'waves-effect waves-light btn-floating btn-medium white tooltipped' data-position="top" data-delay="50" data-tooltip="Edit Your Profile"  href="#modalEditProfile"><i class="material-icons black-text">mode_edit</i></a>
+    <% end %>
   </div>
 
   <div class="row">
@@ -18,35 +23,35 @@
       <p><%= @crafter.profession%></p>
       <div class="divider"></div>
 
-      <% if @crafter.contact_number == '' %>
+      <% if @crafter.contact_number != '' %>
           <span class="fa-stack fa-lg">
             <i class="fa fa-phone fa-lg"></i>
           </span>
           <%= @crafter.contact_number%><br>
       <% end %>
 
-      <% if @crafter.contact_email == '' %>
+      <% if @crafter.contact_email != '' %>
           <span class="fa-stack fa-lg">
             <i class="fa fa-envelope fa-lg"></i>
           </span>
           <%= @crafter.contact_email%><br>
       <% end %>
 
-      <% if @crafter.facebook_link == '' %>
+      <% if @crafter.facebook_link != '' %>
           <span class="fa-stack fa-lg">
             <i class="fa fa-facebook-square fa-lg"></i>
           </span>
           <%= @crafter.facebook_link%><br>
       <% end %>
 
-      <% if @crafter.twitter_link == '' %>
+      <% if @crafter.twitter_link != '' %>
           <span class="fa-stack fa-lg">
             <i class="fa fa-twitter fa-lg"></i>
           </span>
           <%= @crafter.twitter_link%><br>
       <% end %>
 
-      <% if @crafter.website_link == '' %>
+      <% if @crafter.website_link != '' %>
           <span class="fa-stack fa-lg">
             <i class="fa fa-paint-brush fa-lg"></i>
           </span>
@@ -65,87 +70,121 @@
             <h6>You are already connected to stripe</h6>
             <%= button_to "Deauthorize", stripe_deauthorize_path, class: 'btn waves-effect waves-light red lighten-3' %>
           <% else %>
+            <h6>You need to setup your stripe account so that you can start creating new events and charge booking fees.</h6>
+            <p>
             <%= link_to(image_tag('stripe-connect.png'), stripe_oauth_path ) %>
             <%# button_to "Connect with Stripe", stripe_oauth_path, style: "background: url(" + asset_path('stripe-connect.png') + ')'  %>
           <% end %>
         </div>
       <% end %>
+
+      <!-- Events Card Panel -->
       <div class="card-panel">
-        <h5 class = 'col s10'>Events</h5>
-        <a href= '<%= crafter_events_path(@crafter)%>' class='waves-effect waves-light btn btn-small white black-text vertical-align col s2'>View More</a>
+        <% if @crafter.events.length > 0 %>
+        <h5 class = 'col s11'>Events</h5>
+        <div class="col s1">
+          <a href= '<%= crafter_events_path(@crafter)%>' class='waves-effect waves-light btn-floating btn-medium white tooltipped' data-position="top" data-delay="50" data-tooltip="View More Events"><i class="material-icons black-text">more_horiz</i></a>
+        </div>
         <div class="divider"></div>
         <div class="row">
         <% for i in -6..-1 %>
           <% if @crafter.events[i] %>
             <div class="col s4">
               <div class="card">
-                <%= image_tag (@crafter.events[i].image_link), :class => 'materialboxed', :style => 'width: 200px; height: 200px;' %>
+                <% if @crafter.events[i].image_link.include? "robohash" %>
+                  <%= image_tag (@crafter.events[i].image_link), :class => 'materialboxed', :style => 'width: 200px; height: 200px;' %>
+                <% else %>
+                  <%= cl_image_tag(@crafter.events[i].image_link, :width => 200, :height => 200) %>
+                <% end %>
               </div>
               <div class="card-content">
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
-            </div>
+                <p><%= @crafter.events[i].name %>
+              <!-- <p>I am a very simple card. I am good at containing small bits of information. -->
+              <!-- I am convenient because I require little markup to use effectively.</p> -->
+              </div>
             </div>
           <% end %>
         <% end %>
       </div>
+      <% else %>
+      <h5 class = 'col s12'>Events</h5>
+        <p style = 'font-style: italic;'>No events</p>
+      <% end %>
     </div>
+      <!-- End of Events Card Panel -->
 
-<!-- Portfolio Card Panel -->
+
+      <!-- Portfolio Card Panel -->
       <div class="card-panel">
-        <h5 class = 'col s10'>Portfolio</h5>
-        <a href= '<%= crafter_portfolio_items_path(@crafter)%>' class='waves-effect waves-light btn btn-small white black-text vertical-align col s2'>View More</a>
+        <% if @crafter.portfolio_items.length > 0 %>
+        <h5 class = 'col s11'>Portfolio</h5>
+        <div class="col s1">
+          <a href= '<%= crafter_portfolio_items_path(@crafter)%>' class='waves-effect waves-light btn-floating btn-medium white tooltipped' data-position="top" data-delay="50" data-tooltip="View More Portfolio Items"><i class="material-icons black-text">more_horiz</i></a>
+        </div>
         <div class="divider"></div>
         <div class="row">
         <% for i in -6..-1 %>
           <% if @crafter.portfolio_items[i] %>
             <div class="col s4">
               <div class="card">
-                <%= image_tag (@crafter.portfolio_items[i].media_link), :class => 'materialboxed', :style => 'width: 200px; height: 200px;' %>
+                <%= cl_image_tag (@crafter.portfolio_items[i].media_link), :class => 'materialboxed', :style => 'width: 200px; height: 200px;' %>
               </div>
               <div class="card-content">
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
+              <p><%= @crafter.portfolio_items[i].description %></p>
             </div>
             </div>
           <% end %>
         <% end %>
         </div>
+        <% else %>
+          <h5 class = 'col s12'>Portfolio</h5>
+          <p style = 'font-style: italic;'>No Portfolio Items</p>
+          <% end %>
       </div>
-<!-- End of Portfolio Card Panel -->
+      <!-- End of Portfolio Card Panel -->
 
 
-<!-- Review Card Panel -->
+      <!-- Review Card Panel -->
       <div class="card-panel">
-        <h5>Reviews</h5>
-        <div class="divider"></div>
+        <% @noReviewsArray = [] %>
        <% @crafter.events.each do |event|%>
-               <% event.reviews.each do |review| %>
-               <div class="row" style = "margin-top: 3%;">
-                 <div class="col s2" >
-                   <div class="center-align vertical-align">
-                     <%= cl_image_tag(Crafter.find(review.craftee.user.crafter).profilePic_link, :width => 50, :height => 50, :crop => :fill, :gravity => :face,
-                     :radius => :max)%>
-                     <p class='center-align'><%= link_to Craftee.find(review.craftee_id).name, crafter_path(Crafter.find(review.craftee.user.crafter)) %></p>
-                   </div>
-                 </div>
-                 <div class="col s8">
-                   <%=review.description%>
-                 </div>
-               </div>
-               <div class='divider'></div>
-       <% end %>
-       <!-- end of crafter.events.each do -->
-   <% end %>
+        <% if event.reviews.length > 0 %>
+                            <% @noReviews = false %>
+                            <h5>Reviews</h5>
+                            <div class="divider"></div>
+                                   <% event.reviews.each do |review| %>
+                                   <div class="row" style = "margin-top: 3%;">
+                                     <div class="col s2" >
+                                       <div class="center-align vertical-align">
+                                         <%= cl_image_tag(Crafter.find(review.craftee.user.crafter).profilePic_link, :width => 50, :height => 50, :crop => :fill, :gravity => :face,
+                                         :radius => :max)%>
+                                         <p class='center-align'><%= link_to Craftee.find(review.craftee_id).name, crafter_path(Crafter.find(review.craftee.user.crafter)) %></p>
+                                       </div>
+                                     </div>
+                                     <div class="col s8">
+                                       <%=review.description%>
+                                     </div>
+                                   </div>
+                                   <div class='divider'></div>
+                                  <% end %>      <!-- end of event.reviews.each do -->
+            <% else %>
+                    <% @noReviews = true %>
+            <% end %> <!-- else for if event.reviews.length > 0 -->
+            <% @noReviewsArray << @noReviews %>
+          <% end %> <!-- end of crafter.events.each do -->
+          <%# @noReviewsArray %>
+          <% if !@noReviewsArray.include?(false)  %>
+                <h5 class = 'col s12'>Reviews</h5>
+                <p style = 'font-style: italic;'>No Reviews</p>
+          <%end %>
+        </div>  <!-- End of Review Card Panel -->
+</div> <!-- end of div class col 9 -->
 
 
+      <!-- Modal Box -->
+    <div id="modalEditProfile" class="modal">
+       <div class="modal-content">
+         <%= render 'crafters/edit' %>
       </div>
-<!-- End of Review Card Panel -->
-
-      <!-- end of div class col 9 -->
     </div>
-
-
-<pre>
-  <%# @crafter.inspect %>
-</pre>
+    <!-- End of Modal Box -->

@@ -11,7 +11,7 @@
   Category.create(name: c)
 end
 
-50.times do |i|
+6.times do |i|
   @user = User.create(
     # email: Faker::Internet.email,
     # password: Faker::Internet.password
@@ -26,137 +26,490 @@ end
   p 'craftee creation succeeded'
 
   @user.crafter = Crafter.create(
-    name: Faker::Name.name,
-    biography: Faker::StarWars.quote,
+    name: @user.craftee.name,
+    # biography: Faker::StarWars.quote,
     category_id: rand(Category.all.length) + 1,
-    profession: Faker::Superhero.name,
-    profilePic_link: Faker::Avatar.image
+    # profession: Faker::Superhero.name,
+    # profilePic_link: Faker::Avatar.image
   )
   p 'crafter creation succeeded'
 
-  4.times do
-    @user.crafter.events << Event.create(
-      name: Faker::Commerce.product_name + ' class',
-      description: Faker::StarWars.quote,
-      category_id: rand(Category.all.length) + 1,
-      image_link: Faker::Avatar.image
-    )
-  end
+  # 4.times do
+  #   @user.crafter.events << Event.create(
+  #     name: Faker::Commerce.product_name + ' class',
+  #     description: Faker::StarWars.quote,
+  #     category_id: rand(Category.all.length) + 1,
+  #     image_link: Faker::Avatar.image
+  #   )
+  # end
 
-  p 'event creation succeeded'
+  # p 'event creation succeeded'
 
-  @sessions = Session.create(
-  [
-    {
-      :datetime_from => DateTime.strptime("05/12/2017 17:00", "%m/%d/%Y %H:%M"),
-      :datetime_to => DateTime.strptime("05/12/2017 19:00", "%m/%d/%Y %H:%M"),
-      price: rand(100) + 1,
-      capacity: rand(100) + 1,
-      pax: 0
-    },
-    {
-      :datetime_from => DateTime.strptime("05/13/2018 17:00", "%m/%d/%Y %H:%M"),
-      :datetime_to => DateTime.strptime("05/13/2018 19:00", "%m/%d/%Y %H:%M"),
-      price: rand(100) + 1,
-      capacity: rand(100) + 1,
-      pax: 0
-    }
-  ]
-  )
+  # @sessions = Session.create(
+  # [
+  #   {
+  #     :datetime_from => DateTime.strptime("05/12/2017 17:00", "%m/%d/%Y %H:%M"),
+  #     :datetime_to => DateTime.strptime("05/12/2017 19:00", "%m/%d/%Y %H:%M"),
+  #     price: rand(100) + 1,
+  #     capacity: rand(100) + 1,
+  #     pax: 0
+  #   },
+  #   {
+  #     :datetime_from => DateTime.strptime("05/13/2018 17:00", "%m/%d/%Y %H:%M"),
+  #     :datetime_to => DateTime.strptime("05/13/2018 19:00", "%m/%d/%Y %H:%M"),
+  #     price: rand(100) + 1,
+  #     capacity: rand(100) + 1,
+  #     pax: 0
+  #   }
+  # ]
+  # )
 
-  p 'session creation succeeded'
+  # p 'session creation succeeded'
 
-  @user.crafter.events.each do |event|
-    event.sessions << @sessions
-  end
+  # @user.crafter.events.each do |event|
+  #   event.sessions << @sessions
+  # end
 
-  p 'pushed session into event successfully'
+  # p 'pushed session into event successfully'
 
-  @bookings = Booking.create(
-    craftee_id: i,
-    session_id: rand(7) + 1,
-    status: 'confirmed',
-    pax: rand(7) + 1,
-    amount: rand(50) + 1
-  )
-  p 'booking creation succeeded'
-
-  @user.craftee.bookings << @bookings
-  p 'pushed bookings into craftee booking'
+  # @bookings = Booking.create(
+  #   craftee_id: i,
+  #   session_id: rand(7) + 1,
+  #   status: 'confirmed',
+  #   pax: rand(7) + 1,
+  #   amount: rand(50) + 1
+  # )
+  # p 'booking creation succeeded'
+  #
+  # @user.craftee.bookings << @bookings
+  # p 'pushed bookings into craftee booking'
 
 end
 # loop ends here
 # below User created will be used by Tom to Log In at browser for testing
-@user = User.create(
-  email: 'crafter@mail.com',
-  password: '123456'
-)
+# @user = User.create(
+#   email: 'crafter@mail.com',
+#   password: '123456'
+# )
+#
+# p 'user creation succeeded'
+#
+# @user.crafter = Crafter.create(
+#   name: Faker::Name.name,
+#   biography: Faker::StarWars.quote,
+#   category_id: rand(Category.all.length) + 1,
+#   profession: Faker::Superhero.name
+# )
+# p 'crafter creation succeeded'
+#
+# @user.craftee = Craftee.create(
+#   name: Faker::Name.name
+# )
+# p 'craftee creation succeeded'
+#
+# @user.crafter.events << Event.create(
+#   name: Faker::Commerce.product_name + ' class',
+#   description: Faker::StarWars.quote,
+#   category_id: rand(Category.all.length) + 1,
+#   image_link: Faker::Avatar.image
+# )
+#
+# p 'event creation succeeded'
+#
+# @user = User.create(
+#   email: 'craftee@mail.com',
+#   password: '123456'
+# )
+#
+# p 'user creation succeeded'
+#
+# @user.crafter = Crafter.create(
+#   name: Faker::Name.name,
+#   biography: Faker::StarWars.quote,
+#   category_id: rand(Category.all.length) + 1,
+#   profession: Faker::Superhero.name
+# )
+# p 'crafter creation succeeded'
+#
+# @user.crafter.events << Event.create(
+#   name: Faker::Commerce.product_name + ' class',
+#   description: Faker::StarWars.quote,
+#   category_id: rand(Category.all.length) + 1
+# )
+#
+# p 'event creation succeeded'
+#
+# @user.crafter = Crafter.create(
+#   name: Faker::Name.name,
+#   biography: Faker::StarWars.quote,
+#   category_id: rand(Category.all.length) + 1,
+#   profession: Faker::Superhero.name
+# )
+# p 'crafter creation succeeded'
 
-p 'user creation succeeded'
+# @user.crafter.portfolio_items << PortfolioItem.create(
+#   media_link: 'nvmjtd2ugqd8ebmhqyvq.png',
+#   description: Faker::StarWars.quote,
+#   item_type: rand(9) + 1
+# )
+#
+# @user.crafter.portfolio_items << PortfolioItem.create(
+#   media_link: 'nm282bppdphq72jegebj.png',
+#   description: Faker::StarWars.quote,
+#   item_type: 'image'
+# )
+#
+# @user.crafter.portfolio_items << PortfolioItem.create(
+#   media_link: 'qmgkojbzj4yadohhltfb.png',
+#   description: Faker::StarWars.quote,
+#   item_type: 'image'
+# )
+# p 'portfolio items creation succeeded'
 
-@user.crafter = Crafter.create(
+
+# Featured event and crafter data
+#
+#
+@crafter = Crafter.find(1)
+@crafter.update(
   name: Faker::Name.name,
-  biography: Faker::StarWars.quote,
-  category_id: rand(Category.all.length) + 1,
-  profession: Faker::Superhero.name
+  biography: 'WoodCrafter',
+  category_id: 1,
+  profession: 'WoodCrafter',
+  profilePic_link: 'y9e6qmiuhdnbqmsrmprb.png'
 )
-p 'crafter creation succeeded'
-
-@user.crafter.events << Event.create(
-  name: Faker::Commerce.product_name + ' class',
-  description: Faker::StarWars.quote,
-  category_id: rand(Category.all.length) + 1,
-  image_link: Faker::Avatar.image
+@crafter.featured_crafter = FeaturedCrafter.create(
+  media_link: 'y9e6qmiuhdnbqmsrmprb.png',
+  description: 'WoodCrafter'
 )
 
-p 'event creation succeeded'
-
-@user = User.create(
-  email: 'craftee@mail.com',
-  password: '123456'
+@event = Event.create(
+  crafter_id: @crafter.id,
+  name: 'Wood Class',
+  description: 'Woodcraft Class',
+  category_id: 1,
+  image_link: 'mhsexj3uisrorctpnrpn.png'
 )
 
-p 'user creation succeeded'
+@event.featured_event = FeaturedEvent.create(
+  media_link: 'mhsexj3uisrorctpnrpn.png',
+  description: 'Woodcraft Class'
+)
 
-@user.crafter = Crafter.create(
+@sessions = Session.create(
+[
+  {
+    :datetime_from => DateTime.strptime("05/15/2017 17:00", "%m/%d/%Y %H:%M"),
+    :datetime_to => DateTime.strptime("05/15/2017 19:00", "%m/%d/%Y %H:%M"),
+    price: 10,
+    capacity: rand(10) + 1,
+    pax: 0
+  },
+  {
+    :datetime_from => DateTime.strptime("05/17/2018 17:00", "%m/%d/%Y %H:%M"),
+    :datetime_to => DateTime.strptime("05/17/2018 19:00", "%m/%d/%Y %H:%M"),
+    price: 10,
+    capacity: rand(10) + 1,
+    pax: 0
+  }
+]
+)
+
+p 'session creation succeeded'
+
+@event.sessions << @sessions
+
+# 2
+
+@crafter = Crafter.find(2)
+@crafter.update(
   name: Faker::Name.name,
-  biography: Faker::StarWars.quote,
-  category_id: rand(Category.all.length) + 1,
-  profession: Faker::Superhero.name
-)
-p 'crafter creation succeeded'
-
-@user.crafter.events << Event.create(
-  name: Faker::Commerce.product_name + ' class',
-  description: Faker::StarWars.quote,
-  category_id: rand(Category.all.length) + 1
+  biography: 'Pottery Artist',
+  category_id: 16,
+  profession: 'Pottery Artist',
+  profilePic_link: 'intubjdowdvhboctkspe.png'
 )
 
-p 'event creation succeeded'
+@crafter.featured_crafter = FeaturedCrafter.create(
+  media_link: 'intubjdowdvhboctkspe.png',
+  description: 'Pottery Artist'
+)
 
-@user.crafter = Crafter.create(
+@event = Event.create(
+  crafter_id: @crafter.id,
+  name: 'Pottery Workshop',
+  description: 'Pottery Workshop',
+  category_id: 16,
+  image_link: 'qdxiwyq9dfmi33jg3lk3.png'
+)
+
+@event.featured_event = FeaturedEvent.create(
+  media_link: 'qdxiwyq9dfmi33jg3lk3.png',
+  description: 'Pottery Artist',
+)
+
+@sessions = Session.create(
+[
+  {
+    :datetime_from => DateTime.strptime("05/18/2017 17:00", "%m/%d/%Y %H:%M"),
+    :datetime_to => DateTime.strptime("05/18/2017 19:00", "%m/%d/%Y %H:%M"),
+    price: 10,
+    capacity: rand(10) + 1,
+    pax: 0
+  },
+  {
+    :datetime_from => DateTime.strptime("05/19/2018 17:00", "%m/%d/%Y %H:%M"),
+    :datetime_to => DateTime.strptime("05/19/2018 19:00", "%m/%d/%Y %H:%M"),
+    price: 10,
+    capacity: rand(10) + 1,
+    pax: 0
+  }
+]
+)
+
+p 'session creation succeeded'
+
+@event.sessions << @sessions
+
+# 3
+#
+@crafter = Crafter.find(3)
+@crafter.update(
+  name: 'Jill',
+  biography: 'Papercraft Artist',
+  category_id: 2,
+  profession: 'Papercraft Artist',
+  profilePic_link: 'nkiluhdga8otwpw9we6r.png'
+)
+
+@crafter.featured_crafter = FeaturedCrafter.create(
+  media_link: 'nkiluhdga8otwpw9we6r.png',
+  description: 'Papaercraft Artist'
+)
+
+@event = Event.create(
+  crafter_id: @crafter.id,
+  name: 'Papercraft Workshop',
+  description: 'Papercraft Workshop',
+  category_id: 2,
+  image_link: 'Jo46vme9sg4ro4xyc1ta.png'
+)
+
+@event.featured_event = FeaturedEvent.create(
+  media_link: 'Jo46vme9sg4ro4xyc1ta.png',
+  description: 'Papercraft Workshop'
+)
+
+@sessions = Session.create(
+[
+  {
+    :datetime_from => DateTime.strptime("05/25/2017 17:00", "%m/%d/%Y %H:%M"),
+    :datetime_to => DateTime.strptime("05/25/2017 19:00", "%m/%d/%Y %H:%M"),
+    price: 10,
+    capacity: rand(10) + 1,
+    pax: 0
+  },
+  {
+    :datetime_from => DateTime.strptime("05/20/2018 17:00", "%m/%d/%Y %H:%M"),
+    :datetime_to => DateTime.strptime("05/20/2018 19:00", "%m/%d/%Y %H:%M"),
+    price: 10,
+    capacity: rand(10) + 1,
+    pax: 0
+  }
+]
+)
+
+p 'session creation succeeded'
+
+@event.sessions << @sessions
+
+
+# 4
+#
+@crafter = Crafter.find(4)
+@crafter.update(
   name: Faker::Name.name,
-  biography: Faker::StarWars.quote,
-  category_id: rand(Category.all.length) + 1,
-  profession: Faker::Superhero.name
-)
-p 'crafter creation succeeded'
-
-@user.crafter.portfolio_items << PortfolioItem.create(
-  media_link: 'featuredEvents1.png',
-  description: Faker::StarWars.quote,
-  item_type: rand(9) + 1
+  biography: 'Photographer',
+  category_id: 9,
+  profession: 'Photographer',
+  profilePic_link: 'Mqds89qbgxf3ru3nffyy.png'
 )
 
-@user.crafter.portfolio_items << PortfolioItem.create(
-  media_link: 'featuredEvents2.png',
-  description: Faker::StarWars.quote,
+@crafter.featured_crafter = FeaturedCrafter.create(
+  media_link: 'Mqds89qbgxf3ru3nffyy.png',
+  description: 'Photographer'
+)
+
+@event = Event.create(
+  crafter_id: @crafter.id,
+  name: 'Photography Workshop',
+  description: 'Photography Workshop',
+  category_id: 9,
+  image_link: 'Sgqmdupqzm1hrtzul1do.png'
+)
+
+@event.featured_event = FeaturedEvent.create(
+  media_link: 'Sgqmdupqzm1hrtzul1do.png',
+  description: 'Photography Workshop'
+)
+
+@sessions = Session.create(
+[
+  {
+    :datetime_from => DateTime.strptime("05/27/2017 17:00", "%m/%d/%Y %H:%M"),
+    :datetime_to => DateTime.strptime("05/27/2017 19:00", "%m/%d/%Y %H:%M"),
+    price: 10,
+    capacity: rand(10) + 1,
+    pax: 0
+  },
+  {
+    :datetime_from => DateTime.strptime("05/28/2018 17:00", "%m/%d/%Y %H:%M"),
+    :datetime_to => DateTime.strptime("05/28/2018 19:00", "%m/%d/%Y %H:%M"),
+    price: 10,
+    capacity: rand(10) + 1,
+    pax: 0
+  }
+]
+)
+
+p 'session creation succeeded'
+
+@event.sessions << @sessions
+
+# 5
+#
+@crafter = Crafter.find(5)
+@crafter.update(
+  name: 'Foo Shirong',
+  biography: 'Classical and contemporary violinist',
+  category_id: 9,
+  profession: 'Musician',
+  profilePic_link: 'photo_zg7rfd.png'
+)
+
+@crafter.featured_crafter = FeaturedCrafter.create(
+  media_link: 'photo_zg7rfd.png',
+  description: 'Musician'
+)
+
+@event = Event.create(
+  crafter_id: @crafter.id,
+  name: 'Jazz violin class for beginners',
+  description: 'Music Class',
+  category_id: 9,
+  image_link: 'Kvkjhiowexkroc6sxfrz.png'
+)
+
+@event.featured_event = FeaturedEvent.create(
+  media_link: 'Kvkjhiowexkroc6sxfrz.png',
+  description: 'Music Class'
+)
+
+@sessions = Session.create(
+[
+  {
+    :datetime_from => DateTime.strptime("05/12/2017 17:00", "%m/%d/%Y %H:%M"),
+    :datetime_to => DateTime.strptime("05/12/2017 19:00", "%m/%d/%Y %H:%M"),
+    price: 10,
+    capacity: rand(10) + 1,
+    pax: 0
+  },
+  {
+    :datetime_from => DateTime.strptime("05/13/2018 17:00", "%m/%d/%Y %H:%M"),
+    :datetime_to => DateTime.strptime("05/13/2018 19:00", "%m/%d/%Y %H:%M"),
+    price: 10,
+    capacity: rand(10) + 1,
+    pax: 0
+  }
+]
+)
+
+p 'session creation succeeded'
+
+@event.sessions << @sessions
+
+# 6
+#
+@crafter = Crafter.find(6)
+@crafter.update(
+  name: 'Seth Loh',
+  biography: 'Trouble Maker at OneMaker Group Pte Ltd',
+  category_id: 8,
+  profession: 'Maker',
+  profilePic_link: 'Wckb9qj73vj3zwfexva3.png'
+)
+
+@crafter.featured_crafter = FeaturedCrafter.create(
+  media_link: 'Wckb9qj73vj3zwfexva3.png',
+  description: 'Maker'
+)
+
+@event = Event.create(
+  crafter_id: @crafter.id,
+  name: '3D Printing Workshop',
+  description: '3D Printing Workshop',
+  category_id: 8,
+  image_link: 'Krbstddhst6qku1vy1ee.png'
+)
+
+@event.featured_event = FeaturedEvent.create(
+  media_link: 'Krbstddhst6qku1vy1ee.png',
+  description: '3D Printing Workshop'
+)
+
+@sessions = Session.create(
+[
+  {
+    :datetime_from => DateTime.strptime("05/24/2017 17:00", "%m/%d/%Y %H:%M"),
+    :datetime_to => DateTime.strptime("05/24/2017 19:00", "%m/%d/%Y %H:%M"),
+    price: 10,
+    capacity: rand(10) + 1,
+    pax: 0
+  },
+  {
+    :datetime_from => DateTime.strptime("05/25/2018 17:00", "%m/%d/%Y %H:%M"),
+    :datetime_to => DateTime.strptime("05/25/2018 19:00", "%m/%d/%Y %H:%M"),
+    price: 10,
+    capacity: rand(10) + 1,
+    pax: 0
+  }
+]
+)
+
+p 'session creation succeeded'
+
+@event.sessions << @sessions
+
+
+@bookings = Booking.create(
+  craftee_id: 2,
+  session_id: 1,
+  status: 'confirmed',
+  pax: 1,
+  amount: 10
+)
+p 'booking creation succeeded'
+
+@user.craftee.bookings << @bookings
+p 'pushed bookings into craftee booking'
+
+# Portfolio items creations
+#
+Crafter.find(4).portfolio_items << PortfolioItem.create(
+  media_link: 'nvmjtd2ugqd8ebmhqyvq.png',
+  description: 'You only fail when you stop trying',
   item_type: 'image'
 )
 
-@user.crafter.portfolio_items << PortfolioItem.create(
-  media_link: 'featuredEvents3.png',
-  description: Faker::StarWars.quote,
+Crafter.find(4).portfolio_items << PortfolioItem.create(
+  media_link: 'nm282bppdphq72jegebj.png',
+  description: 'Taking an image, freezing a moment, reveals how rich reality truly is',
+  item_type: 'image'
+)
+
+Crafter.find(4).portfolio_items << PortfolioItem.create(
+  media_link: 'qmgkojbzj4yadohhltfb.png',
+  description: 'Alocohol is the liquid version of photoshop',
   item_type: 'image'
 )
 p 'portfolio items creation succeeded'

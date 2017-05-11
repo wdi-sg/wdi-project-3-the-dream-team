@@ -6,7 +6,19 @@ class BookingsController < ApplicationController
   def new
     @event = Event.find(params[:event_id])
     @session = Session.find(params[:session])
-    @new_booking = Booking.new
+    if(@session.pax >= @session.capacity)
+      flash[:alert] = 'Session fully booked.'
+      redirect_to event_path(params[:event_id])
+    elsif check_for_clash?(@session )
+      flash[:alert] = 'There seems to be a clash with your existing booking.'
+      redirect_to event_path(params[:event_id])
+    elsif @event.crafter.id == current_crafter.id
+      flash[:alert] = 'You cannot join your own class.'
+      redirect_to event_path(params[:event_id])
+    else
+      @new_booking = Booking.new
+    end
+
     # p params[:session]
   end
 

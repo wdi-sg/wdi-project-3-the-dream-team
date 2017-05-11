@@ -3,59 +3,47 @@
   <!-- <img class="materialboxed" width="650" src="/owl1.jpg"> -->
 </div>
 
-
 <%# Secondary Navigation bar %>
-<div class="container second-nav-bar">
-  <div class="row">
-    <div class="grid-example col s12 offset-s2">
-        <a href="/", class='black-text second-nav-links col s2 center-align'>Home</a>
-        <a href="/events", class='black-text second-nav-links col s2 center-align'>Events</a>
-        <a href="/crafters", class='black-text second-nav-links col s2 center-align'>Crafters</a>
-        <a href="/portfolios", class='black-text second-nav-links col s2 center-align'>Works</a>
-    </div>
-  </div>
-  <div class="divider"></div>
-</div>
+<%= render 'partials/second_nav' %>
 
-
-
-
-<div class="container" id = "all-portfolio-items-container">
-  <%# link_to "New Crafter", new_crafter_path, class: "button is-primary" %>
-  <div class="row">
-    <div class="col s12 cards-container">
-      <% @all_portfolio_items.each do |portfolio_item| %>
-      <div class="col s4">
-        <div class="card small">
-          <div class="card-image waves-effect waves-block waves-light">
-            <img src="<%= asset_path(portfolio_item.media_link) %>" alt="Image" class='activator'></td>
-          </div>
-
-          <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4"><%= portfolio_item.description %><i class="material-icons right">more_vert</i></span>
-          </div>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">Crafter Details<i class="material-icons right">close</i></span>
-            <!-- <p>why can't i put a table here???</p> -->
-            <div class="divider"></div>
-            <table>
-              <tbody>
-                <tr>
-                  <td>Crafter:</td>
-                  <td><%= portfolio_item.description %></td>
-                </tr>
-                <tr>
-                  <td>Blurb:</td>
-                  <td><%= portfolio_item.item_type %></td>
-                </tr>
-              </table>
-          </div>
+  <div class="container" id = "all-portfolio-items-container">
+    <%# link_to "New Crafter", new_crafter_path, class: "button is-primary" %>
+    <div class="row">
+      <% if user_signed_in? %>
+      <div class="row valign-wrapper">
+        <div class="col s12">
+          <h5>Works</h5>
         </div>
       </div>
-    <% end %>
+      <% end %>
     </div>
+
+    <div class="row">
+      <div class="col s12">
+        <% @all_portfolio_items.each do |portfolio_item| %>
+        <div class="col s4">
+          <div class="card small">
+            <div class="card-image waves-effect waves-block waves-light">
+              <!-- <img src="<%# portfolio_item.media_link && portfolio_item.media_link != '' ? asset_path(portfolio_item.media_link) : asset_path('default_event.png') %>" alt="Image" class="activator materialboxed" width="313" height="235"></td> -->
+              <%= cl_image_tag (portfolio_item.media_link), :class => 'materialboxed', :style => 'width: 313px; height: 235px;' %>
+              <!-- <img src="<%# asset_path(portfolio_item.media_link) %>" alt="Image" class='activator'></td> -->
+            </div>
+            <div class="card-content">
+              <div class="row">
+                <p style = 'font-size: 1.0em; '><%= portfolio_item.description %></p>
+                <a href="<%=crafter_path(portfolio_item.crafter.id)%>"><%= Crafter.find(portfolio_item.crafter).name%></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+
+    <div class = 'row right-align'>
+      <%= will_paginate @all_portfolio_items, renderer: MaterializePagination::Rails %>
+    </div>
+
+
+
   </div>
-  <div class = 'row right-align'>
-    <%= will_paginate @all_portfolio_items, renderer: MaterializePagination::Rails %>
-  </div>
-</div>

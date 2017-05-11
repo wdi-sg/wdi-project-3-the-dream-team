@@ -1,4 +1,6 @@
 $(document).on('turbolinks:load', function () {
+  // tooltip
+  $('.tooltipped').tooltip({delay: 50})
 
   // nav bar dropdown jquery plugin
   $('.dropdown-button').dropdown()
@@ -11,6 +13,13 @@ $(document).on('turbolinks:load', function () {
 
   // select jquery plugin
   $('select').material_select()
+
+  // back to top scroll
+  $('#tpBtn').click(function(){
+    $("body, html").animate({
+    scrollTop: $("body").position().top
+},500)
+  })
 
   // on change listener on select pax to change amount
   $('select#booking_pax').on('change', function (e) {
@@ -155,11 +164,34 @@ $(document).on('turbolinks:load', function () {
   // })
 
 
-  $('.carousel').carousel({
-    dist: 0,
-    shift: 0,
-    padding: 20
+    $('.carousel').carousel({
+      dist: 0,
+      shift: 0,
+      padding: 20
+    })
+
+    $('#carouselPrevButton').click(function() {
+        $('.carousel').carousel('prev');
+    });
+
+    $('#carouselNextButton').click(function() {
+        $('.carousel').carousel('next');
+    });
+
+
+
+    $('#carouselPrevButton').hover(
+      function(){$(this).css('background-color', 'tomato');
+      },
+      function(){$(this).css('background-color', 'white');
+    })
+
+  $('#carouselNextButton').hover(
+    function(){$(this).css('background-color', 'tomato');
+    },
+    function(){$(this).css('background-color', 'white');
   })
+
 
   $('.button-collapse').sideNav({
 
@@ -172,14 +204,12 @@ $(document).on('turbolinks:load', function () {
   // custom jquery function
   // favourite events
   $('.favourite')
-  .on('ajax:error', function (e, data, status, xhr) {
-    alert('FAILED')
-  })
   .on('ajax:success', function (e, data, status, xhr) {
     if (data.favourite) {
-      $(this).text('Unfavourite')
+      $(this)
+      .html('<i class="small material-icons">favorite</i>')
     } else if (data.favourite === false) {
-      $(this).text('Favourite')
+      $(this).html('<i class="small material-icons">favorite_border</i>')
     }
   })
 
@@ -198,6 +228,7 @@ $(document).on('turbolinks:load', function () {
   //     alert('The request is complete!')
   //   })
   // })
+
 
 
 })

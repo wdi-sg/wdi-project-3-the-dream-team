@@ -19,6 +19,7 @@
   </div>
 
   <div class="row">
+    <h5>Crafters</h5>
     <div class="col s12 cards-container" id="crafter-list">
       <%= render partial: "crafters/crafter", collection: @all_crafters %>
     </div>
@@ -26,4 +27,6 @@
   <div class = 'row right-align'>
     <%= will_paginate @all_crafters, renderer: MaterializePagination::Rails %>
   </div>
+
+
 </div>
