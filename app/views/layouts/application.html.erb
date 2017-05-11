@@ -11,9 +11,13 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'https://checkout.stripe.com/checkout.js' %>
     <%= favicon_link_tag 'favicon.ico' %>
-    <% if current_page?(events_path) || current_page?(crafters_path) || current_page?(crafter_events_path((current_crafter.id))) %>
+    <% if current_page?(events_path) || current_page?(crafters_path) %>
     <%# remove turbolink caching to prevent nonsense stuff when back button pressed %>
       <meta name="turbolinks-cache-control" content="no-cache">
+    <% elsif user_signed_in?
+      if current_page?(crafter_events_path((current_crafter.id))) %>
+      <meta name="turbolinks-cache-control" content="no-cache">
+      <% end %>
     <% end %>
   </head>
 

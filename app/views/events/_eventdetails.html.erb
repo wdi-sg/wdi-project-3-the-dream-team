@@ -40,14 +40,14 @@
     <!-- collapsible -->
     <li>
       <div class="collapsible-header">
-        <strong><%= sess.datetime_from.to_formatted_s(:rfc822) %>
+        <strong><%= sess.datetime_from.strftime('%a, %d %b %Y %I:%M %p') %>
           <span class="align-right"><i class="material-icons">expand_more</i></span>
         </strong>
       </div>
       <div class="collapsible-body">
         <div class="row">
             <p>
-              Ends at <strong><%= sess.datetime_to.to_formatted_s(:rfc822) %></strong><br>$ <%= sess.price %><br>Capacity <%= sess.pax %> / <%= sess.capacity %></p>
+              Ends at <strong><%= sess.datetime_to.strftime('%a, %d %b %Y %I:%M %p') %></strong><br>$ <%= sess.price %><br>Capacity <%= sess.pax %> / <%= sess.capacity %></p>
 
               <% if user_signed_in? %>
                 <% if current_craftee.sessions.include? sess %>

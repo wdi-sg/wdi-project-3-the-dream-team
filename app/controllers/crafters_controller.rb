@@ -10,7 +10,7 @@ class CraftersController < ApplicationController
 
   def show
     @portfolio_items = PortfolioItem.all
-
+    @categories = Category.all
   end
 
   def new
