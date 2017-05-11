@@ -12,8 +12,13 @@ class PortfolioItemsController < ApplicationController
     end
 
     def index
-      @crafter = Crafter.find(params[:crafter_id])
-      @portfolio_items = PortfolioItem.all
+      if params[:crafter_id].to_i == current_crafter.id
+        @crafter = Crafter.find(params[:crafter_id])
+      else
+        flash[:notice] = 'User can only view their own portfolio.'
+        redirect_to crafter_path(current_crafter.id)
+      end
+      # # @portfolio_items = PortfolioItem.all
     end
 
     def new

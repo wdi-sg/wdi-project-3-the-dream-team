@@ -89,12 +89,17 @@
           <% if @crafter.events[i] %>
             <div class="col s4">
               <div class="card">
-                <%= image_tag (@crafter.events[i].image_link), :class => 'materialboxed', :style => 'width: 200px; height: 200px;' %>
+                <% if @crafter.events[i].image_link.include? "robohash" %>
+                  <%= image_tag (@crafter.events[i].image_link), :class => 'materialboxed', :style => 'width: 200px; height: 200px;' %>
+                <% else %>
+                  <%= cl_image_tag(@crafter.events[i].image_link, :width => 200, :height => 200) %>
+                <% end %>
               </div>
               <div class="card-content">
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
-            </div>
+                <p><%= @crafter.events[i].name %>
+              <!-- <p>I am a very simple card. I am good at containing small bits of information. -->
+              <!-- I am convenient because I require little markup to use effectively.</p> -->
+              </div>
             </div>
           <% end %>
         <% end %>
@@ -123,8 +128,7 @@
                 <%= cl_image_tag (@crafter.portfolio_items[i].media_link), :class => 'materialboxed', :style => 'width: 200px; height: 200px;' %>
               </div>
               <div class="card-content">
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
+              <p><%= @crafter.portfolio_items[i].description %></p>
             </div>
             </div>
           <% end %>

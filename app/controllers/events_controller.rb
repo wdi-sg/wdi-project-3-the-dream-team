@@ -16,10 +16,15 @@ class EventsController < ApplicationController
   end
 
   def new
-    @categories = Category.all
-    unless @new_event
-      @new_event = Event.new
-    end
+    # if current_crafter.stripe_user_id
+      @categories = Category.all
+      unless @new_event
+        @new_event = Event.new
+      end
+    # else
+    #   flash[:alert] = "Please setup stripe account before creating an event."
+    #   redirect_to crafter_path(current_crafter.id)
+    # end
   end
 
   def create
