@@ -62,7 +62,7 @@ Stripe-connect API for multi-seller [RAYMOND PLEASE COMPLETE]
 
 
 ## Working with the UX Team
-We were fortunate enough to work with three students from the UX class that was ongoing simultaneously.  Gavin, Angela and Rachel offered to partner with us on this project.  WDI UX for offering to work with us and helping us grasp a better understanding of user interaction on apps.  They also helped steer our discussion of who our target audience would be whether we should be crafter-centric/craftee-centric/scheduling-centric etc. This aided us in our decision making process how to structure our website.
+We were fortunate enough to work with three students (Gavin, Angela and Rachel) from the WDI UX class that was ongoing simultaneously.  In addition to helping us grasp a better understanding of usability and the considerations for different design components of our website, they also helped steer our discussion so we could come to a conclusion on our target audience -  would be whether we should be crafter-centric/craftee-centric/scheduling-centric etc. This aided us in our decision making process how to structure our website.
  
 ## Further Developments
 We hope to be able to implement a marketplace in addition to event scheduling so users crafters can have a platform to market their goods and other users would be able to purchase them directly.  Other developments include Google Maps API, Facebook Login, as well as a Chat room with ActionCable.
