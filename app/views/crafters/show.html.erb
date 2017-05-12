@@ -41,21 +41,24 @@
           <span class="fa-stack fa-lg">
             <i class="fa fa-facebook-square fa-lg"></i>
           </span>
-          <%= @crafter.facebook_link%><br>
+          <%= link_to "Facebook", @crafter.facebook_link %>
+          <br>
       <% end %>
 
       <% if @crafter.twitter_link != '' %>
           <span class="fa-stack fa-lg">
             <i class="fa fa-twitter fa-lg"></i>
           </span>
-          <%= @crafter.twitter_link%><br>
+          <%= link_to "Twitter", @crafter.twitter_link %>
+          <br>
       <% end %>
 
       <% if @crafter.website_link != '' %>
           <span class="fa-stack fa-lg">
             <i class="fa fa-paint-brush fa-lg"></i>
           </span>
-          <%= @crafter.website_link%><br>
+          <%= link_to "Website", @crafter.website_link %>
+          <br>
       <% end %>
     </div>
 
