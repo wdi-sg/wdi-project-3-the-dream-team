@@ -71,6 +71,11 @@ We were fortunate enough to work with three students (Gavin, Angela and Rachel) 
 ## Further Developments
 We hope to be able to implement a marketplace in addition to event scheduling so users crafters can have a platform to market their goods and other users would be able to purchase them directly.  Other developments include Google Maps API, Facebook Login, as well as a Chat room with ActionCable.
 
+### Developments in detail
+- Able to sell products created from events
+- Listing fees
+- Able to rent supplies
+
 ## Makers
 Raymond, Shue Ze and Shirong
 
