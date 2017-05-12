@@ -156,7 +156,7 @@
                                        <div class="center-align vertical-align">
                                          <%= cl_image_tag(Crafter.find(review.craftee.user.crafter).profilePic_link, :width => 50, :height => 50, :crop => :fill, :gravity => :face,
                                          :radius => :max)%>
-                                         <p class='center-align'><%= link_to Craftee.find(review.craftee_id).name, crafter_path(Crafter.find(review.craftee.user.crafter)) %></p>
+                                         <p class='center-align'><%= link_to review.craftee.user.crafter.name, crafter_path(Crafter.find(review.craftee.user.crafter)) %></p>
                                        </div>
                                      </div>
                                      <div class="col s8">
