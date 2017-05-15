@@ -24,35 +24,27 @@
         <% if portfolio_item.id %> <!-- if starts -->
         <%# if my_portfolio_item?(portfolio_item) %>
         <div class="col s4">
-          <div class="card medium">
-            <div class="card-image waves-effect waves-block waves-light">
-              <%= cl_image_tag(portfolio_item.media_link, :width => 400, :height => 400)%>
-            </div>
-              <div class="card-content">
-                <a class="waves-effect waves-light btn-small black-text white" href="#modal<%= portfolio_item.id %>"><%=portfolio_item.description%></a>
-                  <span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
-              </div>
-                <div class="card-reveal">
-                  <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
-                  <% if my_portfolio_item?(portfolio_item) %>
-                  <div class="row">
-                    <%= link_to "Edit Item", edit_crafter_portfolio_item_path(@crafter, portfolio_item) %>
-                  </div>
-                  <div class="row">
-                    <%= link_to "Delete Item", crafter_portfolio_item_path(@crafter.id, portfolio_item.id), method: :delete%>
-                  </div>
-                </div>
-                <% end %>
-              </div>
-            </div>
 
+          <div class="card medium">
+            <div class="card-image">
+              <div class="card-image waves-effect waves-block waves-light crafters-portfolio">
+                <%= cl_image_tag(portfolio_item.media_link)%>
+              </div>
+            </div>
+            <div class="card-content">
+              <a class="waves-effect waves-light btn-small black-text white" href="#modal<%= portfolio_item.id %>"><%=portfolio_item.description%></a>
+              </div>
+              <div class="card-action">
+                <a href="<%= edit_crafter_portfolio_item_path(@crafter, portfolio_item)%>" style = 'float: right;'><i class = 'material-icons'>edit</i></a>
+                <a href="<%= crafter_portfolio_item_path(@crafter.id, portfolio_item.id)%>" data-method = 'delete' style = 'float: right;'><i class = 'material-icons'>delete</i></a>
+              </div>
+            </div>
+        </div>
 
             <!-- Modal Box -->
             <div id="modal<%= portfolio_item.id %>" class="modal">
               <div class="modal-content">
-                <%= cl_image_tag(portfolio_item.media_link, :width => 500, :height => 700,
-                :crop => :fill, :gravity => :face,
-                :radius => :max)%>
+                <%= cl_image_tag(portfolio_item.media_link)%>
                 <h4>Description</h4>
                 <%= render 'crafters/showDescrip', thePortfolio: portfolio_item %>
               </div>
