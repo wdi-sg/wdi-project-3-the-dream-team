@@ -1,5 +1,4 @@
 $(document).on('turbolinks:load', function () {
-
   if (window.location.pathname === '/') {
     $('#homepage-nav').addClass('aktif')
     $('#events-nav').removeClass('aktif')
@@ -38,10 +37,10 @@ $(document).on('turbolinks:load', function () {
   $('select').material_select()
 
   // back to top scroll
-  $('#tpBtn').click(function(){
-    $("body, html").animate({
-    scrollTop: $("body").position().top
-},500)
+  $('#tpBtn').click(function () {
+    $('body, html').animate({
+      scrollTop: $('body').position().top
+    }, 500)
   })
 
   // on change listener on select pax to change amount
@@ -169,7 +168,6 @@ $(document).on('turbolinks:load', function () {
 //   }
 // })
 
-
   // $('select#event_category_id').on('change', function (e) {
   //   console.log($(this).val())
   //   $.ajax({
@@ -186,35 +184,35 @@ $(document).on('turbolinks:load', function () {
   //   })
   // })
 
-
-    $('.carousel').carousel({
-      dist: 0,
-      shift: 0,
-      padding: 20
-    })
-
-    $('#carouselPrevButton').click(function() {
-        $('.carousel').carousel('prev');
-    });
-
-    $('#carouselNextButton').click(function() {
-        $('.carousel').carousel('next');
-    });
-
-
-
-    $('#carouselPrevButton').hover(
-      function(){$(this).css('background-color', 'tomato');
-      },
-      function(){$(this).css('background-color', 'white');
-    })
-
-  $('#carouselNextButton').hover(
-    function(){$(this).css('background-color', 'tomato');
-    },
-    function(){$(this).css('background-color', 'white');
+  $('.carousel').carousel({
+    dist: 0,
+    shift: 0,
+    padding: 20
   })
 
+  $('#carouselPrevButton').click(function () {
+    $('.carousel').carousel('prev')
+  })
+
+  $('#carouselNextButton').click(function () {
+    $('.carousel').carousel('next')
+  })
+
+  $('#carouselPrevButton').hover(
+      function () {
+        $(this).css('background-color', 'tomato')
+      },
+      function () {
+        $(this).css('background-color', 'white')
+      })
+
+  $('#carouselNextButton').hover(
+    function () {
+      $(this).css('background-color', 'tomato')
+    },
+    function () {
+      $(this).css('background-color', 'white')
+    })
 
   $('.button-collapse').sideNav({
 
@@ -252,6 +250,10 @@ $(document).on('turbolinks:load', function () {
   //   })
   // })
 
-
+  $(function() {
+  if($.fn.cloudinary_fileupload !== undefined) {
+    $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
+  }
+});
 
 })

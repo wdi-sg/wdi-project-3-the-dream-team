@@ -28,18 +28,35 @@ class PortfolioItemsController < ApplicationController
     def create
       @crafter = Crafter.find(params[:crafter_id])
       @portfolio_item = PortfolioItem.new(portfolio_params)
-      puts portfolio_params.inspect
       @portfolio_item.crafter_id = @crafter.id
-      puts "test #{params[:portfolio_item][:media_link]}"
-      puts "test2 #{portfolio_params.inspect}"
-      if params[:portfolio_item][:media_link]
-        uploaded_file = params[:portfolio_item][:media_link].path
-        cloudnary_file = Cloudinary::Uploader.upload(uploaded_file)
-        puts cloudnary_file['public_id']
-        params[:portfolio_item][:media_link] = cloudnary_file['public_id']
-        @portfolio_item.media_link = cloudnary_file['public_id']
-        @portfolio_item.save
-      end
+      
+      # if params[:portfolio_item][:media_link] && params[:portfolio_item][:item_type] === 'Photo'
+      #   puts 'UPLOADING PHOTO!'
+      #   uploaded_file = params[:portfolio_item][:media_link].path
+      #   cloudnary_file = Cloudinary::Uploader.upload(uploaded_file)
+      #   puts cloudnary_file['public_id']
+      #   params[:portfolio_item][:media_link] = cloudnary_file['public_id']
+      #   @portfolio_item.media_link = cloudnary_file['public_id']
+      #   @portfolio_item.save
+      # end
+
+      # if params[:portfolio_item][:media_link].present?
+      #      preloaded = Cloudinary::PreloadedFile.new(params[:media_link])
+      #      # Verify signature by calling preloaded.valid?
+      #      portfolio_item.media_link = preloaded.identifier
+      # end
+
+
+      # if params[:portfolio_item][:media_link] && params[:portfolio_item][:item_type] === 'Video'
+      #   puts 'UPLOADING VIDEO!'
+      #   uploaded_file = params[:portfolio_item][:media_link].path
+      #   cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, :resource_type => :video)
+      #   params[:portfolio_item][:media_link] = cloudnary_file['public_id']
+      #   @portfolio_item.media_link = cloudnary_file['public_id']
+      #   @portfolio_item.save
+      # end
+
+
       if @portfolio_item.save
         flash[:notice] = 'Portfolio Item Successfully Created'
         redirect_to crafter_portfolio_items_path(@crafter)
