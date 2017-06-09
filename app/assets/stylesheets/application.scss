@@ -5,6 +5,10 @@
 @import "materialize";
 @import "simple_calendar";
 
+/*
+ *= require jquery.Jcrop
+ */
+
 /* event-show-image */
 .event-show-details {
   div.card-image {
@@ -398,15 +402,15 @@ div.image-snippet {
   }
 }
 
-div.crafters-portfolio {
-  width: 400px;
-  height: 400px;
-  img {
-    width: 400px;
-    height: 400px;
-    object-fit: cover;
-  }
-}
+// div.crafters-portfolio {
+//   width: 400px;
+//   height: 400px;
+//   img {
+//     width: 400px;
+//     height: 400px;
+//     object-fit: cover;
+//   }
+// }
 
 .divider {
   margin-bottom: 50px;
