@@ -1,11 +1,23 @@
+<%= cloudinary_js_config %>
+
+
+<%= form_tag ([@crafter, @crafter.portfolio_items.build]) do -%>
+  <%= cl_image_upload_tag(:media_link, :crop => :limit, :width => 1000, :height => 1000,
+                          :html => {:class => "image_upload"}) %>
+
+<% end -%>
+
+
+
 <%= form_for ([@crafter, @crafter.portfolio_items.build]) do |f| %>
-
-
 <div class="row">
   <div class="file-field input-field col s12">
     <div class="waves-effect waves-light btn white black-text">
       <span>Upload File</span>
-      <%= f.file_field :media_link %>
+      <%# f.file_field :media_link %>
+      <%= cl_image_upload_tag(:media_link, :crop => :limit, :width => 1000, :height => 1000,
+                              :html => {:class => "image_upload"}) %>
+
     </div>
     <div class="file-path-wrapper">
       <input class="file-path validate" type="text">

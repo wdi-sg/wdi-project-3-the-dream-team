@@ -16,4 +16,5 @@
 //= require materialize-sprockets
 //= require jquery.slick
 //= require turbolinks
+//= require cloudinary
 //= require_tree .

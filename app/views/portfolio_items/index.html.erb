@@ -1,3 +1,6 @@
+<%= cloudinary_js_config %>
+
+
 <%# Secondary Navigation bar %>
 <%= render 'partials/second_nav' %>
 
@@ -22,21 +25,30 @@
       <div class="col s12">
         <% @crafter.portfolio_items.each do |portfolio_item| %>
         <% if portfolio_item.id %> <!-- if starts -->
-        <%# if my_portfolio_item?(portfolio_item) %>
         <div class="col s4">
 
           <div class="card medium">
             <div class="card-image">
               <div class="card-image waves-effect waves-block waves-light crafters-portfolio">
-                <%= cl_image_tag(portfolio_item.media_link)%>
+                <% if portfolio_item.item_type === 'Photo'%>
+                <%= cl_image_tag(portfolio_item.media_link, :crop => :fill, :width => 309, :height => 400) %>
+                  <%# cl_image_tag(portfolio_item.media_link,
+                  :width => 309, :height => 400)
+                  %>
+                <% else %>
+                  <%= cl_video_tag(portfolio_item.media_link,
+                      :width=>309, :height=>250,:crop=>"pad",
+                      :preload => "none", :controls => true,
+                      :fallback_content => "Your browser does not support HTML5 video tags" )%>
+                <% end %>
               </div>
             </div>
             <div class="card-content">
               <a class="waves-effect waves-light btn-small black-text white" href="#modal<%= portfolio_item.id %>"><%=portfolio_item.description%></a>
               </div>
               <div class="card-action">
-                <a href="<%= edit_crafter_portfolio_item_path(@crafter, portfolio_item)%>" style = 'float: right;'><i class = 'material-icons'>edit</i></a>
-                <a href="<%= crafter_portfolio_item_path(@crafter.id, portfolio_item.id)%>" data-method = 'delete' style = 'float: right;'><i class = 'material-icons'>delete</i></a>
+                <a href="<%= edit_crafter_portfolio_item_path(@crafter, portfolio_item)%>" style = 'float: left; padding: 0px;'><i class = 'material-icons'>edit</i></a>
+                <a href="<%= crafter_portfolio_item_path(@crafter.id, portfolio_item.id)%>" data-method = 'delete' style = 'float: left;'><i class = 'material-icons'>delete</i></a>
               </div>
             </div>
         </div>
@@ -52,8 +64,9 @@
 
           <% end %> <!-- if end -->
         <% end %>
-         </div>
+      </div>
   </div>
+
 
 
 </div>
