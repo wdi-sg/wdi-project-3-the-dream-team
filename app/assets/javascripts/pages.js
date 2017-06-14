@@ -185,16 +185,24 @@ $(document).on('turbolinks:load', function () {
   // })
 
   $('.carousel').carousel({
-    dist: 0,
-    shift: 0,
-    padding: 20
+    dist: -20,
+    shift: 10
   })
+  // $('.carousel').carousel({
+  //   dist: 0,
+  //   shift: 0,
+  //   padding: 20
+  // })
 
-  $('#carouselPrevButton').click(function () {
+  $('#carouselPrevButton').click(function (e) {
+    e.preventDefault()
+    console.log('prev button pressed')
     $('.carousel').carousel('prev')
   })
 
-  $('#carouselNextButton').click(function () {
+  $('#carouselNextButton').click(function (e) {
+    e.preventDefault()
+    console.log('next button pressed')
     $('.carousel').carousel('next')
   })
 
@@ -212,7 +220,9 @@ $(document).on('turbolinks:load', function () {
     },
     function () {
       $(this).css('background-color', 'white')
-    })
+  })
+
+
 
   $('.button-collapse').sideNav({
 

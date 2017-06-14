@@ -10,25 +10,22 @@
 
 <div class="container">
   <h5 class='featured_events_h4'>Featured Events</h5>
-<div class="row">
-  <div class="carousel valign-wrapper">
-    <a style = 'cursor:pointer'><i class="small material-icons black-text" id = "carouselPrevButton">chevron_left</i></a>
-
+<div class="row" id='feaevent-container'>
+  <div class='carousel-nav'>
+    <i  id='carouselPrevButton' class="small material-icons black-text">chevron_left</i>
+  </div>
+  <div class="carousel">
       <% @all_events_pagesC.each do|feat_event| %>
-      <%= link_to event_path(feat_event.event.id), class: 'carousel-item' do %>
-      <%= cl_image_tag(feat_event.media_link, class: 'imageCarousel')%>
+        <%= link_to event_path(feat_event.event.id), class: 'carousel-item' do %>
+        <%= cl_image_tag(feat_event.media_link, class: 'imageCarousel')%>
 
+        <% end %>
       <% end %>
-      <p style = 'display: hide'></p>
-      <% end %>
-      <div class="col s1 offset-s11">
-        <a style = 'cursor:pointer;'><i class="small material-icons black-text" id = 'carouselNextButton'>chevron_right</i></a>
-
-      </div>
+  </div>
+  <div class='carousel-nav'>
+      <i id='carouselNextButton' class="small material-icons black-text">chevron_right</i>
   </div>
 </div>
-
-
 <div class="divider"></div>
 <div class="">
   <h5>Featured Crafters</h5>

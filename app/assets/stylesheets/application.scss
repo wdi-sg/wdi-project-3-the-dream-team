@@ -183,7 +183,6 @@ i.icon-black {
 }
 
 .carousel{
-  margin-top: -8%;
   padding-bottom: 0px;
 }
 
@@ -194,6 +193,23 @@ i.icon-black {
 
 .featured_events_h4 {
   margin-top: 5%;
+}
+
+#feaevent-container {
+  display: flex;
+  flex-direction: row;
+
+  .carousel-nav {
+    // background-color: black;
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+     i {
+       cursor: pointer;
+     }
+  }
 }
 
 
